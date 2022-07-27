@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ethan Donlon</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+  <body class="column wrapper-center" style="width: 100%">
+    <!-- Navbar (sit on top) -->
+    <div class="nav-parent">
+      <div class="navbar row padding-32">
+        <div class="menu-left medium">
+          <a
+            href="{{ url_for('index') }}"
+            class="button-underline-animation text-black"
+          >
+            Ethan Donlon
+          </a>
+        </div>
+
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="menu-right medium">
+          <div class="wrapper-center">
+            <a href="{{ url_for('about') }}" class="button-underline-animation"
+              >About</a
+            >
+          </div>
+          <div class="wrapper-center">
+            <a href="{{ url_for('index') }}#portfolio" class="button-underline-animation"
+              >Portfolio</a
+            >
+          </div>
+          <div class="wrapper-center">
+            <a href="#contact" class="button-underline-animation">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERE COMES REST OF CONTENT -->
+    {% block content %} {% endblock %}
+
+    <!-- Contact form -->
+    <section id="contact" class="column float-center padding-32">
+      <h2 class="padding-bottom-24">Contact Me</h2>
+      <div class="wrapper row">
+        <form
+          action="https://getform.io/f/5d7bda6a-9801-4525-ac4e-f39446c2da16"
+          method="POST"
+          enctype="multipart/form-data"
+          name="EmailForm"
+          class="wrapper column"
+        >
+          <div class="contact-form column">
+            <div class="input-group">
+              <input
+                type="text"
+                placeholder="Name"
+                class="input-control"
+                name="Contact-Name"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                placeholder="Email"
+                class="input-control"
+                name="Contact-Email"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                placeholder="Subject"
+                class="input-control"
+                name="Contact-Subject"
+              />
+            </div>
+            <div class="input-group">
+              <textarea
+                placeholder="Message"
+                class="input-control"
+                name="Contact-Message"
+              ></textarea>
+            </div>
+            <div class="submit-btn">
+              <button
+                type="submit"
+                class="btn submit--btn"
+                onclick="submit_form();"
+                value="Submit"
+              >
+                Send message
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="column">
+          <div class="column contact-info-item">
+            <h3>Email</h3>
+            <p>ethan.donlon@gmail.com</p>
+          </div>
+          <div class="column contact-info-item">
+            <h3>Phone</h3>
+            <p>(603)-738-9815</p>
+          </div>
+          <div class="column contact-info-item">
+            <h3>Location</h3>
+            <p>Concord, NH - Phildelphia, PA</p>
+          </div>
+          <div class="contact-info-item">
+            <!-- <h3>Socials</h3> -->
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/ethan-donlon"
+                target="_blank"
+              >
+                <i class="uil uil-linkedin-alt"></i>
+              </a>
+              <a
+                download=""
+                href="assets/pdf/Ethan-Donlon-Resume.pdf"
+                target="_blank"
+              >
+                <i class="uil uil-file-alt"></i>
+              </a>
+              <a href="https://github.com/elidonner" target="_blank">
+                <i class="uil uil-github-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact form -->
+  </body>
+</html>

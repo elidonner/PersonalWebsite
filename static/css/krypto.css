@@ -1,0 +1,635 @@
+/* margin stuff */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--gray);
+  /* uncomment below to hide scroll bar */
+  /* overflow: hidden; */
+}
+
+/* Global Styles & Colors */
+:root {
+  /*Fonts and heights*/a {}
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  --gray: #4a4e4d;
+  --dark_blue: #0e9aa7;
+  --blue: #3da4ab;
+  --yellow: #f6cd61;
+  --red: #fe8a71;
+  --green: rgb(65, 184, 131);
+  --header-height: 90px;
+
+  /* icons */
+  /* --spelling-bee: url('./images/nav-icons/SpellingBee-Icon-Normalized.svg'); */
+}
+
+html,
+body,
+div {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: 2rem;
+}
+
+h6{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.welcome_msg{
+  background-color: #f1f1f1;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 2rem;
+  padding:0px 50px;
+  left: 0;
+  right: 0;
+  padding: 12px 0px 12px 0px;
+}
+
+/*set up rows and columns for flexing*/
+.row {
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.column {
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.overlay2 {
+  display: flex;
+  align-self: center;
+  width: 60%;
+  height: 100%;
+  border: 1px solid var(--gray);
+  border-radius: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  cursor: pointer;
+  justify-content: center;
+  background-color: var(--gray);
+}
+
+
+.overlaytop {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+
+.overlaytop-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlaytop p {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  text-align: center;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlaytop a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlaytop a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlaytop #closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  height: var(--header-height);
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 37px;
+  left: 0;
+  right: 0;
+  padding: 12px 0px 12px 0px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.left_menu_btn{
+  justify-content: flex-start;
+  width: 30%;
+}
+
+#menu_btn,
+#website_btn{
+  width:auto;
+  padding:10px;
+  margin:0px 10px;
+}
+
+.instructions{
+  justify-content: flex-end;
+  width: 30%;
+  
+}
+
+#instructions{
+  width:auto;
+  padding:10px;
+  margin:0px 10px;
+  background-color: transparent;
+  border: none;
+}
+
+.body{
+  height: calc(100% - var(--header-height));
+  justify-content: center;
+  background-color: #f1f1f1;
+}
+
+.scoreboardTitle{
+  padding:10px;
+  height:10%;
+  font-weight: 700;
+  font-size: 37px;
+  justify-content: center;
+}
+
+/*Create the scoreboard*/
+#scoreboard {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.box{
+  width: 40%;
+  height:100%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.user{
+  height: 80%;
+  width: 50%;
+  flex-direction: column;
+  border: 1px solid var(--gray);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content:center;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--red);
+}
+
+.user.left{
+  margin:30px 10px 0px 50px;
+}
+
+.user.right{
+  margin:30px 50px 0px 10px;
+}
+
+.userName{
+  font-size: 2rem;
+  padding: 10px;
+  justify-content:center;
+  border-bottom: 1px solid var(--gray);
+}
+
+.points{
+  justify-content:center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+
+/*Create the target cell*/
+#target-cell {
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Create the timer cell*/
+#timer {
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--gray);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--dark_blue);
+}
+
+.action_container{
+  padding:10px;
+}
+
+
+/*types of cards*/
+#target {
+  background-color: e4d440;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsContainer
+{
+  height: 100%;
+  width: 100%;
+}
+
+.solutionCardsContainer{
+  height:20%;
+  padding:5px 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer
+{
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--dark_blue);
+}
+
+.krypto_container{
+  display: none;
+}
+
+.button.krypto{
+  background-color: var(--red);
+}
+
+.krypto_key{
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--red);
+}
+
+#difficulty_menu{
+  justify-content: center;
+  align-items: center;
+}
+
+#difficulty_container{
+  display: flex;
+  flex-direction: column;
+  height:60%;
+  width: 80%;
+  border: 1px solid var(--gray);
+  border-radius: 0.5rem;
+  justify-content:center;
+  background-color: var(--gray);
+  padding: 50px;
+}
+
+
+.difficulty{
+  padding:10px 0px;
+  justify-content: center;
+  align-items:center;
+}
+
+.mode_container{
+  padding:10px 100px;
+  justify-content: center;
+  align-items:center;
+}
+
+.card{
+  height: 200px;
+  width: 150px;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--yellow);
+}
+
+.solutionCard{
+  height: 125px;
+  width: 90px;
+  margin: 0px 20px;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--yellow);
+}
+
+.solutionTitle{
+  color: #f1f1f1; 
+  font-size: 3rem;
+  justify-content: center;
+  text-align: center;
+  width:auto;
+}
+
+.operation{
+  margin: 0px 60px;
+  background-color:var(--blue)
+}
+
+.solutionOperation{
+  height: 80px;
+  width: 80px;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--blue);
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.disabled{
+  cursor: not-allowed;
+}
+
+
+.selected{
+  background-color: var(--green);
+}
+
+.invalid{
+  background-color: red;
+}
+
+.correct{
+  background-color: var(--green);
+}
+
+/* timer from css-tricks.com*/
+
+
+/* Sets the containers height and width */
+.base-timer {
+  position: relative;
+  height: 200px;
+  width: 200px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__label {
+  position: absolute;
+  
+  /* Size should match the parent container */
+  width: 200px;
+  height: 200px;
+  
+  /* Keep the label aligned to the top */
+  top: 0;
+  
+  /* Create a flexible box that centers content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Sort of an arbitrary number; adjust to your liking */
+  font-size: 48px;
+}
+
+.base-timer__path-remaining {
+  /* Just as thick as the original ring */
+  stroke-width: 7px;
+
+  /* Rounds the line endings to create a seamless circle */
+  stroke-linecap: round;
+
+  /* Makes sure the animation starts at the top of the circle */
+  transform: rotate(90deg);
+  transform-origin: center;
+
+  /* One second aligns with the speed of the countdown timer */
+  transition: 1s linear all;
+
+  /* Allows the ring to change color when the color value updates */
+  stroke: currentColor;
+}
+
+.base-timer__svg {
+  /* Flips the svg and makes the animation to move left-to-right */
+  transform: scaleX(-1);
+}
+
+.base-timer__path-remaining.green {
+  color: var(--green);
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+
+
+/* POPUP for when krypto is called */
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side,
+  .column.middle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .overlaytop {overflow-y: auto;}
+  .overlaytop a {font-size: 20px}
+  .overlaytop .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}

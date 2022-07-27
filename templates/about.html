@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Header -->
+<section id="home" class="home row">
+  <div class="about-img">
+    <img
+      src="/static/images/About_Pic.jpg"
+      alt="Mountains"
+      style="height: 100%"
+    />
+  </div>
+  <div class="home-text column padding-left-64">
+    <h3>About Me</h3>
+    <p class="xlarge text-black">
+      I earned my master's in mechanical engineering from the University of
+      Pennsylvania and a bachelor's degree in physics from Haverford College.
+    </p>
+    <h3>Fun Stuff</h3>
+    <p class="xlarge text-black" style="display: inline-block">
+      This entire website is an excuse to host my favorite game,
+      <a
+        href="{{ url_for('krypto') }}"
+        class="button-underline-animation purple-button-underline-animation"
+        style="display: inline-flex"
+      >
+        <b class="text-purple">KRYPTO,</b>
+      </a>
+      play me!
+    </p>
+  </div>
+</section>
+<!-- Header End -->
+
+<!-- TIMELINE -->
+<div class="about-timeline">
+  <div class="about-tabs">
+    <button type="button" class="tab-item active" data-target="#education">
+      education
+    </button>
+    <button type="button" class="tab-item" data-target="#experience">
+      experience
+    </button>
+  </div>
+
+  <!-- Education START -->
+  <div id="education" class="tab-content active">
+    <div class="timeline column">
+      <div class="timeline-item column">
+        <span class="date">Sept 2020 - May 2022</span>
+        <h4>MSE in Mechanical Engineering</h4>
+        <i>Concentration in mechatronics</i>
+        <p>University of Pennsylvania</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">Sept 2017 - May 2021</span>
+        <h4>BS in Physics</h4>
+        <i>Minor in German</i>
+        <p>Haverford College</p>
+      </div>
+    </div>
+  </div>
+  <!-- Education END -->
+  <!-- EXPERIENCE START -->
+  <div id="experience" class="tab-content column">
+    <div class="timeline column">
+      <div class="timeline-item column">
+        <span class="date">Jan 2021 - Present</span>
+        <h4>Engineer</h4>
+        <p>Altrumed</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">June 2021 - Aug 2021</span>
+        <h4>Mechanical Engineer Intern</h4>
+        <p>DEKA Research & Development</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">June 2020 - Aug 2020</span>
+        <h4>Manufacturing Engineer Intern</h4>
+        <p>DEKA Research & Development</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- EXPERIENCE END -->
+
+<!-- TIMELINE END-->
+<script type="module" src="/static/js/about.js"></script>
+
+{% endblock %}
