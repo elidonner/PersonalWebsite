@@ -1,38 +1,47 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Header -->
-<section id="home" class="home row">
-  <div class="about-img">
-    <img
-      src="/static/images/About_Pic.jpg"
-      alt="Mountains"
-      style="height: 100%"
-    />
+<section id="about" class="about column">
+  <div class="about-info row">
+    <div class="about-img-wrapper">
+      <div class="about-img">
+        <img
+          src="/static/images/About_Pic.jpg"
+          alt="Mountains"
+          style="height: 100%"
+        />
+      </div>
+    </div>
+
+    <div class="about-text column padding-right-64 padding-left-64">
+      <h3 class="xxlarge">About Me</h3>
+      <p class="xlarge text-black">
+        I earned my master's in mechanical engineering from the University of
+        Pennsylvania and a bachelor's degree in physics from Haverford College.
+      </p>
+      <h3 class="xxlarge">Fun Stuff</h3>
+      <p class="xlarge text-black" style="display: inline-block">
+        This entire website is an excuse to host my favorite game,
+        <a
+          href="{{ url_for('krypto') }}"
+          class="purple-button-underline-animation"
+          style="display: inline-flex; height: auto"
+        >
+          <b class="text-purple">KRYPTO,</b>
+        </a>
+        play me!
+      </p>
+    </div>
   </div>
-  <div class="home-text column padding-left-64">
-    <h3>About Me</h3>
-    <p class="xlarge text-black">
-      I earned my master's in mechanical engineering from the University of
-      Pennsylvania and a bachelor's degree in physics from Haverford College.
-    </p>
-    <h3>Fun Stuff</h3>
-    <p class="xlarge text-black" style="display: inline-block">
-      This entire website is an excuse to host my favorite game,
-      <a
-        href="{{ url_for('krypto') }}"
-        class="button-underline-animation purple-button-underline-animation"
-        style="display: inline-flex"
-      >
-        <b class="text-purple">KRYPTO,</b>
-      </a>
-      play me!
-    </p>
+
+  <div class = "down-arrow">
+    <a href="#timeline" id="down-arrow"> </a>
   </div>
 </section>
 <!-- Header End -->
 
 <!-- TIMELINE -->
-<div class="about-timeline">
+<div id="timeline" class="about-timeline">
   <div class="about-tabs">
     <button type="button" class="tab-item active" data-target="#education">
       education

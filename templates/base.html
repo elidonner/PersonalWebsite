@@ -13,29 +13,33 @@
   <body class="column wrapper-center" style="width: 100%">
     <!-- Navbar (sit on top) -->
     <div class="nav-parent">
-      <div class="navbar row padding-32">
+      <div class="navbar row">
         <div class="menu-left medium">
-          <a
-            href="{{ url_for('index') }}"
-            class="button-underline-animation text-black"
-          >
-            Ethan Donlon
-          </a>
+          <div class="menu-btn">
+            <a
+              href="{{ url_for('index') }}"
+              class="button-underline-animation text-black"
+            >
+              Ethan Donlon
+            </a>
+          </div>
         </div>
 
         <!-- Float links to the right. Hide them on small screens -->
         <div class="menu-right medium">
-          <div class="wrapper-center">
+          <div class="menu-btn">
+            <a
+              href="{{ url_for('index') }}#portfolio"
+              class="button-underline-animation"
+              >Portfolio</a
+            >
+          </div>
+          <div class="menu-btn">
             <a href="{{ url_for('about') }}" class="button-underline-animation"
               >About</a
             >
           </div>
-          <div class="wrapper-center">
-            <a href="{{ url_for('index') }}#portfolio" class="button-underline-animation"
-              >Portfolio</a
-            >
-          </div>
-          <div class="wrapper-center">
+          <div class="menu-btn">
             <a href="#contact" class="button-underline-animation">Contact</a>
           </div>
         </div>
@@ -141,4 +145,6 @@
     </section>
     <!-- Contact form -->
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+  <script src="/static/js/script.js"></script>
 </html>
