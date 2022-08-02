@@ -1,93 +1,116 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Header -->
-<section id="home" class="home column">
+<header id="home" class="home column">
   <div class="home-info row">
-
     <div class="home-text column padding-right-64 padding-left-64">
       <p class="xlarge text-black">Hi, my name is</p>
       <h1 class="xxxlarge text-black">Ethan Donlon</h1>
-      <p class="xlarge text-black">
-        I love learning new things.
-      </p>
+      <p class="xlarge text-black">I love learning new things.</p>
     </div>
-    
+
     <a href="{{ url_for('about') }}" class="home-img-wrapper">
-      <div id = 'profile_pic' class="round-circle home-img zoomin">
+      <div id="profile_pic" class="round-circle home-img zoomin">
         <img src="/static/images/EthanPhoto.png" alt="Profile-Pic" />
       </div>
     </a>
-
   </div>
 
-  <div class = "down-arrow">
+  <div class="down-arrow">
     <a href="#portfolio" id="down-arrow"> </a>
   </div>
-
-</section>
+</header>
 <!-- Header end -->
 
 <!-- Portfolio -->
-<section id="portfolio" class="column padding-64">
+
+<!-- FEATURED PROJECTS -->
+<section id="portfolio" class="column float-center">
+  <h1 class="xxx-large section-title">Featured Work</h1>
+  {% macro project(title, img, order, img_title, description, skills=[]) -%}
   <div class="project-container">
     <a href="dove.html" class="row project zoomin round-xxlarge">
-      <div class="project-img">
-        <img src="/static/images/Arm-Sensor.jpg" alt="arm-sensor" />
+      <div class="project-img" style="order:{{ order }}">
+        <img src="{{ img }}" alt="{{ img_title }}" />
       </div>
       <div class="project-text column">
-        <h1>Dove</h1>
+        <h1>{{ title }}</h1>
         <p class="xlarge text-black">
-          Creating the first wearable autoinjector capable of sensing an opioid
-          overdose and delivering life-saving naloxone.
+          {{ description }}
         </p>
+        <div class="skills medium text-black">
+          {% for skill in skills %}
+            <p class="skill">{{ skill }}</p>
+          {% endfor %}
+        </div>
       </div>
     </a>
   </div>
 
-  <div class="project-container">
-    <a href="dove.html" class="row project zoomin round-xxlarge">
-      <div class="project-text column">
-        <h1>Ollie</h1>
-        <p class="xlarge text-black">
-          An animatronic puppet for a museum in Philadelphia, featuring person
-          tracking and smart interactions.
-        </p>
-      </div>
-      <div class="project-img">
-        <img src="/static/images/Ollie.jpg" alt="Ollie" />
-      </div>
-    </a>
-  </div>
+  {% endmacro %}
 
-  <div class="project-container">
-    <a href="dove.html" class="row project zoomin round-xxlarge">
-      <div class="project-img">
-        <img src="/static/images/Arm-Sensor.jpg" alt="arm-sensor" />
-      </div>
-      <div class="project-text column">
-        <h1>DEKA</h1>
-        <p class="xlarge text-black">
-          Developing a class III medical device for FDA clearance.
-        </p>
-      </div>
-    </a>
-  </div>
+  {{ project(
+    'Dove', 
+    '/static/images/Arm-Sensor.jpg',
+    '0', 
+    'Arm-Sensor',
+    'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
+    ['PCB-Design','C++','Everything']
+    )
+  }}
 
-  <div class="project-container">
-    <a href="dove.html" class="row project zoomin round-xxlarge">
-      <div class="project-text column">
-        <h1>Nanowires</h1>
-        <p class="xlarge text-black">
-          Studied self-assembling nanowires by converting an atomic force
-          microscope to a Kelvin probe force microscope.
-        </p>
-      </div>
-      <div class="project-img">
-        <img src="/static/images/Microscope.jpg" alt="arm-sensor" />
-      </div>
-    </a>
-  </div>
+  {{ project(
+    'Ollie', 
+    '/static/images/Ollie.jpg',
+    '1',
+    'ollie',
+    'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
+    ['PCB-Design','C++','Everything']
+    )
+  }}
+
+  {{ project(
+    'DEKA', 
+    '/static/images/Arm-Sensor.jpg',
+    '0',
+    'deka',
+    'Developing a class III medical device for FDA clearance.',
+    ['PCB-Design','C++','Everything']
+    )
+  }}
+  
 </section>
-<!-- Portfolio end -->
+<!-- END FEATURED WORK  -->
+
+<!-- OTHER PROJECTS -->
+<section id="other-projects" class="column float-center">
+  <h1 class="xxx-large section-title">Other Projects</h1>
+
+  {% macro otherproject(name, img, img_title) %}
+  <div class="other-project-container">
+    <a href="dove.html" class="column project zoomin round-xxlarge">
+      <div class="other-project-img">
+        <img src="{{ img }}" alt="{{ img_title }}" />
+      </div>
+      <div class="other-project-text column">
+        <h3>{{ name }}</h3>
+      </div>
+    </a>
+  </div>
+  {% endmacro %}
+
+  <div class="other-project-container-row">
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }}
+  </div>
+  <div class="other-project-container-row">
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }}
+  </div>
+  
+</section>
+<!-- END OTHER PROJECTS -->
 
 {% endblock %}
