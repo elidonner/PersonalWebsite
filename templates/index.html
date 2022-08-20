@@ -25,65 +25,68 @@
 <!-- Portfolio -->
 
 <!-- FEATURED PROJECTS -->
+
+<!-- CARDS -->
 <section id="portfolio" class="column float-center">
   <h1 class="xxx-large section-title">Featured Work</h1>
   {% macro project(title, img, order, img_title, description, skills=[]) -%}
-  <div class="project-container">
-    <a href="dove.html" class="row project zoomin round-xxlarge">
+  <div class="project-container" title="{{title}}">
+    <a href="#{{title}}" class="row project zoomin round-xxlarge">
       <div class="project-img" style="order:{{ order }}">
         <img src="{{ img }}" alt="{{ img_title }}" />
       </div>
       <div class="project-text column">
         <h1>{{ title }}</h1>
-        <p class="xlarge text-black">
-          {{ description }}
-        </p>
+        <p class="xlarge text-black">{{ description }}</p>
         <div class="skills medium text-black">
           {% for skill in skills %}
-            <p class="skill">{{ skill }}</p>
+          <p class="skill">{{ skill }}</p>
           {% endfor %}
         </div>
       </div>
     </a>
   </div>
 
-  {% endmacro %}
+  {% endmacro %} {{ project( 'Dove', '/static/images/Arm-Sensor.jpg', '0',
+  'Arm-Sensor', 'Creating the first wearable autoinjector capable of sensing an
+  opioid overdose and delivering life-saving naloxone.',
+  ['PCB-Design','C++','Rapid-Prototyping'] ) }} {{ project( 'Ollie',
+  '/static/images/Ollie.jpg', '1', 'ollie', 'An animatronic puppet for the
+  Fabric Museum and Workshop, featuring person-detection and much more.',
+  ['Microcontrollers','C++','Mechanical-Design'] ) }} {{ project( 'DEKA',
+  '/static/images/Arm-Sensor.jpg', '0', 'deka', 'Developing a class III medical
+  device for FDA clearance.', ['Solidworks','Tolerance Analysis','Part-Design']
+  ) }}
 
-  {{ project(
-    'Dove', 
-    '/static/images/Arm-Sensor.jpg',
-    '0', 
-    'Arm-Sensor',
-    'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
-    ['PCB-Design','C++','Everything']
-    )
-  }}
+  <!-- PROJECT OVERLAYS -->
+  <div id="Dove" class="project-description column">
+    <div class="project-description-container">
+      <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
+      <div class="project-description-content">
+        {% include '/projects/dove.html' %}
+      </div>
+    </div>
+  </div>
 
-  {{ project(
-    'Ollie', 
-    '/static/images/Ollie.jpg',
-    '1',
-    'ollie',
-    'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
-    ['PCB-Design','C++','Everything']
-    )
-  }}
+  <div id="Ollie" class="project-description column">
+    <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
+    <div class="project-description-content">
+      {% include '/projects/ollie.html' %}
+    </div>
+  </div>
 
-  {{ project(
-    'DEKA', 
-    '/static/images/Arm-Sensor.jpg',
-    '0',
-    'deka',
-    'Developing a class III medical device for FDA clearance.',
-    ['PCB-Design','C++','Everything']
-    )
-  }}
-  
+  <div id="DEKA" class="project-description column">
+    <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
+    <div class="project-description-content">
+      {% include '/projects/deka.html' %}
+    </div>
+  </div>
 </section>
 <!-- END FEATURED WORK  -->
 
 <!-- OTHER PROJECTS -->
-<section id="other-projects" class="column float-center">
+<!-- TODO: Add other-projects -->
+<!-- <section id="other-projects" class="column float-center">
   <h1 class="xxx-large section-title">Other Projects</h1>
 
   {% macro otherproject(name, img, img_title) %}
@@ -110,7 +113,7 @@
     {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }}
   </div>
   
-</section>
+</section> -->
 <!-- END OTHER PROJECTS -->
 
 {% endblock %}
