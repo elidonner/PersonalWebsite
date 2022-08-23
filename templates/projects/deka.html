@@ -14,12 +14,12 @@
       </p>
       <p class="project-header large" style="display: inline">
         <b><b>Time:</b></b
-        >&ensp;June 2020 - August 2020<br>&nbsp;&emsp;&emsp;&emsp;June 2021 - August 2021
+        >&ensp;June 2020 - August 2020 &<br>June 2021 - August 2021
       </p>
     </div>
     <div class="project-column" style="align-items: flex-end">
       <p class="project-description-text" style="display: inline-block">
-        At DEKA, I gained real-world experience as part of a team of approximately 80 engineers over two summer internships working on the same medical-device. As a manufacturing engineer, I designed assembly fixutres and updated drawings with GD&T ensure mass-manufacturibility. In my next summer as Mechanical Engineer, I designed a spring integral to the function of the device. My work on this device is under an NDA.
+        At DEKA, I gained real-world experience as part of a team of approximately 80 engineers over two summer internships working on the same medical-device. In my first summer as a manufacturing engineer, I designed assembly fixutres and updated drawings with GD&T ensure mass-manufacturibility. In my next summer as a Mechanical Engineer, I designed a spring integral to the function of the device. My work on this device is under an NDA (all photos are stock images).
       </p>
     </div>
   </div>
@@ -50,6 +50,9 @@
             {% else %}
             <div class="img-container" style="order: 1">
                 <img src="{{img[0]}}" />
+                <div style="position:relative">
+                  stock-photo
+                </div>
             </div>
             {% endif %}
             <h3 class="text xlarge">{{img[1]}}</h3> 
@@ -66,8 +69,8 @@
   </div>
 
   {% endmacro %} {{ slides([
-    ('/static/images/Deka/Cetol.png','I learned CETOL 6σ to do complex 3-Dimensional tolerance stackups on > 1000 part assemblies'),
-    ('/static/images/Deka/torsion_spring.png','As part of my spring-design, I created a tool that uses Newton\'s Method, coded in VBA as an Excel plug-in, to design springs by desired-force-applied')
+    ('/static/images/Deka/Cetol.png','I learned CETOL 6σ to do complex 3-Dimensional tolerance stackups on over 1000 part assemblies'),
+    ('/static/images/Deka/torsion_spring.png','As part of my spring design, I created a tool that uses Newton\'s Method, coded in VBA as an Excel plug-in, to design springs by the desired force applied')
     ]) }}
 </header>
 <script src="/static/js/projects.js"></script>
