@@ -3,17 +3,19 @@ var projects = document.getElementsByClassName("project-container");
 /**
  * Action items when window is opened
  */
-window.onload = function () {
+onload = function () {
   update_profile_height();
+  setImageHeight();
   attachEventListeners();
+  document.querySelector(".page-loader").classList.add("fade-out");
+  setTimeout(() => {
+      document.querySelector(".page-loader").style.display = 'none';
+  }, 10000)
 };
 
 function attachEventListeners() {
   window.addEventListener("resize", update_profile_height);
   window.addEventListener("resize", setImageHeight);
-
-
-
   for (var i = 0; i < projects.length; i++) {
     projects[i].addEventListener("click", function () {
       document.getElementById(this.title).classList.add("project-description-open");
