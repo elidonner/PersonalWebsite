@@ -1,11 +1,10 @@
-var slideIndex = 1;
-
-showSlides(slideIndex);
-
 /**
  * Action items when window is opened
  */
  window.addEventListener("load", function() {
+  var slideIndex = 1;
+
+  showSlides(slideIndex);
     setImageHeight();
     attachEventListeners();
 });

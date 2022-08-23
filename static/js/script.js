@@ -21,16 +21,21 @@ var animation = bodymovin.loadAnimation({
 
 function adjust_header_height() {
   var nav_height = document.getElementsByClassName("nav-parent")[0].offsetHeight;
-  var header = document.getElementsByTagName("Header")[0];
-  console.log(header.offsetHeight);
-  console.log(window.screen.height-nav_height);
-  
-  if(header.offsetHeight <= window.screen.height-nav_height) {
-    header.style.height = "calc(100vh - var(--header-height))";
+  var header = document.getElementsByClassName("Home");
+
+  if(header.length > 0)
+  {
+    console.log(header[0].offsetHeight);
+    console.log(window.screen.height-nav_height);
+    
+    if(header[0].offsetHeight <= window.screen.height-nav_height) {
+      header[0].style.height = "calc(100vh - var(--header-height))";
+    }
+    else {
+      header[0].style.height = "auto";
+    }
   }
-  else {
-    header.style.height = "auto";
-  }
+
   // else {
   //   document.getElementById("down-arrow").style.display="none";
   // }
