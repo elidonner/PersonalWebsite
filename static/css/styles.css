@@ -605,19 +605,19 @@ img {
 }
 
 /* RESPONSIVE LAYTOUT */
-@media (max-width: 1200px) {
-  section,
-  header {
-    width: 90%;
-    max-width: 90%;
-  }
-}
-
 @media (max-width: 1700px) {
   section,
   header {
     width: 80%;
     max-width: 80%;
+  }
+}
+
+@media (max-width: 1200px) {
+  section,
+  header {
+    width: 90%;
+    max-width: 90%;
   }
 }
 

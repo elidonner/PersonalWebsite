@@ -27,7 +27,10 @@ function adjust_header_height() {
   
   if(header.offsetHeight <= window.screen.height-nav_height) {
     header.style.height = "calc(100vh - var(--header-height))";
-  } 
+  }
+  else {
+    header.style.height = "auto";
+  }
   // else {
   //   document.getElementById("down-arrow").style.display="none";
   // }
