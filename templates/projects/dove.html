@@ -1,33 +1,25 @@
-<section class="column project-description-content">
-  <div class="column">
-  <h1 class="jumbo">Dove</h1>
+{% extends 'base.html' %} {% block content %}
+<link rel="stylesheet" href="/static/css/slidshow.css" />
+<header id="home" class="home column project-description">
   <div class="row">
     <div class="project-column column padding-right-64">
-      <p
-      class="project-header large"
-      style="display: inline; padding-top:0px"
-      >
+      <h1 class="jumbo">Dove</h1>
+      <p class="project-header large" style="display: inline; padding-top: 0px">
         <b><b>Role:</b></b
         >&emsp;PCB design and fabrication, mechanical design and prototyping,
         embedded software engineer, human-factors interviewer,
         project-presentations/fundraising.
       </p>
-      <p
-        class="project-header large"
-        style="display: inline;"
-      >
+      <p class="project-header large" style="display: inline">
         <b><b>Type:</b></b
         >&ensp;Start-up
       </p>
-      <p
-        class="project-header large"
-        style="display: inline;"
-      >
+      <p class="project-header large" style="display: inline">
         <b><b>Time:</b></b
         >&ensp;January 2021 - Present
       </p>
     </div>
-    <div class="project-column">
+    <div class="project-column" style="align-items:flex-end">
       <p class="project-description-text">
         Dove is a startup at the University of Pennsylvania creating the first
         wearable autoinjector capable of sensing an opioid overdose and
@@ -38,42 +30,38 @@
       </p>
     </div>
   </div>
-  </div>
 
   {% macro slides(imgs) -%}
 
   <div class="project-slideshow column padding-top-64">
-    <link rel="stylesheet" href="/static/css/slidshow.css" />
-    <div class="wrapper-center row" style="justify-content:space-evenly">
+    <div class="wrapper-center row" style="justify-content: space-evenly">
       <a class="prev" onclick="plusSlides(-1)">❮</a>
       <div class="slideshow-container round-xxlarge column">
-          {% for img in imgs %}
-          <div class="img-slides row fade">
-            <div class = "img-container" style="order:1">
-              <img src="{{img[0]}}" >
-            </div>
-            <h3 class="text xlarge">{{img[1]}}</h3>
+        {% for img in imgs %}
+        <div class="img-slides row fade">
+          <div class="img-container" style="order: 1">
+            <img src="{{img[0]}}" />
           </div>
-          {% endfor %}  
+          <h3 class="text xlarge">{{img[1]}}</h3>
+        </div>
+        {% endfor %}
       </div>
       <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
     <div class="dot-container padding-top-32">
       {% for i in range(1, imgs|length +1) %}
-        <span class="dot" onclick="currentSlide({{i}})"></span>
+      <span class="dot" onclick="currentSlide({{i}})"></span>
       {% endfor %}
     </div>
   </div>
 
-  {% endmacro %}
-  
-  {{ slides([
-    ('/static/images/Dove/Injector.gif', 'Subcutaneous Injector'),
-    ('/static/images/Dove/Finger-Sensor.jpg', 'Finger-based sensor'),
-    ('/static/images/Dove/Arm-Sensor-Small.jpg', 'Adhesive-based shoulder sensor'),
-    ('/static/images/Dove/PCBs.jpg', 'Sensor PCBs for Clinical Study'),
-    ('/static/images/Dove/PCB-Closeup.jpg', 'PCB Closeup'),
-    ('/static/images/Dove/LaserCut-Adhesives.jpg', 'Custom laser cut adhesives & 3D printed housings')
-  ]) }}
-
-</section>
+  {% endmacro %} {{ slides([ ('/static/images/Dove/Injector.gif', 'Subcutaneous
+  Injector'), ('/static/images/Dove/Finger-Sensor.jpg', 'Finger-based sensor'),
+  ('/static/images/Dove/Arm-Sensor-Small.jpg', 'Adhesive-based shoulder
+  sensor'), ('/static/images/Dove/PCBs.jpg', 'Sensor PCBs for Clinical Study'),
+  ('/static/images/Dove/PCB-Closeup.jpg', 'PCB Closeup'),
+  ('/static/images/Dove/LaserCut-Adhesives.jpg', 'Custom laser cut adhesives &
+  3D printed housings') ]) }}
+</header>
+<script src="/static/js/projects.js"></script>
+{% endblock %}

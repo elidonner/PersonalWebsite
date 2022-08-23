@@ -1,1 +1,75 @@
-ollie
+{% extends 'base.html' %} {% block content %}
+<link rel="stylesheet" href="/static/css/slidshow.css" />
+<header id="home" class="home column project-description">
+  <div class="row">
+    <div class="project-column column padding-right-64">
+      <h1 class="jumbo">Ollie</h1>
+      <p class="project-header large" style="display: inline; padding-top: 0px">
+        <b><b>Role:</b></b
+        >&emsp;Created everything, from circuits, to software, to mechanical
+        design in SolidWorks, to fabrication.
+      </p>
+      <p class="project-header large" style="display: inline">
+        <b><b>Type:</b></b
+        >&ensp;Commision
+      </p>
+      <p class="project-header large" style="display: inline">
+        <b><b>Time:</b></b
+        >&ensp;March 2022 - Present
+      </p>
+    </div>
+    <div class="project-column" style="align-items:flex-end">
+      <p class="project-description-text" style="display: inline-block">
+        Ollie is an animatronic puppet I built for local philly artist
+        <a
+          href="https://fabricworkshopandmuseum.org/exhibition/jayson-musson-his-history-of-art"
+          class="purple-button-underline-animation"
+          style="display: inline-flex; padding: 0; height: auto"
+        >
+          <b class="text-purple large">Jayson Musson,</b>
+        </a>
+        Ollie is capable of person detection, using a TensorFlow Lite ML model
+        tailored specifically for the
+        <a
+          href="https://github.com/Qengineering/TensorFlow_Lite-Tracking-RPi_64-bit"
+          class="purple-button-underline-animation"
+          style="display: inline-flex; padding: 0; height: auto"
+        >
+          <b class="text-purple large">Raspberry Pi.</b>
+        </a>
+        He follows museum visitors and addresses them with unique voice memos
+        based on the number of visitors. Ollie has six servo motors, 4
+        microcontrollers, a custom circuit for real time lip-syncing based on
+        the audio signal, and a media player for storing the voice memos.
+      </p>
+    </div>
+  </div>
+
+  {% macro slides(imgs) -%}
+
+  <div class="project-slideshow column padding-top-64">
+    <div class="wrapper-center row" style="justify-content: space-evenly">
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <div class="slideshow-container round-xxlarge column">
+        {% for img in imgs %}
+        <div class="img-slides row fade">
+          <div class="img-container" style="order: 1">
+            <img src="{{img[0]}}" />
+          </div>
+          <h3 class="text xlarge">{{img[1]}}</h3>
+        </div>
+        {% endfor %}
+      </div>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <div class="dot-container padding-top-32">
+      {% for i in range(1, imgs|length +1) %}
+      <span class="dot" onclick="currentSlide({{i}})"></span>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endmacro %} {{ slides([ ]) }}
+</header>
+<script src="/static/js/projects.js"></script>
+{% endblock %}

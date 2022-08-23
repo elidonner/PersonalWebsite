@@ -1,3 +1,42 @@
+.project-description {
+  /* margin-top:var(--header-height) */
+  font-weight: lighter;
+}
+
+.project-description a {
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: var(--light-gray);
+  display: block;
+  transition: 0.3s; /* transition effect on hover color*/
+}
+
+.project-description a:hover,
+.project-description a:focus {
+  color: black;
+}
+
+.project-description-text {
+  font-size: large;
+}
+
+.project-header {
+  padding: 6px 0px 0px 0px;
+}
+
+.project-column {
+  width: 50%;
+}
+
+.project-slideshow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Slideshow container */
 .slideshow-container {
     width: 80%;
@@ -29,8 +68,6 @@
     overflow: hidden;
     background-color: transparent;
 }
-
-
 
 /* Caption text */
 .text {

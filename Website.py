@@ -45,5 +45,17 @@ def about():
 def krypto():
     return render_template('krypto.html')
 
+@app.route('/dove')
+def Dove():
+    return render_template('projects/dove.html')
+
+@app.route('/ollie')
+def Ollie():
+    return render_template('projects/ollie.html')
+
+@app.route('/deka')
+def DEKA():
+    return render_template('projects/deka.html')
+
 if __name__ == "__main__":
    app.run(host='0.0.0.0')

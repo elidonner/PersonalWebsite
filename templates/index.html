@@ -28,8 +28,8 @@
 <section id="portfolio" class="column float-center">
   <h1 class="xxx-large section-title">Featured Work</h1>
   {% macro project(title, img, order, img_title, description, skills=[]) -%}
-  <div class="project-container" title="{{title}}">
-    <a href="#{{title}}" class="row project zoomin round-xxlarge">
+  <div class="project-container" id="{{title}}">
+    <a href="{{ url_for(title) }}" class="row project zoomin round-xxlarge">
       <div class="project-img" style="order:{{ order }}">
         <img src="{{ img }}" alt="{{ img_title }}" />
       </div>
@@ -71,22 +71,6 @@
     'Developing a class III medical device for FDA clearance.',['Solidworks','Tolerance Analysis','Part-Design']
     )
   }}
-
-  <!-- PROJECT OVERLAYS -->
-  <div id="Dove" class="project-description column">
-    <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
-    {% include '/projects/dove.html' %}
-  </div>
-
-  <div id="Ollie" class="project-description column">
-    <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
-    {% include '/projects/ollie.html' %}
-  </div>
-
-  <div id="DEKA" class="project-description column">
-    <a id="closebtn" href="javascript:void(0)" onclick="fn()">&times;</a>
-    {% include '/projects/deka.html' %}
-  </div>
 </section>
 <!-- END FEATURED WORK  -->
 
@@ -121,4 +105,5 @@
   
 </section> -->
 <!-- END OTHER PROJECTS -->
+<script src="/static/js/index.js"></script>
 {% endblock %}
