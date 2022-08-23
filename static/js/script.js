@@ -1,10 +1,9 @@
-window.onload = function () {
+window.addEventListener("load", function() {
   document.querySelector(".page-loader").classList.add("fade-out");
   setTimeout(() => {
     document.querySelector(".page-loader").style.display = "none";
   }, 600);
-};
-
+});
 /**
  * Animation for down-arrow button
  */
