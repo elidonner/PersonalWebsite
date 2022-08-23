@@ -61,4 +61,24 @@ function plusSlides(n) {
     }
   }
 
-  
+function lightbox_open(el_id) {
+  document.removeEventListener('keydown', keyEvent(e));
+  var lightBoxVideo = document.getElementById(el_id);
+  window.scrollTo(0, 0);
+  document.getElementById('light').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+}
+
+function lightbox_close() {
+  document.removeEventListener('keydown', keyEvent(e));
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+  lightBoxVideo.pause();
+}
+
+function keyEvent(e) {
+  if (e.code === "27") {
+    lightbox_close();
+  }
+}

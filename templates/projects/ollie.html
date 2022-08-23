@@ -14,7 +14,7 @@
         >
           <b class="text-purple large">software,</b>
         </a>
-        to mechanical design in SolidWorks, to fabrication.
+        to mechanical design.
       </p>
       <p class="project-header large" style="display: inline">
         <b><b>Type:</b></b
@@ -47,7 +47,7 @@
         He follows museum visitors and addresses them with unique voice memos
         based on the number of visitors. Ollie has six servo motors, 4
         microcontrollers, a custom circuit for real time lip-syncing based on
-        the audio signal, and a media player for storing the voice memos.
+        the audio signal, and a media player for storing the voice memos. He was fabircated using 3D-printing, laser-cutting, CNC machining, and of course some minor jerry-rigging.
       </p>
     </div>
   </div>
@@ -58,14 +58,31 @@
     <div class="wrapper-center row" style="justify-content: space-evenly">
       <a class="prev" onclick="plusSlides(-1)">❮</a>
       <div class="slideshow-container round-xxlarge column">
-        {% for img in imgs %}
+        <!-- {% for img in imgs %} -->
+        
         <div class="img-slides row fade">
-          <div class="img-container" style="order: 1">
-            <img src="{{img[0]}}" />
-          </div>
-          <h3 class="text xlarge">{{img[1]}}</h3>
+            {% if img|length > 2 %}
+            <div class="img-container embedded-video zoomin" style="order: 1" onclick="lightbox_open({{img[2]}})">
+                <img src="{{img[0]}}" />
+                <div class="play-button">
+                    <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100px"
+                    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <path class="stroke-solid" fill="none" stroke="white"  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+                      C97.3,23.7,75.7,2.3,49.9,2.5"/>
+                    <path class="stroke-dotted" fill="none" stroke="white"  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+                      C97.3,23.7,75.7,2.3,49.9,2.5"/>
+                    <path class="icon" fill="white" d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"/>
+                    </svg>
+                </div>
+            </div>
+            {% else %}
+            <div class="img-container" style="order: 1">
+                <img src="{{img[0]}}" />
+            </div>
+            {% endif %}
+            <h3 class="text xlarge">{{img[1]}}</h3> 
         </div>
-        {% endfor %}
+        <!-- {% endfor %} -->
       </div>
       <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
@@ -76,7 +93,14 @@
     </div>
   </div>
 
-  {% endmacro %} {{ slides([ ]) }}
+  {% endmacro %} {{ slides([
+    ('/static/images/Ollie/Ollie_and_me.jpg','Ollie and me, on opening night'),
+    ('/static/images/Ollie/Brain.jpg','Ollie\'s \"Brain\"')
+    ]) }}
 </header>
 <script src="/static/js/projects.js"></script>
 {% endblock %}
+
+
+<!-- <div id="Face_Tracking"
+style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/742327612?h=eadf6c018f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Face_Tracking"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
