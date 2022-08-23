@@ -1,3 +1,4 @@
 # User-specific files
 .vscode
-.venv
+venv
+myprojectenv
