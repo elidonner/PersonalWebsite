@@ -1,6 +1,7 @@
 window.addEventListener("load", function() {
   adjust_header_height();
   round_overflow_container();
+  window.addEventListener("resize", adjust_header_height);
   document.querySelector(".page-loader").classList.add("fade-out");
   setTimeout(() => {
     document.querySelector(".page-loader").style.display = "none";
@@ -26,7 +27,10 @@ function adjust_header_height() {
   
   if(header.offsetHeight <= window.screen.height-nav_height) {
     header.style.height = "calc(100vh - var(--header-height))";
-  }
+  } 
+  // else {
+  //   document.getElementById("down-arrow").style.display="none";
+  // }
 }
 
 function round_overflow_container() {
