@@ -161,6 +161,14 @@ img {
   display: none !important;
 }
 
+.overflow-container {
+  overflow: hidden;
+  clip-path: content-box;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
 .nav-parent {
   position: fixed;
   top: 0;
@@ -467,7 +475,6 @@ img {
 .other-project-img {
   height: 100%;
   width:auto;
-  overflow: hidden;
   justify-content: center;
   align-items: center;
   background-color: transparent;
@@ -685,6 +692,12 @@ img {
 }
 .round-xxlarge {
   border-radius: 32px;
+}
+.round-xxlarge-right {
+  border-radius: 0px 32px 32px 0px;
+}
+.round-xxlarge-left {
+  border-radius: 32px 0px 0px 32px;
 }
 .round-circle {
   border-radius: 50%;

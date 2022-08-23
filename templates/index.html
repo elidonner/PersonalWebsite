@@ -10,7 +10,9 @@
     </div>
 
     <a href="{{ url_for('about') }}" id="profile_pic" class="round-circle home-img zoomin">
+      <div class="overflow-container" style="border-radius:50%;">
         <img src="/static/images/EthanPhoto.png" alt="Profile-Pic" />
+      </div>
     </a>
   </div>
 
@@ -31,7 +33,9 @@
   <div class="project-container" id="{{title}}">
     <a href="{{ url_for(title) }}" class="row project zoomin round-xxlarge">
       <div class="project-img" style="order:{{ order }}">
-        <img src="{{ img }}" alt="{{ img_title }}" />
+        <div class="overflow-container round-xxlarge">
+          <img src="{{ img }}" alt="{{ img_title }}" />
+        </div>
       </div>
       <div class="project-text column">
         <h1>{{ title }}</h1>
