@@ -605,11 +605,11 @@ img {
 }
 
 /* RESPONSIVE LAYTOUT */
-@media (max-width: 1700px) {
+@media (max-width: 1750px) {
   section,
   header {
-    width: 80%;
-    max-width: 80%;
+    width: 75%;
+    max-width: 75%;
   }
 }
 

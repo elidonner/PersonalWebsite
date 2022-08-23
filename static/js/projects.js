@@ -1,8 +1,9 @@
+var slideIndex;
 /**
  * Action items when window is opened
  */
  window.addEventListener("load", function() {
-  var slideIndex = 1;
+  slideIndex = 1;
 
   showSlides(slideIndex);
     setImageHeight();
@@ -22,9 +23,9 @@ function plusSlides(n) {
   }
   
   function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("img-slides");
-    let dots = document.getElementsByClassName("dot");
+    var i;
+    var slides = document.getElementsByClassName("img-slides");
+    var dots = document.getElementsByClassName("dot");
     if (n > slides.length) {
       slideIndex = 1;
     }
@@ -44,7 +45,7 @@ function plusSlides(n) {
   
   function setImageHeight() {
     //fix the image height if needed
-    let slides = document.getElementsByClassName("img-slides");
+    var slides = document.getElementsByClassName("img-slides");
     var image = slides[slideIndex - 1].getElementsByTagName("img")[0];
     var image_width = image.offsetWidth;
     var slide_container_width = document.getElementsByClassName(
