@@ -918,7 +918,7 @@ img {
   height: 100%;
   width: 100%;
   z-index: 999;
-  background-color: var(--gray);
+  background-color: var(--background-color);
   backdrop-filter: var(--purple);
   display: flex;
   align-items: center;
@@ -941,7 +941,7 @@ img {
 .page-loader div:nth-child(1) {
   height: 60px;
   width: 60px;
-  border-color: var(--gray);
+  border-color: var(--light-purple);
 }
 .page-loader div:nth-child(2) {
   height: 45px;
