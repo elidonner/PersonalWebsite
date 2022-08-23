@@ -1,4 +1,4 @@
-#!/Users/ethandonlon/Documents/Work/PersonalWebsite/venv/bin/python3
+#!/home/ethan/GitStuff/PersonalWebsite/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
