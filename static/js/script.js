@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
-  adjust_header_height();
+  // adjust_header_height();
   round_overflow_container();
-  window.addEventListener("resize", adjust_header_height);
+  // window.addEventListener("resize", adjust_header_height);
   document.querySelector(".page-loader").classList.add("fade-out");
   setTimeout(() => {
     document.querySelector(".page-loader").style.display = "none";

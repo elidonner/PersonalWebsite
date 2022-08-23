@@ -613,6 +613,14 @@ img {
   }
 }
 
+@media (max-width: 1700px) {
+  section,
+  header {
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
 @media (max-width: 767px) {
   :root {
     --text-adjust: 0.5;
