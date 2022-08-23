@@ -10,6 +10,8 @@ window.onload = function () {
 
 function attachEventListeners() {
   window.addEventListener("resize", update_profile_height);
+  window.addEventListener("resize", setImageHeight);
+
 
 
   for (var i = 0; i < projects.length; i++) {
@@ -46,9 +48,7 @@ function update_profile_height() {
   var size = document.getElementById("profile_pic").offsetWidth;
   let width = "height:".concat(size).concat("px");
   //   console.log(width);
-  window.setTimeout(function () {
-    document.getElementById("profile_pic").setAttribute("style", width);
-  }, 200);
+  document.getElementById("profile_pic").setAttribute("style", width);
 }
 
 
@@ -65,7 +65,7 @@ function currentSlide(n) {
 
 function showSlides(n) {
   let i;
-  let slides = document.getElementsByClassName("mySlides");
+  let slides = document.getElementsByClassName("img-slides");
   let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = slides.length}
@@ -75,6 +75,23 @@ function showSlides(n) {
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
+  slides[slideIndex-1].style.display = "flex";  
   dots[slideIndex-1].className += " active";
+  setImageHeight();
+}
+
+function setImageHeight() {
+  //fix the image height if needed
+  let slides = document.getElementsByClassName("img-slides");
+  var image = slides[slideIndex-1].getElementsByTagName("img")[0];
+  var image_width = image.offsetWidth;
+  var slide_container_width = document.getElementsByClassName("slideshow-container")[0].offsetWidth;
+  var width = (slide_container_width - image_width);
+  var slide_text = document.getElementsByClassName("text")[slideIndex-1];
+
+  if(image_width < slide_container_width/2) {
+    slide_text.style.width = width + "px";
+  } else {
+    slide_text.style.width = "50%";
+  }
 }

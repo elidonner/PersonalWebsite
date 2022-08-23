@@ -1,33 +1,34 @@
-<section class="column float-center project-description-content">
+<section class="column project-description-content">
+  <div class="column">
+  <h1 class="jumbo">Dove</h1>
   <div class="row">
     <div class="project-column column padding-right-64">
-      <h1 class="jumbo">Dove</h1>
       <p
-        class="project-header large"
-        style="display: inline; font-weight: lighter"
+      class="project-header large"
+      style="display: inline; padding-top:0px"
       >
         <b><b>Role:</b></b
-        >&ensp;PCB design and fabrication, mechanical design and prototyping,
+        >&emsp;PCB design and fabrication, mechanical design and prototyping,
         embedded software engineer, human-factors interviewer,
         project-presentations/fundraising.
       </p>
       <p
         class="project-header large"
-        style="display: inline; font-weight: lighter"
+        style="display: inline;"
       >
-        <b><b>Role:</b></b
+        <b><b>Type:</b></b
         >&ensp;Start-up
       </p>
       <p
         class="project-header large"
-        style="display: inline; font-weight: lighter"
+        style="display: inline;"
       >
-        <b><b>Role:</b></b
+        <b><b>Time:</b></b
         >&ensp;January 2021 - Present
       </p>
     </div>
     <div class="project-column">
-      <p class="xlarge" style="font-weight: lighter">
+      <p class="project-description-text">
         Dove is a startup at the University of Pennsylvania creating the first
         wearable autoinjector capable of sensing an opioid overdose and
         automatically injecting naloxone. The device senses an opioid overdose
@@ -37,36 +38,42 @@
       </p>
     </div>
   </div>
+  </div>
 
-  <div class="project-slideshow">
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="img_nature_wide.jpg" style="width: 100%" />
-        <div class="text">Caption Text</div>
-      </div>
+  {% macro slides(imgs) -%}
 
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="img_snow_wide.jpg" style="width: 100%" />
-        <div class="text">Caption Two</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img src="img_mountains_wide.jpg" style="width: 100%" />
-        <div class="text">Caption Three</div>
-      </div>
-
+  <div class="project-slideshow column padding-top-64">
+    <link rel="stylesheet" href="/static/css/slidshow.css" />
+    <div class="wrapper-center row" style="justify-content:space-evenly">
       <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <div class="slideshow-container round-xxlarge column">
+          {% for img in imgs %}
+          <div class="img-slides row fade">
+            <div class = "img-container" style="order:1">
+              <img src="{{img[0]}}" >
+            </div>
+            <h3 class="text xlarge">{{img[1]}}</h3>
+          </div>
+          {% endfor %}  
+      </div>
       <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
-    <br />
-
-    <div style="text-align: center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
+    <div class="dot-container padding-top-32">
+      {% for i in range(1, imgs|length +1) %}
+        <span class="dot" onclick="currentSlide({{i}})"></span>
+      {% endfor %}
     </div>
   </div>
+
+  {% endmacro %}
+  
+  {{ slides([
+    ('/static/images/Dove/Injector.gif', 'Subcutaneous Injector'),
+    ('/static/images/Dove/Finger-Sensor.jpg', 'Finger-based sensor'),
+    ('/static/images/Dove/Arm-Sensor-Small.jpg', 'Adhesive-based shoulder sensor'),
+    ('/static/images/Dove/PCBs.jpg', 'Sensor PCBs for Clinical Study'),
+    ('/static/images/Dove/PCB-Closeup.jpg', 'PCB Closeup'),
+    ('/static/images/Dove/LaserCut-Adhesives.jpg', 'Custom laser cut adhesives & 3D printed housings')
+  ]) }}
+
 </section>

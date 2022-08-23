@@ -9,10 +9,8 @@
       <p class="xlarge text-black">I love learning new things.</p>
     </div>
 
-    <a href="{{ url_for('about') }}" class="home-img-wrapper">
-      <div id="profile_pic" class="round-circle home-img zoomin">
+    <a href="{{ url_for('about') }}" id="profile_pic" class="round-circle home-img zoomin">
         <img src="/static/images/EthanPhoto.png" alt="Profile-Pic" />
-      </div>
     </a>
   </div>
 
@@ -47,16 +45,32 @@
     </a>
   </div>
 
-  {% endmacro %} {{ project( 'Dove', '/static/images/Arm-Sensor.jpg', '0',
-  'Arm-Sensor', 'Creating the first wearable autoinjector capable of sensing an
-  opioid overdose and delivering life-saving naloxone.',
-  ['PCB-Design','C++','Rapid-Prototyping'] ) }} {{ project( 'Ollie',
-  '/static/images/Ollie.jpg', '1', 'ollie', 'An animatronic puppet for the
-  Fabric Museum and Workshop, featuring person-detection and much more.',
-  ['Microcontrollers','C++','Mechanical-Design'] ) }} {{ project( 'DEKA',
-  '/static/images/Arm-Sensor.jpg', '0', 'deka', 'Developing a class III medical
-  device for FDA clearance.', ['Solidworks','Tolerance Analysis','Part-Design']
-  ) }}
+  {% endmacro %} 
+  {{ project(
+    'Dove',
+    '/static/images/Dove/Arm-Sensor.jpg',
+    '0',
+    'Arm-Sensor',
+    'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
+    ['PCB-Design','C++','Rapid-Prototyping']) 
+  }} 
+  {{ project(
+    'Ollie',
+    '/static/images/Ollie/Ollie.jpg',
+    '1',
+    'ollie',
+    'An animatronic puppet for the Fabric Museum and Workshop, featuring person-detection and much more.',
+    ['Microcontrollers','C++','Mechanical-Design']
+    ) 
+  }}
+  {{ project(
+    'DEKA',
+    '/static/images/Dove/Arm-Sensor.jpg',
+    '0',
+    'deka',
+    'Developing a class III medical device for FDA clearance.',['Solidworks','Tolerance Analysis','Part-Design']
+    )
+  }}
 
   <!-- PROJECT OVERLAYS -->
   <div id="Dove" class="project-description column">
