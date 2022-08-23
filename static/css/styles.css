@@ -49,6 +49,11 @@ header {
   max-width: 60%;
 }
 
+header {
+  margin-top: var(--header-height);
+  height: auto;
+}
+
 section {
   padding: 64px 0px;
 }
@@ -211,10 +216,7 @@ img {
 
 .home,
 .about {
-  display: flex;
-  margin-top: var(--header-height);
-  height: calc(var(--screen-height) - var(--header-height));
-  width: 100%;
+
   align-items: center;
   justify-content: center;
 }
