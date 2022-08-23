@@ -10,7 +10,7 @@ onload = function () {
   document.querySelector(".page-loader").classList.add("fade-out");
   setTimeout(() => {
       document.querySelector(".page-loader").style.display = 'none';
-  }, 10000)
+  }, 600)
 };
 
 function attachEventListeners() {
