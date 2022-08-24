@@ -6,8 +6,7 @@ var slideIndex;
   slideIndex = 1;
 
   showSlides(slideIndex);
-    setImageHeight();
-    attachEventListeners();
+  attachEventListeners();
 });
 
 function attachEventListeners() {
@@ -40,23 +39,23 @@ function plusSlides(n) {
     }
     slides[slideIndex - 1].style.display = "flex";
     dots[slideIndex - 1].className += " active";
-    setImageHeight();
+    setImageHeight(slideIndex - 1);
   }
   
-  function setImageHeight() {
+  function setImageHeight(n) {
     //fix the image height if needed
-    var slides = document.getElementsByClassName("img-slides");
-    var image = slides[slideIndex - 1].getElementsByTagName("img")[0];
-    var image_width = image.offsetWidth;
-    var slide_container_width = document.getElementsByClassName(
-      "slideshow-container"
-    )[0].offsetWidth;
-    var width = slide_container_width - image_width;
-    var slide_text = document.getElementsByClassName("text")[slideIndex - 1];
-  
-    if (image_width < slide_container_width / 2) {
-      slide_text.style.width = width + "px";
-    } else {
+    var img_containers = document.getElementsByClassName("img-container");
+    var slide = document.getElementsByClassName("img-slides")[n];
+    var slide_text = document.getElementsByClassName("text")[n];
+    var image = slide.getElementsByTagName("img")[0];
+
+    console.log(image.offsetWidth)
+    img_containers[n].style.width = image.offsetWidth+"px";
+    console.log(img_containers);
+    if ( image.offsetWidth < slide.offsetWidth / 2) {
+      slide_text.style.width = (slide.offsetWidth - image.offsetWidth) + "px";
+    }
+    else {
       slide_text.style.width = "50%";
     }
   }

@@ -43,7 +43,6 @@ function adjust_header_height() {
 
 function round_overflow_container() {
   var containers = document.getElementsByClassName("overflow-container");
-  console.log(containers);
   for(let i = 0; i < containers.length; i++) {
     if (containers[i].parentElement.style.order > 0) {
       containers[i].classList.add("round-xxlarge-right");
