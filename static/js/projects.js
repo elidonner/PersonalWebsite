@@ -1,4 +1,5 @@
 var slideIndex;
+var currentVideo;
 /**
  * Action items when window is opened
  */
@@ -10,7 +11,10 @@ var slideIndex;
 });
 
 function attachEventListeners() {
-    window.addEventListener("resize", setImageHeight);
+    window.addEventListener("resize", function() {
+      setImageHeight(slideIndex-1);
+    });
+    document.getElementById("play").addEventListener("mouseover", play_animate)
 }
 
 function plusSlides(n) {
@@ -49,9 +53,8 @@ function plusSlides(n) {
     var slide_text = document.getElementsByClassName("text")[n];
     var image = slide.getElementsByTagName("img")[0];
 
-    console.log(image.offsetWidth)
+
     img_containers[n].style.width = image.offsetWidth+"px";
-    console.log(img_containers);
     if ( image.offsetWidth < slide.offsetWidth / 2) {
       slide_text.style.width = (slide.offsetWidth - image.offsetWidth) + "px";
     }
@@ -61,23 +64,29 @@ function plusSlides(n) {
   }
 
 function lightbox_open(el_id) {
-  document.removeEventListener('keydown', keyEvent(e));
-  var lightBoxVideo = document.getElementById(el_id);
-  window.scrollTo(0, 0);
-  document.getElementById('light').style.display = 'block';
-  document.getElementById('fade').style.display = 'block';
+  currentVideo = el_id;
+  document.addEventListener("keydown", key_handler);
+  currentVideo.style.display = 'flex';
+  document.body.style.overflow = "hidden";
 }
 
 function lightbox_close() {
-  document.removeEventListener('keydown', keyEvent(e));
-  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-  document.getElementById('light').style.display = 'none';
-  document.getElementById('fade').style.display = 'none';
-  lightBoxVideo.pause();
+  var iframe = currentVideo.querySelector('iframe');
+  var player = new Vimeo.Player(iframe);
+  player.pause();
+  document.removeEventListener("keydown", key_handler);
+  currentVideo.style.display = 'none';
+  document.body.style.overflow = "";
 }
 
-function keyEvent(e) {
-  if (e.code === "27") {
+function key_handler(e) {
+  e.preventDefault();
+  if (e.code === 'Escape') {
+    console.log(e.code);
     lightbox_close();
   }
+}
+
+function play_animate() {
+  
 }

@@ -62,7 +62,7 @@
         
         <div class="img-slides row">
             {% if img|length > 2 %}
-            <div class="img-container embedded-video zoomin" style="order: 1" onclick="lightbox_open({{img[2]}})">
+            <div class="img-container embedded-video" style="order: 1" onclick="lightbox_open({{img[2]}})">
                 <img src="{{img[0]}}" />
                 <div class="play-button">
                     <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100px"
@@ -95,12 +95,48 @@
 
   {% endmacro %} {{ slides([
     ('/static/images/Ollie/Ollie_and_me.jpg','Ollie and me, on opening night'),
-    ('/static/images/Ollie/Brain.jpg','Ollie\'s \"Brain\"')
+    ('/static/images/Ollie/Brain.jpg','Ollie\'s \"Brain\"'),
+    ('/static/images/Ollie/Face_Tracking.png','Testing Ollie\'s face tracking, 90 FPS on a bare Raspberry Pi!', 'Face_Tracking'),
+    ('/static/images/Ollie/Inside_Ollie.png','Under Ollie\'s fur', 'Inisde_Ollie'),
+    ('/static/images/Ollie/Ollie_Tracking.png','Ollie tracking in his \"living room\"', 'Ollie_Tracking'),
+    ('/static/images/Ollie/Opening_Night.png','Ollie on opening night', 'Opening_Night'),
+    ('/static/images/Ollie/PS4.png','Using a PlayStation controller to record Ollie\'s movements to an SD Card', 'PS4')
     ]) }}
 </header>
+
+<!-- EMBEDDED VIDEOS START -->
+<div id="Face_Tracking" class="video-popup">
+  <div class="video-container">
+    <div class="close-btn" onclick="lightbox_close()">&times;</div>
+    <iframe src="https://player.vimeo.com/video/742327612?h=eadf6c018f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="vimeo-video" title="Face_Tracking"></iframe>
+  </div>
+</div>
+<div id="Inisde_Ollie" class="video-popup">
+  <div class="video-container">
+    <div class="close-btn" onclick="lightbox_close()">&times;</div>
+    <iframe src="https://player.vimeo.com/video/742327539?h=2f3ccb85ca&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="vimeo-video" title="Inisde_Ollie"></iframe>
+  </div>
+</div>
+<div id="Ollie_Tracking" class="video-popup">
+  <div class="video-container">
+    <div class="close-btn" onclick="lightbox_close()">&times;</div>
+    <iframe src="https://player.vimeo.com/video/742327338?h=f5eec3012a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="vimeo-video" title="Ollie_Tracking"></iframe>
+  </div>
+</div>
+<div id="Opening_Night" class="video-popup">
+  <div class="video-container">
+    <div class="close-btn" onclick="lightbox_close()">&times;</div>
+    <iframe src="https://player.vimeo.com/video/742327447?h=6f9d20f745&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="vimeo-video" title="Opening_Night"></iframe>
+  </div>
+</div>
+<div id="PS4" class="video-popup">
+  <div class="video-container">
+    <div class="close-btn" onclick="lightbox_close()">&times;</div>
+    <iframe src="https://player.vimeo.com/video/742327581?h=628aacc694&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="vimeo-video" title="PS4"></iframe>
+  </div>
+</div>
+<!-- EMBEDDED VIDEOS END -->
+
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script src="/static/js/projects.js"></script>
 {% endblock %}
-
-
-<!-- <div id="Face_Tracking"
-style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/742327612?h=eadf6c018f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Face_Tracking"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->

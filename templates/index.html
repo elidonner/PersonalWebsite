@@ -32,18 +32,18 @@
   {% macro project(title, img, order, img_title, description, skills=[]) -%}
   <div class="project-container" id="{{title}}">
     <a href="{{ url_for(title) }}" class="row project zoomin round-xxlarge">
-      <div class="project-img" style="order:{{ order }}">
-        <div class="overflow-container round-xxlarge">
+      <div class="overflow-container round-xxlarge">
+        <div class="project-img" style="order:{{ order }}">
           <img src="{{ img }}" alt="{{ img_title }}" />
         </div>
-      </div>
-      <div class="project-text column">
-        <h1>{{ title }}</h1>
-        <p class="xlarge text-black">{{ description }}</p>
-        <div class="skills medium text-black">
-          {% for skill in skills %}
-          <p class="skill">{{ skill }}</p>
-          {% endfor %}
+        <div class="project-text column">
+          <h1>{{ title }}</h1>
+          <p class="xlarge text-black">{{ description }}</p>
+          <div class="skills medium text-black">
+            {% for skill in skills %}
+            <p class="skill">{{ skill }}</p>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </a>

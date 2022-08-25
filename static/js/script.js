@@ -1,6 +1,5 @@
 window.addEventListener("load", function() {
   adjust_header_height();
-  round_overflow_container();
   window.addEventListener("resize", adjust_header_height);
   document.querySelector(".page-loader").classList.add("fade-out");
   setTimeout(() => {
@@ -39,16 +38,4 @@ function adjust_header_height() {
   // else {
   //   document.getElementById("down-arrow").style.display="none";
   // }
-}
-
-function round_overflow_container() {
-  var containers = document.getElementsByClassName("overflow-container");
-  for(let i = 0; i < containers.length; i++) {
-    if (containers[i].parentElement.style.order > 0) {
-      containers[i].classList.add("round-xxlarge-right");
-    } else {
-      containers[i].classList.add("round-xxlarge-left");
-    }
-  }
-
 }
