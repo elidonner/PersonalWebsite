@@ -70,6 +70,9 @@ function plusSlides(n) {
 
 function lightbox_open(el_id) {
   currentVideo = el_id;
+  var iframe = currentVideo.querySelector('iframe');
+  var player = new Vimeo.Player(iframe);
+  player.play();
   document.addEventListener("keydown", key_handler);
   currentVideo.style.display = 'flex';
   document.body.style.overflow = "hidden";
