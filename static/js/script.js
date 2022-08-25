@@ -20,13 +20,16 @@ var animation = bodymovin.loadAnimation({
 
 function adjust_header_height() {
 
-  if(screen.width <= 767) {
-    var down_arrow = document.querySelector(".down-arrow");
-    if(down_arrow != null)
-    {
+  var down_arrow = document.querySelector(".down-arrow");
+  if(down_arrow != null) {
+    if(screen.width <= 767) {
       down_arrow.style.display = "none";
     }
+    else {
+      down_arrow.style.display = "flex";
+    }
   }
+
 
   var nav_height = document.getElementsByClassName("nav-parent")[0].offsetHeight;
   var header = document.getElementsByClassName("Home");
