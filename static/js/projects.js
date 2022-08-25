@@ -14,7 +14,12 @@ function attachEventListeners() {
     window.addEventListener("resize", function() {
       setImageHeight(slideIndex-1);
     });
-    document.getElementById("play").addEventListener("mouseover", play_animate)
+
+    var play_buttons = document.querySelectorAll(".embedded-video");
+    for(let i=0; i<play_buttons.length; i++) {
+      play_buttons[i].addEventListener("mouseover", play_animate);
+      play_buttons[i].addEventListener("mouseout", play_unanimate);
+    }
 }
 
 function plusSlides(n) {
@@ -88,5 +93,25 @@ function key_handler(e) {
 }
 
 function play_animate() {
-  
+  var num_play_buttons = document.querySelectorAll(".play-button").length;
+  var dotted = document.querySelectorAll(".stroke-dotted");
+  var solid = document.querySelectorAll(".stroke-solid");
+  var icon = document.querySelectorAll(".icon");
+  for(let i=0; i<num_play_buttons; i++) {
+    dotted[i].classList.add("stroke-dotted-active");
+    solid[i].classList.add("stroke-solid-active");
+    icon[i].classList.add("icon-active");
+  }
+}
+
+function play_unanimate() {
+  var num_play_buttons = document.querySelectorAll(".play-button").length;
+  var dotted = document.querySelectorAll(".stroke-dotted");
+  var solid = document.querySelectorAll(".stroke-solid");
+  var icon = document.querySelectorAll(".icon");
+  for(let i=0; i<num_play_buttons; i++) {
+    dotted[i].classList.remove("stroke-dotted-active");
+    solid[i].classList.remove("stroke-solid-active");
+    icon[i].classList.remove("icon-active");
+  }
 }

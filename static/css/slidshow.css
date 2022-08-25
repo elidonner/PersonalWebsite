@@ -194,18 +194,17 @@
   transition: transform 200ms ease-out;
 }
 
-#play:hover {
-  .stroke-dotted {
-    stroke-width: 4px;
-    opacity: 1;
-  }
-  .stroke-solid {
-    opacity: 0;
-    stroke-dashoffset: 300;
-  }
-  .icon {
-    transform: scale(1.05);
-  }
+
+.stroke-dotted-active {
+  stroke-width: 4px;
+  opacity: 1;
+}
+.stroke-solid-active {
+  opacity: 0;
+  stroke-dashoffset: 300;
+}
+.icon-active {
+  transform: scale(1.05);
 }
 
 #play {
