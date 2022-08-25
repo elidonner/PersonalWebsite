@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<link rel="stylesheet" href="/static/css/slidshow.css" />
-<header id="home" class="home column project-description">
-  <div class="row padding-top-64">
+<link rel="stylesheet" href="/static/css/projects.css" />
+<header id="home" class="home column">
+  <div class="project-description padding-top-64">
     <div class="project-column column padding-right-64">
       <h1 class="jumbo">Dove</h1>
       <p class="project-header large" style="display: inline; padding-top: 0px">
@@ -39,7 +39,7 @@
       <div class="slideshow-container round-xxlarge column">
         {% for img in imgs %}
         <div class="img-slides row">
-          <div class="img-container" style="order: 1">
+          <div class="img-container">
             <img src="{{img[0]}}" />
           </div>
           <h3 class="text xlarge">{{img[1]}}</h3>

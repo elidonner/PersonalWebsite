@@ -52,19 +52,25 @@ function plusSlides(n) {
   }
   
   function setImageHeight(n) {
-    //fix the image height if needed
-    var img_containers = document.getElementsByClassName("img-container");
-    var slide = document.getElementsByClassName("img-slides")[n];
     var slide_text = document.getElementsByClassName("text")[n];
-    var image = slide.getElementsByTagName("img")[0];
-
-
-    img_containers[n].style.width = image.offsetWidth+"px";
-    if ( image.offsetWidth < slide.offsetWidth / 2) {
-      slide_text.style.width = (slide.offsetWidth - image.offsetWidth) + "px";
+    //fix the image height if needed
+    if(screen.width > 767)
+    {
+      var img_containers = document.getElementsByClassName("img-container");
+      var slide = document.getElementsByClassName("img-slides")[n];
+      var image = slide.getElementsByTagName("img")[0];
+  
+  
+      img_containers[n].style.width = image.offsetWidth+"px";
+      if ( image.offsetWidth < slide.offsetWidth / 2) {
+        slide_text.style.width = (slide.offsetWidth - image.offsetWidth) + "px";
+      }
+      else {
+        slide_text.style.width = "50%";
+      }
     }
     else {
-      slide_text.style.width = "50%";
+      slide_text.style.width = "";
     }
   }
 

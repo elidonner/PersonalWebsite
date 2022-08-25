@@ -19,6 +19,15 @@ var animation = bodymovin.loadAnimation({
 });
 
 function adjust_header_height() {
+
+  if(screen.width <= 767) {
+    var down_arrow = document.querySelector(".down-arrow");
+    if(down_arrow != null)
+    {
+      down_arrow.style.display = "none";
+    }
+  }
+
   var nav_height = document.getElementsByClassName("nav-parent")[0].offsetHeight;
   var header = document.getElementsByClassName("Home");
 
@@ -34,6 +43,7 @@ function adjust_header_height() {
       header[0].style.height = "auto";
     }
   }
+
 }
 
 function navBar_pressed() {

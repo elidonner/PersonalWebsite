@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<link rel="stylesheet" href="/static/css/slidshow.css" />
-<header id="home" class="home column project-description">
-  <div class="padding-top-64 row">
+<link rel="stylesheet" href="/static/css/projects.css" />
+<header id="home" class="home column">
+  <div class="project-description padding-top-64">
     <div class="project-column column padding-right-64">
       <h1 class="jumbo">Ollie</h1>
       <p class="project-header large" style="display: inline; padding-top: 0px">
@@ -62,7 +62,7 @@
         
         <div class="img-slides row">
             {% if img|length > 2 %}
-            <div class="img-container embedded-video" style="order: 1" onclick="lightbox_open({{img[2]}})">
+            <div class="img-container embedded-video" onclick="lightbox_open({{img[2]}})">
                 <img src="{{img[0]}}" />
                 <div class="play-button">
                     <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100px"
@@ -76,7 +76,7 @@
                 </div>
             </div>
             {% else %}
-            <div class="img-container" style="order: 1">
+            <div class="img-container">
                 <img src="{{img[0]}}" />
             </div>
             {% endif %}

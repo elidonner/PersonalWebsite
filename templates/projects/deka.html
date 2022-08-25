@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<link rel="stylesheet" href="/static/css/slidshow.css" />
-<header id="home" class="home column project-description">
-  <div class="row padding-top-64">
+<link rel="stylesheet" href="/static/css/projects.css" />
+<header id="home" class="home column">
+  <div class="project-description padding-top-64">
     <div class="project-column column padding-right-64">
       <h1 class="jumbo">Deka</h1>
       <p class="project-header large" style="display: inline; padding-top: 0px">
@@ -34,7 +34,7 @@
         
         <div class="img-slides row">
             {% if img|length > 2 %}
-            <div class="img-container embedded-video zoomin" style="order: 1" onclick="lightbox_open({{img[2]}})">
+            <div class="img-container embedded-video zoomin" onclick="lightbox_open({{img[2]}})">
                 <img src="{{img[0]}}" />
                 <div class="play-button">
                     <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100px"
@@ -48,11 +48,8 @@
                 </div>
             </div>
             {% else %}
-            <div class="img-container" style="order: 1">
+            <div class="img-container">
                 <img src="{{img[0]}}" />
-                <div style="position:relative">
-                  stock-photo
-                </div>
             </div>
             {% endif %}
             <h3 class="text xlarge">{{img[1]}}</h3> 
@@ -75,7 +72,3 @@
 </header>
 <script src="/static/js/projects.js"></script>
 {% endblock %}
-
-
-<!-- <div id="Face_Tracking"
-style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/742327612?h=eadf6c018f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Face_Tracking"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
