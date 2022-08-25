@@ -34,8 +34,24 @@ function adjust_header_height() {
       header[0].style.height = "auto";
     }
   }
+}
 
-  // else {
-  //   document.getElementById("down-arrow").style.display="none";
-  // }
+function navBar_pressed() {
+  if(document.getElementById("dropdown-navbar").offsetHeight > 0) {
+    closeNavbar();
+  } else {
+    displayNavbar();
+  }
+}
+
+function displayNavbar() {
+  document.getElementById("dropdown-navbar").style.height = "100%";
+  document.getElementById("dropdown-navbar-content").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeNavbar() {
+  document.getElementById("dropdown-navbar").style.height = "0";
+  document.getElementById("dropdown-navbar-content").style.display = "none";
+  document.body.style.overflow = "";
 }

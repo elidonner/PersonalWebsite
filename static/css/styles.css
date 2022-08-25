@@ -25,9 +25,12 @@
   --dark-purple: #696aab;
   --screen-height: 100vh;
   --text-adjust: 0;
+}
 
-  /* icons */
-  /* --spelling-bee: url('./images/nav-icons/SpellingBee-Icon-Normalized.svg'); */
+html,
+body {
+  background-color: var(--background-color);
+  scroll-margin-top: var(--header-height);
 }
 
 html,
@@ -39,8 +42,7 @@ div {
   display: flex;
   font-family: "Poppins", sans-serif;
   margin: 0;
-  background-color: var(--background-color);
-  scroll-margin-top: var(--header-height);
+  background-color: transparent;
 }
 
 section,
@@ -159,17 +161,6 @@ img {
   display: none !important;
 }
 
-.overflow-container {
-  overflow: hidden;
-  clip-path: content-box;
-  justify-content: inherit;
-  align-items: inherit;
-  flex-direction: inherit;
-  background-color: transparent;
-  height: 100%;
-  width: 100%;
-}
-
 .nav-parent {
   position: fixed;
   top: 0;
@@ -178,6 +169,7 @@ img {
   height: var(--header-height);
   z-index: 2;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -187,6 +179,33 @@ img {
   background-color: var(--background-color);
   border-bottom: 1px solid var(--default);
   padding: 0px 100px 0px;
+}
+
+#navbar-responsive {
+  display: none;
+}
+
+#dropdown-navbar {
+  height: 0;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgb(255,255,255); /* White fallback color */
+  background-color: rgba(255,255,255, 0.9); /* White w/opacity */
+  transition: 0.5s;
+  justify-content: center;
+  align-items: center;
+}
+
+#dropdown-navbar-content {
+  display:none;
+  margin-top: var(--header-height);
+  height: 60%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
 .menu-left,
@@ -444,6 +463,27 @@ img {
   justify-content: center;
 }
 
+.project {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.overflow-container {
+  overflow: hidden;
+  clip-path: content-box;
+  justify-content: inherit;
+  align-items: inherit;
+  flex-direction: inherit;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
 .project-container,
 .other-project-container-row {
   width: 100%;
@@ -467,14 +507,6 @@ img {
   justify-content: center;
 }
 
-.project {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
-
 .project-img,
 .other-project-img {
   height: 100%;
@@ -483,6 +515,10 @@ img {
   justify-content: center;
   align-items: center;
   background-color: transparent;
+}
+
+.project-img-right {
+  order: 1;
 }
 
 .project-img img {
@@ -515,10 +551,12 @@ img {
 
 .skills {
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .skill {
-  padding-right: 32px;
+  padding-right: 16px;
+  padding-top: 12px;
 }
 
 .img-center {
@@ -544,6 +582,15 @@ img {
 /* Contact Section */
 #contact {
   background-color: transparent;
+}
+
+#contact-form {
+  width:100%;
+  flex-direction: row;
+}
+
+#contact-info {
+  flex-direction: column;
 }
 
 .contact-form,
@@ -934,7 +981,7 @@ img {
 
 @media (max-width: 767px) {
   :root {
-    --text-adjust: 0.5;
+    --text-adjust: 0.25;
   }
   section,
   header {
@@ -955,13 +1002,56 @@ img {
     padding: 32px 0px 32px;
     order: 2;
   }
+  .project-container {
+    height: 50%;
+    max-height: none;
+  }
   .project {
     flex-direction: column;
+    height: max-content;
   }
   .project-img {
-    height:60%;
-    max-height: 60%;
+    max-width: none;
+    width: 100%;
+    max-height: 40vh;
+    height:auto;
     order: 0;
+  }
+  .project-img img{
+    width: 100%;
+    height:auto;
+    order: 0;
+  }
+  .project-text {
+    height:auto;
+  }
+  #contact-info {
+    padding-top:32px;
+  }
+  #contact-form {
+    flex-direction: column;
+  }
+  .contact-info-item {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* NAVBAR RESPONVSIVE */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 50px;
+  }
+  .navbar {
+    padding: 0px;
+  }
+  .menu-right {
+    display: none;
+  }
+  #navbar-responsive {
+    display: flex;
+    align-items: center;
+    padding: 0px 50px 0px;
   }
 }
 

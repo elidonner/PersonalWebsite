@@ -28,11 +28,11 @@
 <!-- CARDS -->
 <section id="portfolio" class="column float-center">
   <h1 class="xxx-large section-title">Featured Work</h1>
-  {% macro project(title, img, order, img_title, description, skills=[]) -%}
+  {% macro project(title, img, img_title, description, skills=[]) -%}
   <div class="project-container" id="{{title}}">
     <a href="{{ url_for(title) }}" class="row project zoomin round-xxlarge">
       <div class="overflow-container round-xxlarge">
-        <div class="project-img" style="order:{{ order }}">
+        <div class="project-img">
           <img src="{{ img }}" alt="{{ img_title }}" />
         </div>
         <div class="project-text column">
@@ -52,7 +52,6 @@
   {{ project(
     'Dove',
     '/static/images/Dove/Arm-Sensor.jpg',
-    '0',
     'Arm-Sensor',
     'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
     ['PCB-Design','C++','Rapid-Prototyping']) 
@@ -60,7 +59,6 @@
   {{ project(
     'Ollie',
     '/static/images/Ollie/Ollie.jpg',
-    '1',
     'ollie',
     'An animatronic puppet for the Fabric Museum and Workshop, featuring person-detection and much more.',
     ['Microcontrollers','Machine Learning','Mechanical-Design']
@@ -69,7 +67,6 @@
   {{ project(
     'DEKA',
     '/static/images/Deka/Luke-Arm.jpg',
-    '0',
     'deka',
     'Developing a class III medical device for FDA clearance.',['Solidworks','Tolerance Analysis','Part-Design','GD&T']
     )

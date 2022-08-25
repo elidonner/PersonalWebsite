@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="column wrapper-center" style="width: 100%">
     <!-- PAGE LOADER START -->
@@ -51,8 +52,28 @@
             <a href="#contact" class="button-underline-animation">Contact</a>
           </div>
         </div>
+        <div id="navbar-responsive">
+          <a href="javascript:void(0);" onclick="navBar_pressed()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
       </div>
     </div>
+
+    <div id="dropdown-navbar">
+      <div id="dropdown-navbar-content">
+        <div class="menu-btn">
+          <a href="{{ url_for('index') }}#portfolio" class="button-underline-animation" onclick="navBar_pressed()">Portfolio</a>
+        </div>
+        <div class="menu-btn">
+          <a href="{{ url_for('about') }}" class="button-underline-animation" onclick="navBar_pressed()">About</a>
+        </div>
+        <div class="menu-btn">
+          <a href="#contact" class="button-underline-animation" onclick="navBar_pressed()">Contact</a>
+        </div>
+      </div>
+    </div>
+
 
     <!-- HERE COMES REST OF CONTENT -->
     {% block content %} {% endblock %}
@@ -60,7 +81,7 @@
     <!-- Contact form -->
     <section id="contact" class="column float-center padding-32">
       <h2 class="padding-bottom-24">Contact Me</h2>
-      <div class="wrapper row">
+      <div id="contact-form">
         <form
           action="https://getform.io/f/5d7bda6a-9801-4525-ac4e-f39446c2da16"
           method="POST"
@@ -114,7 +135,7 @@
             </div>
           </div>
         </form>
-        <div class="column">
+        <div id="contact-info">
           <div class="column contact-info-item">
             <h3>Email</h3>
             <p>ethan.donlon@gmail.com</p>
