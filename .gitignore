@@ -2,4 +2,4 @@
 .vscode
 venv
 myprojectenv
-*__pycache__*
+!**/__pycache__/

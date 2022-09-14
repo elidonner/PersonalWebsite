@@ -69,6 +69,14 @@
   order:1;
 }
 
+.img-container img:hover {
+  cursor: pointer;
+}
+
+.img-container-active img:hover {
+  cursor: default;
+}
+
 .img-container img {
   height: 100%;
   width: auto;
@@ -100,6 +108,15 @@
   align-items: center;
 }
 
+.popup-img-container {
+  background-color: transparent;
+  z-index: 5;
+  height:90%;
+  width:90%;
+  justify-content: center;
+  align-items: center;
+}
+
 .vimeo-video {
   height:90%;
   width:90%;
@@ -109,11 +126,11 @@
   background-color: transparent;
   transition: color 0.5s ease;
   color: black;
-  position: relative;
   font-weight: 300px;
   font-size: 50px;
-  top:-45%;
-  left:90%;
+  padding:0px 10px 10px;
+  margin: 0px 10px 10px;
+  align-self: flex-start;
 }
 
 .close-btn:hover {

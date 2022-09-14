@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+{% import "slides.jinja" as slides%}
 <link rel="stylesheet" href="/static/css/projects.css" />
 <header id="home" class="home column">
   <div class="project-description padding-top-64">
@@ -31,31 +32,7 @@
     </div>
   </div>
 
-  {% macro slides(imgs) -%}
-
-  <div class="project-slideshow column padding-top-64">
-    <div class="wrapper-center row" style="justify-content: space-evenly">
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <div class="slideshow-container round-xxlarge column">
-        {% for img in imgs %}
-        <div class="img-slides row">
-          <div class="img-container">
-            <img src="{{img[0]}}" />
-          </div>
-          <h3 class="text xlarge">{{img[1]}}</h3>
-        </div>
-        {% endfor %}
-      </div>
-      <a class="next" onclick="plusSlides(1)">❯</a>
-    </div>
-    <div class="dot-container padding-top-32">
-      {% for i in range(1, imgs|length +1) %}
-      <span class="dot" onclick="currentSlide({{i}})"></span>
-      {% endfor %}
-    </div>
-  </div>
-
-  {% endmacro %} {{ slides([ ('/static/images/Dove/Injector.gif', 'Subcutaneous
+ {{ slides.slides([ ('/static/images/Dove/Injector.gif', 'Subcutaneous
   Injector'), ('/static/images/Dove/Finger-Sensor.jpg', 'Finger-based sensor'),
   ('/static/images/Dove/Arm-Sensor-Small.jpg', 'Adhesive-based shoulder
   sensor'), ('/static/images/Dove/PCBs.jpg', 'Sensor PCBs for Clinical Study'),
