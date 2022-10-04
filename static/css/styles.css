@@ -30,7 +30,6 @@
 html,
 body {
   background-color: var(--background-color);
-  scroll-margin-top: var(--header-height);
 }
 
 html,
@@ -124,6 +123,10 @@ img {
 
 .hide-scroll {
   overflow: hidden;
+}
+
+.scroll-to {
+  scroll-margin-top: var(--header-height);
 }
 
 /*set up rows and columns for flexing*/
