@@ -261,4 +261,9 @@
     height:auto;
     width: 100%;
   }
+  .close-btn {
+    position:absolute;
+    top: 0px;
+    right: 0px;
+  }
 }
