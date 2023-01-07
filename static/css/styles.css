@@ -590,10 +590,11 @@ img {
 #contact-form {
   width:100%;
   flex-direction: row;
+  justify-content: center;
 }
 
 #contact-info {
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .contact-form,
