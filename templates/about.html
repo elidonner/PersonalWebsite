@@ -18,6 +18,16 @@
         I am passionate about mechatronics and creating products that improve lives.
         <br /><br />
         Additionally, I enjoy developing my woodworking hobby, skiing, backpacking, playing the bagpipes and ice hockey.
+        <br /><br />
+        I am currently working at
+        <a
+          href="https://picklerobot.com/"
+          class="purple-button-underline-animation"
+          style="display: inline-flex; padding: 0; height: auto"
+        >
+          <b class="text-purple large">Pickle Robot Company</b>
+        </a>
+        making robots to unload shipping containers and trucks.
       </p>
       <!-- TODO: ADD Krypto -->
       <!-- <h3 class="xxlarge">Fun Stuff</h3>
@@ -44,13 +54,40 @@
 <!-- TIMELINE -->
 <div id="timeline" class="about-timeline scroll-to">
   <div class="about-tabs">
-    <button type="button" class="tab-item active" data-target="#education">
-      education
-    </button>
-    <button type="button" class="tab-item" data-target="#experience">
+    <button type="button" class="tab-item activate" data-target="#experience">
       experience
     </button>
+    <button type="button" class="tab-item" data-target="#education">
+      education
+    </button>
   </div>
+
+  <!-- EXPERIENCE START -->
+  <div id="experience" class="tab-content">
+    <div class="timeline column">
+      <div class="timeline-item column">
+        <span class="date">Nov 2022 - Present</span>
+        <h4>Mechatronics Engineer</h4>
+        <p>Pickle Robot Company</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">Jan 2021 - August 2022</span>
+        <h4>Mechatronics Engineer</h4>
+        <p>Altrumed</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">June 2021 - Aug 2021</span>
+        <h4>Mechanical Engineer Intern</h4>
+        <p>DEKA Research & Development</p>
+      </div>
+      <div class="timeline-item column">
+        <span class="date">June 2020 - Aug 2020</span>
+        <h4>Manufacturing Engineer Intern</h4>
+        <p>DEKA Research & Development</p>
+      </div>
+    </div>
+  </div>
+  <!-- EXPERIENCE END -->
 
   <!-- Education START -->
   <div id="education" class="tab-content active">
@@ -70,28 +107,8 @@
     </div>
   </div>
   <!-- Education END -->
-  <!-- EXPERIENCE START -->
-  <div id="experience" class="tab-content">
-    <div class="timeline column">
-      <div class="timeline-item column">
-        <span class="date">Jan 2021 - Present</span>
-        <h4>Engineer</h4>
-        <p>Altrumed</p>
-      </div>
-      <div class="timeline-item column">
-        <span class="date">June 2021 - Aug 2021</span>
-        <h4>Mechanical Engineer Intern</h4>
-        <p>DEKA Research & Development</p>
-      </div>
-      <div class="timeline-item column">
-        <span class="date">June 2020 - Aug 2020</span>
-        <h4>Manufacturing Engineer Intern</h4>
-        <p>DEKA Research & Development</p>
-      </div>
-    </div>
-  </div>
+
 </div>
-<!-- EXPERIENCE END -->
 <!-- TIMELINE END-->
 <script src="/static/js/about.js"></script>
 {% endblock %}
