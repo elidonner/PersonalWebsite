@@ -173,9 +173,8 @@
 
 /* PLAY BUTTON */
 .play-button {
-  display:block;
-  position:relative;
-  left: -50%;
+  position: absolute;
+  transform: translate(0%, 100%);
 }
 
 @keyframes spin {
@@ -219,10 +218,6 @@
 
 #play {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
 }
 
 @media (max-width: 767px) {
