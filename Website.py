@@ -42,8 +42,8 @@ def about():
     return render_template('about.html')
 
 @app.route('/krypto')
-def krypto():
-    return render_template('krypto.html')
+def Krypto():
+    return render_template('projects/krypto.html')
 
 @app.route('/dove')
 def Dove():
@@ -56,6 +56,10 @@ def Ollie():
 @app.route('/deka')
 def DEKA():
     return render_template('projects/deka.html')
+
+@app.route('/circuits')
+def Circuits():
+    return render_template('projects/circuits.html')
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0')

@@ -75,35 +75,38 @@
 <!-- END FEATURED WORK  -->
 
 <!-- OTHER PROJECTS -->
-<!-- TODO: Add other-projects -->
-<!-- <section id="other-projects" class="column float-center">
-  <h1 class="xxx-large section-title">Other Projects</h1>
 
-  {% macro otherproject(name, img, img_title) %}
-  <div class="other-project-container">
-    <a href="dove.html" class="column project zoomin round-xxlarge">
-      <div class="other-project-img">
-        <img src="{{ img }}" alt="{{ img_title }}" />
+<section id="other-projects" class="column float-center">
+  <h1 class="xxx-large section-title">Other Projects</h1>
+  
+  {% macro otherproject(title, img, img_title, description) %}
+  <div class="other-project-container" id="{{title}}">
+    <a href="{{ url_for(title) }}" class="column project zoomin round-xxlarge">
+      <div class="overflow-container other-project-img-container round-xxlarge-top">
+        <div class="other-project-img">
+          <img src="{{ img }}" alt="{{ img_title }}" />
+        </div>
       </div>
-      <div class="other-project-text column">
-        <h3>{{ name }}</h3>
+      <div class="other-project-txt column">
+        <h3>{{ title }}</h3>
+        <p class="large text-black">{{ description }}</p>
       </div>
     </a>
   </div>
   {% endmacro %}
 
   <div class="other-project-container-row">
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }}
+    {{ otherproject('Krypto', '/static/images/Krypto/krypto.png', 'krypto_cards', 'Math... but fun :)') }} 
+    {{ otherproject('Circuits', '/static/images/Circuits/pulse_ox.jpg', 'pulse_ox', 'Continuous learning') }} 
   </div>
-  <div class="other-project-container-row">
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }} 
-    {{ otherproject('Nanowires', '/static/images/Microscope.jpg', 'microscope') }}
-  </div>
+  <!-- If you want another row of projects -->
+  <!-- <div class="other-project-container-row">
+    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
+  </div>-->
   
-</section> -->
+</section>
 <!-- END OTHER PROJECTS -->
 <script src="/static/js/index.js"></script>
 {% endblock %}
