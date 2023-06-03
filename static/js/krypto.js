@@ -27,7 +27,7 @@ var target;
 var first_hand;
 var solution;
 var difficulty_rating;
-let steps = {};
+let steps = [];
 var first_card; //ugly variable to remember the first card that was selected so operation is done correctly
 
 //EVENT HANDLERS
@@ -303,9 +303,9 @@ function deal_cards() {
   //now we need to create all the new cards
   create_cards(first_hand);
 
-  //reset the steps dictionary to this hand
-  steps = {};
-  steps[1] = first_hand;
+  //initialize steps stack to this hand
+  steps = [];
+  steps[0] = first_hand;
 
   //switch the action button to call krypto
   document.getElementById("deal_cards").style.display = "none";
@@ -506,7 +506,7 @@ function combine_cards(first_card, second_card, output) {
   clear_selected("all");
 
   //save this as a step
-  steps[Object.keys(steps).length + 1] = get_hand();
+  steps.push(get_hand());
 
   //check if the game is over
   if (is_game_over()) {
@@ -581,12 +581,10 @@ function clear_selected(id) {
  */
 function undo() {
   //make sure there is at least one step, if not, do nothing
-  var stepsLength = Object.keys(steps).length;
-  if (stepsLength > 1) {
-    //go back to previous step
-    create_cards(steps[stepsLength - 1]);
-    //delete the step they took from the list of steps
-    delete steps[stepsLength];
+  if (steps.length > 1) {
+    //go back to previous step and pop
+    create_cards(steps[steps.length - 2]);
+    steps.pop();
   }
   clear_selected("all");
 }
@@ -597,13 +595,12 @@ function undo() {
  */
 export default function reset() {
   //make sure there is at least one step, if not, do nothing
-  var stepsLength = Object.keys(steps).length;
-  if (stepsLength > 1) {
+  if (steps.length > 1) {
     //go back to first step
-    create_cards(steps[1]);
+    create_cards(steps[0]);
     //delete all the other steps:
-    for (let i = 2; i < stepsLength; i++) {
-      delete steps[i];
+    while (steps.length>1) {
+      steps.pop();
     }
   }
   clear_selected("all");
