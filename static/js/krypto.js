@@ -223,10 +223,10 @@ function switch_menu_btn() {
   for (let i = 0; i < menu_btns.length; i++) {
     var cur = menu_btns[i].style.display;
     if (cur === "none") {
-      document.getElementsByClassName("left_menu_btn")[i].style.display =
+      document.getElementsByClassName("menu-left")[i].style.display =
         "flex";
     } else {
-      document.getElementsByClassName("left_menu_btn")[i].style.display =
+      document.getElementsByClassName("menu-left")[i].style.display =
         "none";
     }
   }

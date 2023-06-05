@@ -1,0 +1,107 @@
+{% extends '/projects/krypto/krypto-base.html' %} {% block content %}
+
+<!-- OVERLAYS START -->
+
+<!-- DIFFICULTY MENU-->
+<div id="difficulty_menu" class = "overlay column">
+  <div id="difficulty_container">
+    <div class = "difficulty" style="height:33.3%">
+      <button id="easy" class = "column button">
+        <div class="mode_type">BEGINNER</div>
+        <div class="mode_description">Cards numbered 1-10</div>
+      </button>
+    </div>
+    <div class = "difficulty" style="height:33.3%">
+      <button id="medium" class = "column button">
+        <div class="mode_type">NOVICE</div>
+        <div class="mode_description">Cards numbered 1-17</div>
+      </button>
+    </div>
+    <div class = "difficulty" style="height:33.4%">
+      <button id="hard" class = "column button">
+        <div class="mode_type">STANDARD</div>
+        <div class="mode_description">Cards numbered 18-25</div>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- DIFFICULTY MENU END-->
+
+<!-- SOLUTION MENU-->
+<div id="solution" class = "overlay column" style="padding:50px 0px; justify-content: center;">
+  <div class = "overlay2 column">
+    <h1 class="solutionTitle">Solution</h1>
+    <div id="step1" class = "solutionCardsContainer row">
+      <div class="solutionCard selected"></div>
+      <div class="solutionOperation"></div>
+      <div class="solutionCard selected"></div>
+      <div class="solutionCard"></div>
+      <div class="solutionCard"></div>
+      <div class="solutionCard"></div>
+    </div>
+    <div id="step2" class = "solutionCardsContainer row">
+      <div class="solutionCard selected" ></div>
+      <div class="solutionOperation"></div>
+      <div class="solutionCard selected"></div>
+      <div class="solutionCard"></div>
+      <div class="solutionCard"></div>
+    </div>
+    <div id="step3" class = "solutionCardsContainer row">
+      <div class="solutionCard selected"></div>
+      <div class="solutionOperation"></div>
+      <div class="solutionCard selected"></div>
+      <div class="solutionCard"></div>
+    </div>
+    <div id="step4" class = "solutionCardsContainer row">
+      <div class="solutionCard selected"></div>
+      <div class="solutionOperation"></div>
+      <div class="solutionCard selected"></div>
+    </div>
+    <div id="step5" class = "solutionCardsContainer row">
+      <div class="solutionCard selected"></div>
+    </div>
+  </div>
+</div>
+<!-- SOLUTION MENU END-->
+
+<!-- INSTRUCTIONS MENU-->
+<div id="instructions_menu" class = "overlaytop">
+  <div class="overlaytop-content">
+    <p class="xxlarge text-white">Add subtract or multiply the five cards shown to get the target card!
+    <br></br>
+    No fractions or negative numbers!</p>
+  </div>
+  <a id="closebtn" href="javascript:void(0)">&times;</a>
+</div>
+<!-- INSTRUCTIONS MENU END-->
+
+<!-- OVERLAYS END -->
+
+<!-- Menu Page -->
+<section id = "menu" class="one-pager column">
+    
+  <div class="welcome_msg">
+    Welcome to krypto! Please select a game mode from the options below!
+  </div>
+
+  <div class = "mode_container">
+    <button id="practice" class = "column button" href="{{ url_for('Krypto_practice') }}">
+      <div class="mode_type">PRACTICE</div>
+      <div class="mode_description">No time limit. Play at your own pace!</div>
+    </button>
+  </div>
+  <div class = "mode_container">
+    <button id="computer" class = "column button">
+      <div class="mode_type">Play the Computer</div>
+      <div class="mode_description">See if you can beat the computer!</div>
+    </button>
+  </div>
+  <div class = "mode_container">
+    <button id="versus" class = "column button">
+      <div class="mode_type">Play a Friend</div>
+      <div class="mode_description">Challenge your friend to see who can get the most points!</div>
+    </button>
+  </div>
+
+</section>
+{% endblock %}
