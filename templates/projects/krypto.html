@@ -16,7 +16,7 @@
   </head>
 
 
-  <body class="column wrapper-center" style="width: 100%">
+  <body class="column wrapper-center">
     
     <!-- PAGE LOADER START -->
     <div class="page-loader">
@@ -45,11 +45,14 @@
         </div>
 
         <div class="instructions">
-          <button id="instructions" class = "button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" width="30">
-              <path fill="var(--color-tone-1)" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+          <div id="instructions" class="button"> 
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+              <g>
+                <rect x="10.75" y="15.75" width="2.5" height="2.5" fill="#000000"></rect>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8C10.8048 8 10 9.08576 10 10H8C8 8.19752 9.49569 6 12 6C14.4955 6 16 8.14203 16 10C16 11.5781 14.8917 12.3782 14.2062 12.8732C14.1659 12.9023 14.1271 12.9303 14.09 12.9574C13.3354 13.5088 13 13.8231 13 14.5H11C11 12.7382 12.1612 11.8897 12.9067 11.345L12.91 11.3426C13.7425 10.7343 14 10.5038 14 10C14 9.0498 13.2039 8 12 8Z" fill="#000000"></path>
+             </g>
             </svg>
-          </button>
+          </div>
         </div>
       </div>
     </div>
@@ -76,20 +79,20 @@
       <div id="difficulty_container">
         <div class = "difficulty" style="height:33.3%">
           <button id="easy" class = "column button">
-            <h3 style="height:50%;">BEGINNER</h3>
-            <p style = "height:50%;">Cards numbered 1-10</p>
+            <div class="mode_type">BEGINNER</div>
+            <div class="mode_description">Cards numbered 1-10</div>
           </button>
         </div>
         <div class = "difficulty" style="height:33.3%">
           <button id="medium" class = "column button">
-            <h3 style="height:50%;">NOVICE</h3>
-            <p style = "height:50%;">Cards numbered 1-17</p>
+            <div class="mode_type">NOVICE</div>
+            <div class="mode_description">Cards numbered 1-17</div>
           </button>
         </div>
         <div class = "difficulty" style="height:33.4%">
           <button id="hard" class = "column button">
-            <h3 style="height:50%;">STANDARD</h3>
-            <p style = "height:50%;">Cards numbered 18-25</p>
+            <div class="mode_type">STANDARD</div>
+            <div class="mode_description">Cards numbered 18-25</div>
           </button>
         </div>
       </div>
@@ -135,12 +138,12 @@
 
     <!-- INSTRUCTIONS MENU-->
     <div id="instructions_menu" class = "overlaytop">
-      <a id="closebtn" href="javascript:void(0)">&times;</a>
       <div class="overlaytop-content">
-        <p>Add subtract or multiply the five cards shown to get the target card!
+        <p class="xxlarge text-white">Add subtract or multiply the five cards shown to get the target card!
         <br></br>
         No fractions or negative numbers!</p>
       </div>
+      <a id="closebtn" href="javascript:void(0)">&times;</a>
     </div>
     <!-- INSTRUCTIONS MENU END-->
 
@@ -167,7 +170,7 @@
       </div>
       <div class = "mode_container">
         <button id="versus" class = "column button">
-          <div class="mode_type">Play a Freind</div>
+          <div class="mode_type">Play a Friend</div>
           <div class="mode_description">Challenge your friend to see who can get the most points!</div>
         </button>
       </div>
