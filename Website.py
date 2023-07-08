@@ -45,7 +45,7 @@ def about():
 def Krypto():
     return render_template('projects/krypto/krypto.html')
 
-@app.route('/krypto/practice')
+@app.route('/practice')
 def Krypto_practice():
     return render_template('projects/krypto/practice.html')
 
