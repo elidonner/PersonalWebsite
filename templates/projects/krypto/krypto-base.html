@@ -16,7 +16,7 @@
   </head>
 
 
-  <body class="column wrapper-center">
+  <body id="body" class="column wrapper-center">
     
     <!-- PAGE LOADER START -->
     <div class="page-loader">
@@ -26,54 +26,8 @@
     </div>
     <!-- PAGE LOADER END -->
 
-    <!-- NAVBAR -->
-    <div class="nav-parent">
-      <div class="navbar row">
-        <div class="menu-left" style="display:none">
-          <button id="menu_btn" class = "button medium">Menu</button>
-        </div>
-        <div class="menu-left" style="display:flex"> 
-          <a  href="{{ url_for('index') }}"> 
-            <button id="website_btn" class = "button xlarge">
-              Main Site
-            </button>
-          </a>
-        </div>
-        
-        <div class="page-title">
-          Krypto!
-        </div>
-
-        <div class="instructions">
-          <div id="instructions" class="button"> 
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
-              <g>
-                <rect x="10.75" y="15.75" width="2.5" height="2.5" fill="#000000"></rect>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8C10.8048 8 10 9.08576 10 10H8C8 8.19752 9.49569 6 12 6C14.4955 6 16 8.14203 16 10C16 11.5781 14.8917 12.3782 14.2062 12.8732C14.1659 12.9023 14.1271 12.9303 14.09 12.9574C13.3354 13.5088 13 13.8231 13 14.5H11C11 12.7382 12.1612 11.8897 12.9067 11.345L12.91 11.3426C13.7425 10.7343 14 10.5038 14 10C14 9.0498 13.2039 8 12 8Z" fill="#000000"></path>
-             </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="dropdown-navbar">
-      <div id="dropdown-navbar-content">
-        <div class="menu-btn">
-          <a href="{{ url_for('index') }}#portfolio" class="button-underline-animation" onclick="navBar_pressed()">Portfolio</a>
-        </div>
-        <div class="menu-btn">
-          <a href="{{ url_for('about') }}" class="button-underline-animation" onclick="navBar_pressed()">About</a>
-        </div>
-        <div class="menu-btn">
-          <a href="#contact" class="button-underline-animation" onclick="navBar_pressed()">Contact</a>
-        </div>
-      </div>
-    </div>
-    <!-- NAVBAR END-->
-
     <!-- SOLUTION MENU-->
-<div id="solution" class = "overlay column" style="padding:50px 0px; justify-content: center;">
+    <div id="solution" class = "overlay column" style="padding:50px 0px; justify-content: center;">
     <div class = "overlay2 column">
       <h1 class="solutionTitle">Solution</h1>
       <div id="step1" class = "solutionCardsContainer row">
@@ -119,6 +73,31 @@
     <a id="closebtn" href="javascript:void(0)">&times;</a>
   </div>
   <!-- INSTRUCTIONS MENU END-->
+
+  <!-- DIFFICULTY MENU-->
+  <div id="difficulty_menu" class = "overlay column">
+    <div id="difficulty_container">
+      <div class = "difficulty" style="height:33.3%">
+        <button id="easy" class = "column button">
+          <div class="mode_type">BEGINNER</div>
+          <div class="mode_description">Cards numbered 1-10</div>
+        </button>
+      </div>
+      <div class = "difficulty" style="height:33.3%">
+        <button id="medium" class = "column button">
+          <div class="mode_type">NOVICE</div>
+          <div class="mode_description">Cards numbered 1-17</div>
+        </button>
+      </div>
+      <div class = "difficulty" style="height:33.4%">
+        <button id="hard" class = "column button">
+          <div class="mode_type">STANDARD</div>
+          <div class="mode_description">Cards numbered 18-25</div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- DIFFICULTY MENU END-->
 
     <!-- HERE COMES REST OF CONTENT -->
     {% block content %} 
