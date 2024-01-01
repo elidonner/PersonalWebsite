@@ -37,6 +37,11 @@ var first_card; //ugly variable to remember the first card that was selected so 
  */
 window.onload = function () {
   attachEventListeners();
+  //set game mode
+  get_game_mode();
+  set_game_mode();
+  //show the difficulty menu
+  get_difficulty();
 };
 
 /**
@@ -47,12 +52,9 @@ window.onload = function () {
  */
 function attachEventListeners() {
   //set the dom elements
-  menu_btns = document.getElementsByClassName("left_menu_btn");
-
   /**
    * Header buttons
    */
-  document.getElementById("menu_btn").addEventListener("click", menu_btn);
   document
     .getElementById("instructions")
     .addEventListener("click", show_instructions);
@@ -63,16 +65,8 @@ function attachEventListeners() {
   /**
    * Menu buttons
    */
-  //game mode
-  document.getElementById("practice").addEventListener("click", function () {
-    set_game_mode("practice");
-  });
-  document.getElementById("computer").addEventListener("click", function () {
-    set_game_mode("computer");
-  });
-  document.getElementById("versus").addEventListener("click", function () {
-    set_game_mode("versus");
-  });
+
+  // game mode
   //difficulty buttons
   document.getElementById("easy").addEventListener("click", function () {
     set_difficulty("easy");
@@ -113,9 +107,9 @@ function attachGameListeners() {
   document.getElementById("deal_cards").addEventListener("click", do_ajax);
   //KRYPTO!
   //when the button is clickable, this is for case of human vs. computer, so call with "user1"
-  document.getElementById("krypto_btn").addEventListener("click", function () {
-    krypto_called("user1");
-  });
+  // document.getElementById("krypto_btn").addEventListener("click", function () {
+  //   krypto_called("user1");
+  // });
   //operations
   for (let i = 0; i < operations.length; i++) {
     operations[i].addEventListener("click", function () {
@@ -128,7 +122,61 @@ function attachGameListeners() {
   document.getElementById("give_up").addEventListener("click", give_up);
 }
 
+
 //FUNCTIONS
+
+/**
+ * Get the game mode based on the url
+ */
+function get_game_mode() {
+  var url = window.location.pathname;
+  mode = url.substring(url.indexOf("/", 1) + 1);
+}
+
+/**
+ * In the menu screen, handle selections of game mode
+ * Creates instance of game mode from game mode module
+ */
+function set_game_mode() {
+  if (mode == "practice") {
+    mode = new modes.Practice();
+  } else if (mode == "versus") {
+    mode = new modes.Versus();
+  } else if (mode == "computer") {
+    mode = new modes.Computer();
+  }
+}
+
+/**
+ * Show difficulty menu and wait for user to respond
+ */
+function get_difficulty() {
+  document.getElementById("difficulty_menu").style.display = "flex";
+}
+
+/**
+ * Handle the person setting the difficulty level
+ * Start the game from this function once difficulty selected!
+ */
+function set_difficulty(selection) {
+  document.getElementById("difficulty_menu").style.display = "none";
+  difficulty = selection
+
+  start_game(difficulty);
+}
+
+/**
+ * Start the game
+ */
+function start_game() {
+
+  //set up the game board:
+  mode.set_up_board();
+
+  //save the board:
+  save_board();
+}
+
 
 /**
  * do ajax uses ajax in order to make a call to the server
@@ -192,47 +240,6 @@ function close_instructions() {
 }
 
 /**
- * In the menu screen, handle selections of game mode
- * Creates instance of game mode from game mode module
- */
-function set_game_mode(selection) {
-  if (selection == "practice") {
-    mode = new modes.Practice();
-  } else if (selection == "versus") {
-    mode = new modes.Versus();
-  } else if (selection == "computer") {
-    mode = new modes.Computer();
-  }
-
-  document.getElementById("difficulty_menu").style.display = "flex";
-}
-
-/**
- * Handle the person setting the difficulty level
- * Start the game from this function once difficulty selected!
- * @param {} level
- */
-function set_difficulty(level) {
-  //set the difficulty
-  difficulty = level;
-  document.getElementById("difficulty_menu").style.display = "none";
-  start_game();
-}
-
-function switch_menu_btn() {
-  for (let i = 0; i < menu_btns.length; i++) {
-    var cur = menu_btns[i].style.display;
-    if (cur === "none") {
-      document.getElementsByClassName("left_menu_btn")[i].style.display =
-        "flex";
-    } else {
-      document.getElementsByClassName("left_menu_btn")[i].style.display =
-        "none";
-    }
-  }
-}
-
-/**
  * If the person clicks outside of the set difficulty options, it escapes
  */
 function escape_set_difficulty() {
@@ -276,20 +283,6 @@ function restore_board() {
   attachGameListeners();
 
   //resave the board
-  save_board();
-}
-
-/**
- * Start the game
- */
-function start_game() {
-  //set up the game board:
-  mode.set_up_board();
-
-  //set the right menu btn:
-  switch_menu_btn();
-
-  //save the board:
   save_board();
 }
 

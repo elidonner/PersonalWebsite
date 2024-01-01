@@ -1,66 +1,23 @@
-/* margin stuff */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: var(--gray);
-  /* uncomment below to hide scroll bar */
-  /* overflow: hidden; */
+body {
+  overflow: hidden;
 }
 
-/* Global Styles & Colors */
-:root {
-  /*Fonts and heights*/
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  --gray: #4a4e4d;
-  --dark_blue: #0e9aa7;
-  --blue: #3da4ab;
-  --yellow: #f6cd61;
-  --red: #fe8a71;
-  --green: rgb(65, 184, 131);
-  --header-height: 90px;
-
-  /* icons */
-  /* --spelling-bee: url('./images/nav-icons/SpellingBee-Icon-Normalized.svg'); */
+#menu_btn,
+#website_btn{
+  padding:10px;
 }
 
-html,
-body,
-div {
-  display: flex;
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+.one-pager {
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  background-color: transparent;
 }
 
-a {
-  text-decoration: none;
-}
-
-p{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  font-size: 2rem;
-}
-
-h6{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+#menu{
+  justify-content: space-between;
 }
 
 .welcome_msg{
-  background-color: #f1f1f1;
-  width: 100%;
   text-align: center;
   justify-content: center;
   font-weight: 700;
@@ -70,22 +27,6 @@ h6{
   right: 0;
   padding: 12px 0px 12px 0px;
 }
-
-/*set up rows and columns for flexing*/
-.row {
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  justify-content: space-evenly;
-}
-
-.column {
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-}
-
 
 .overlay {
   position: fixed;
@@ -97,13 +38,14 @@ h6{
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
 }
 
 .overlay2 {
   display: flex;
   align-self: center;
+  text-align: center;
   width: 60%;
   height: 100%;
   border: 1px solid var(--gray);
@@ -112,7 +54,7 @@ h6{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 4;
   cursor: pointer;
   justify-content: center;
   background-color: var(--gray);
@@ -123,32 +65,24 @@ h6{
   height: 0%;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
   background-color: rgba(0,0,0, 0.9);
   overflow-y: hidden;
   transition: 0.5s;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 
 .overlaytop-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlaytop p {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  text-align: center;
-  color: #f1f1f1;
-  display: block;
-  transition: 0.3s;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .overlaytop a {
@@ -169,53 +103,6 @@ h6{
   top: 20px;
   right: 45px;
   font-size: 60px;
-}
-
-/* Style the header */
-.header {
-  background-color: #f1f1f1;
-  height: var(--header-height);
-  width: 100%;
-  text-align: center;
-  justify-content: space-between;
-  font-weight: 700;
-  font-size: 37px;
-  left: 0;
-  right: 0;
-  padding: 12px 0px 12px 0px;
-  border-bottom: 1px solid var(--gray);
-}
-
-.left_menu_btn{
-  justify-content: flex-start;
-  width: 30%;
-}
-
-#menu_btn,
-#website_btn{
-  width:auto;
-  padding:10px;
-  margin:0px 10px;
-}
-
-.instructions{
-  justify-content: flex-end;
-  width: 30%;
-  
-}
-
-#instructions{
-  width:auto;
-  padding:10px;
-  margin:0px 10px;
-  background-color: transparent;
-  border: none;
-}
-
-.body{
-  height: calc(100% - var(--header-height));
-  justify-content: center;
-  background-color: #f1f1f1;
 }
 
 .scoreboardTitle{
@@ -239,8 +126,6 @@ h6{
   align-items: center;
   justify-content: center;
 }
-
-
 
 .user{
   height: 80%;
@@ -308,7 +193,6 @@ h6{
   padding:10px;
 }
 
-
 /*types of cards*/
 #target {
   background-color: e4d440;
@@ -337,25 +221,8 @@ h6{
   align-items: center;
 }
 
-
-.button {
-  height: 100%;
-  width: 100%;
-  border: 1px solid var(--gray);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  border-radius: 0.5rem;
-  background-color: var(--dark_blue);
-}
-
 .krypto_container{
   display: none;
-}
-
-.button.krypto{
-  background-color: var(--red);
 }
 
 .krypto_key{
@@ -380,11 +247,10 @@ h6{
   flex-direction: column;
   height:60%;
   width: 80%;
-  border: 1px solid var(--gray);
   border-radius: 0.5rem;
   justify-content:center;
-  background-color: var(--gray);
   padding: 50px;
+  background-color: var(--gray);
 }
 
 
@@ -395,10 +261,20 @@ h6{
 }
 
 .mode_container{
-  padding:10px 100px;
+  padding:10px 0px;
   justify-content: center;
   align-items:center;
 }
+
+.mode_type{
+  font-size: calc(48px - 48px * var(--text-adjust));
+  font-weight: bold;
+}
+
+.mode_description{
+  font-size: calc(24px - 24px * var(--text-adjust));
+}
+
 
 .card{
   height: 200px;
@@ -450,15 +326,54 @@ h6{
   background-color: var(--blue);
 }
 
+.instructions {
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: auto;
+  height: 100%;
+  overflow: visible;
+}
+
+#instructions {
+  height: 50%;
+  width: auto;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+#instructions svg {
+  display: flex;
+  height: 100%;
+  width: auto;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--purple);
+  transition: all 0.3s ease;
+}
+
 .button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
+  background-color: var(--light-purple);
 }
 
 .button:active {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.button.krypto{
+  background-color: var(--red);
 }
 
 .disabled{
@@ -555,7 +470,6 @@ h6{
 }
 
 
-
 /* POPUP for when krypto is called */
 
 /* Popup container - can be anything you want */
@@ -612,16 +526,6 @@ h6{
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
-}
-
-
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column.side,
-  .column.middle {
-    width: 100%;
-  }
 }
 
 @media screen and (max-height: 450px) {

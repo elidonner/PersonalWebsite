@@ -43,7 +43,19 @@ def about():
 
 @app.route('/krypto')
 def Krypto():
-    return render_template('projects/krypto.html')
+    return render_template('projects/krypto/krypto.html')
+
+@app.route('/krypto/practice')
+def Krypto_practice():
+    return render_template('projects/krypto/practice.html')
+
+@app.route('/krypto/computer')
+def Krypto_computer():
+    return render_template('projects/krypto/computer.html')
+
+@app.route('/krypto/versus')
+def Krypto_friend():
+    return render_template('projects/krypto/friend.html')
 
 @app.route('/dove')
 def Dove():
