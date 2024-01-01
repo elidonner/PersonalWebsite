@@ -27,6 +27,10 @@
   --text-adjust: 0;
 }
 
+html {
+  min-height: 100vh;
+}
+
 html,
 body {
   background-color: var(--background-color);

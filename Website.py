@@ -61,5 +61,9 @@ def DEKA():
 def Circuits():
     return render_template('projects/circuits.html')
 
+@app.route('/corolla')
+def Toyota ():
+    return render_template('projects/corolla.html')
+
 if __name__ == "__main__":
    app.run(host='0.0.0.0')
