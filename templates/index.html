@@ -4,8 +4,8 @@
 <header id="home" class="about column">
   <div class="home-info">
     <div class="home-text column padding-right-64 padding-left-64">
-      <p class="xlarge">Hello, my name is</p>
-      <h1 class="xxxlarge">Ethan Donlon</h1>
+      <p class="xlarge text-black">Hello, my name is</p>
+      <h1 class="xxxlarge text-black">Ethan Donlon</h1>
     </div>
 
     <a href="{{ url_for('about') }}" id="profile_pic" class="round-circle home-img zoomin">
@@ -37,8 +37,8 @@
         </div>
         <div class="project-text column">
           <h1>{{ title }}</h1>
-          <p class="xlarge">{{ description }}</p>
-          <div class="skills medium">
+          <p class="xlarge text-black">{{ description }}</p>
+          <div class="skills medium text-black">
             {% for skill in skills %}
             <p class="skill">{{ skill }}</p>
             {% endfor %}
@@ -89,7 +89,7 @@
       </div>
       <div class="other-project-txt column">
         <h3>{{ title }}</h3>
-        <p class="large">{{ description }}</p>
+        <p class="large text-black">{{ description }}</p>
       </div>
     </a>
   </div>

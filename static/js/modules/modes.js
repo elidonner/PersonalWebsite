@@ -53,6 +53,15 @@ class GameMode {
       .getElementsByClassName("points")[0];
   }
 
+
+  /**
+   * method that will be inherited
+   */
+  set_up_board_parent() {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("gameboard").style.display = "flex";
+  }
+
   /**
    * Sets active user (person who called Krypto)
    * @param {} user active user
@@ -166,6 +175,7 @@ class Practice extends GameMode {
    * and set the respective user titles
    */
   set_up_board() {
+    this.set_up_board_parent();
 
     //set username and points
     this.user1.username.innerHTML = "Total Puzzles";
@@ -259,6 +269,7 @@ class Computer extends GameMode {
    * show the timer
    */
   set_up_board() {
+    this.set_up_board_parent();
 
     //set username and points
     this.user1.username.innerHTML = "Human";
@@ -450,6 +461,7 @@ class Versus extends GameMode {
    * set respective player titles
    */
   set_up_board() {
+    this.set_up_board_parent();
 
     //set username and points
     this.user1.username.innerHTML = "Player 1";
