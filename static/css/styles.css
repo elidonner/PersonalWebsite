@@ -27,15 +27,6 @@
   --text-adjust: 0;
 }
 
-html {
-  min-height: 100vh;
-}
-
-html,
-body {
-  background-color: var(--background-color);
-}
-
 html,
 body,
 section,
@@ -47,6 +38,20 @@ div {
   margin: 0;
   background-color: transparent;
 }
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  justify-content: space-between;
+}
+
+html,
+body {
+  background-color: var(--background-color);
+}
+
 
 section,
 header {
@@ -148,7 +153,6 @@ img {
   width: 100%;
 }
 
-.wrapper-center,
 .wrapper-middle {
   justify-content: center;
 }
