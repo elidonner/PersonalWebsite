@@ -4,11 +4,12 @@ It uses a package called flask, which handles interactions between server and cl
 Running this file (calling app.run()), should set up a local server for development
 '''
 
-from flask import Flask, request, render_template
-from json import dumps
 import sys
-import back_end
+from json import dumps
 
+from flask import Flask, render_template, request
+
+import back_end
 
 app = Flask(__name__)
 app.debug = True
