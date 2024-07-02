@@ -8,13 +8,13 @@
         <button id="menu_btn" class = "button xlarge" >Menu</button>
       </a>
     </div>
-    
+
     <div class="page-title">
       Krypto!
     </div>
 
     <div class="instructions">
-      <div id="instructions" class="button"> 
+      <div id="instructions" class="button">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
           <g>
             <rect x="10.75" y="15.75" width="2.5" height="2.5" fill="#000000"></rect>
@@ -43,7 +43,7 @@
 
 <!-- Game Board -->
 <section id="gameboard" class="one-pager column" style="display:flex">
-  
+
     <div class="row" style="height:25%;">
 
       <div class = "box" >
@@ -60,15 +60,15 @@
           </div>
         </div>
       </div>
-  
-  
+
+
       <div id="target-cell">
         <div id="target" class="card">
           Target
         </div>
       </div>
-  
-  
+
+
       <div class = "box" style="justify-content: center;">
         <div id = "timer" style="display:none">
           <div class="base-timer">
@@ -93,10 +93,10 @@
           </div>
         </div>
       </div>
-  
-  
+
+
     </div>
-  
+
     <div id = cardsContainer class="row" style="height:35%; padding:0px 50px">
       <div class = cardContainer>
         <div class="card"></div>
@@ -114,30 +114,30 @@
         <div class="card"></div>
       </div>
     </div>
-  
+
     <div class="row" style="height:20%; padding:20px 0px">
       <div id="plus" class="button operation">+</div>
       <div id="minus" class="button operation">-</div>
       <div id="multiply" class="button operation">×</div>
       <div id="divide" class="button operation">÷</div>
     </div>
-  
+
     <div class="row" style="height:20%; padding:20px 50px">
-  
+
       <button id = "deal_cards" class="button">Deal Cards</button>
-  
+
       <div id = actions style = "display: none;">
         <div class="action_container">
-          <button id="undo" class="button">undo</button>
+          <button id="undo" class="button action">undo</button>
         </div>
         <div class="action_container">
-          <button id="reset" class="button">reset</button>
+          <button id="reset" class="button action">reset</button>
         </div>
         <div id="give_up" class="action_container" style = "display:none">
-          <button class="button" >give up</button>
+          <button class="button action" >give up</button>
         </div>
       </div>
-      
+
     </div>
 </section>
 {% endblock %}

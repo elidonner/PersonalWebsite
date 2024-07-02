@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/styles.css" />
     <link rel="stylesheet" href="/static/css/krypto.css" />
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
   </head>
 
 
   <body id="body" class="column wrapper-center">
-    
+
     <!-- PAGE LOADER START -->
     <div class="page-loader">
       <div></div>
@@ -27,7 +28,7 @@
     <!-- PAGE LOADER END -->
 
     <!-- SOLUTION MENU-->
-    <div id="solution" class = "overlay column" style="padding:50px 0px; justify-content: center;">
+    <div id="solution" class = "overlay column">
     <div class = "overlay2 column">
       <h1 class="solutionTitle">Solution</h1>
       <div id="step1" class = "solutionCardsContainer row">
@@ -62,7 +63,7 @@
     </div>
   </div>
   <!-- SOLUTION MENU END-->
-  
+
   <!-- INSTRUCTIONS MENU-->
   <div id="instructions_menu" class = "overlaytop">
     <div class="overlaytop-content">
@@ -100,7 +101,7 @@
   <!-- DIFFICULTY MENU END-->
 
     <!-- HERE COMES REST OF CONTENT -->
-    {% block content %} 
+    {% block content %}
     {% endblock %}
 
   </body>

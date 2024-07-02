@@ -93,12 +93,12 @@ function attachEventListeners() {
 }
 
 function attachGameListeners() {
-    //set the dom elements
-    targetContainer = document.getElementById("target");
-    cardsContainer = document.getElementById("cardsContainer");
-    cardContainers = cardsContainer.getElementsByClassName("cardContainer");
-    cards = cardsContainer.getElementsByClassName("card");
-    operations = document.getElementsByClassName("operation");
+  //set the dom elements
+  targetContainer = document.getElementById("target");
+  cardsContainer = document.getElementById("cardsContainer");
+  cardContainers = cardsContainer.getElementsByClassName("cardContainer");
+  cards = cardsContainer.getElementsByClassName("card");
+  operations = document.getElementsByClassName("operation");
   /**
    * Game buttons
    */
@@ -107,9 +107,9 @@ function attachGameListeners() {
   document.getElementById("deal_cards").addEventListener("click", do_ajax);
   //KRYPTO!
   //when the button is clickable, this is for case of human vs. computer, so call with "user1"
-  // document.getElementById("krypto_btn").addEventListener("click", function () {
-  //   krypto_called("user1");
-  // });
+  document.getElementById("krypto_btn").addEventListener("click", function () {
+    krypto_called("user1");
+  });
   //operations
   for (let i = 0; i < operations.length; i++) {
     operations[i].addEventListener("click", function () {
@@ -121,7 +121,6 @@ function attachGameListeners() {
   document.getElementById("reset").addEventListener("click", reset);
   document.getElementById("give_up").addEventListener("click", give_up);
 }
-
 
 //FUNCTIONS
 
@@ -160,7 +159,7 @@ function get_difficulty() {
  */
 function set_difficulty(selection) {
   document.getElementById("difficulty_menu").style.display = "none";
-  difficulty = selection
+  difficulty = selection;
 
   start_game(difficulty);
 }
@@ -169,14 +168,12 @@ function set_difficulty(selection) {
  * Start the game
  */
 function start_game() {
-
   //set up the game board:
   mode.set_up_board();
 
   //save the board:
   save_board();
 }
-
 
 /**
  * do ajax uses ajax in order to make a call to the server
@@ -199,8 +196,8 @@ function do_ajax() {
       }
       create_solution();
 
-      //Now that I have the game info, it's time to start the game!
-      //I can load all the info to the given cards
+      // Now that I have the game info, it's time to start the game!
+      // I can load all the info to the given cards
       deal_cards();
     } else {
     }
@@ -592,7 +589,7 @@ export default function reset() {
     //go back to first step
     create_cards(steps[0]);
     //delete all the other steps:
-    while (steps.length>1) {
+    while (steps.length > 1) {
       steps.pop();
     }
   }

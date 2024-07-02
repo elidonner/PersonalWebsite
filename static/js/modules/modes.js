@@ -4,7 +4,6 @@
  * works using inheritance to limit amount of code
  */
 
-
 import Timer from "./timer.js";
 import reset from "../krypto.js";
 
@@ -12,7 +11,6 @@ import reset from "../krypto.js";
  * Parent class for game modes
  */
 class GameMode {
-
   /**
    * Constructor of game mode element
    * Includes the users elements from the DOM
@@ -67,7 +65,6 @@ class GameMode {
     }
   }
 
-
   /**
    * If active user solves, this is called to increment
    */
@@ -84,7 +81,6 @@ class GameMode {
     this.show_points();
   }
 
-
   /**
    * This method is needed to actually update the points within the html
    */
@@ -100,14 +96,12 @@ class GameMode {
     this.active_user.popup.classList.toggle("show");
   }
 
-
   /**
    * If the user gives up, or the computer solves, this shows the solution
    */
   show_solution() {
     document.getElementById("solution").style.display = "flex";
   }
-
 
   /**
    * This method makes the cards inaccessible for selecting
@@ -121,7 +115,6 @@ class GameMode {
       cards[i].disabled = true;
     }
   }
-
 
   /**
    * This enables the cards for selection after user calls krypto
@@ -143,30 +136,21 @@ class GameMode {
   clean_up() {}
 }
 
-
-
-
-
-
-
 /**
  * This class represents the practice game board
  * Inherits the GameMode class
  */
 class Practice extends GameMode {
-
   constructor() {
     super();
     this.name = "practice";
   }
-
 
   /**
    * To set up the practice board, hide the timer
    * and set the respective user titles
    */
   set_up_board() {
-
     //set username and points
     this.user1.username.innerHTML = "Total Puzzles";
     this.user2.username.innerHTML = "Puzzles Solved";
@@ -175,7 +159,6 @@ class Practice extends GameMode {
     //hide the timer
     this.timer_container.style.display = "none";
   }
-
 
   /**
    * In practice mode, since we are totalling puzzles solved,
@@ -196,7 +179,6 @@ class Practice extends GameMode {
     this.show_points();
   }
 
-
   /**
    * Practice mode doesn't have a krypto button
    * This just hides the create deck and shows the available actions
@@ -207,7 +189,6 @@ class Practice extends GameMode {
     this.set_active_user("user2");
   }
 
-
   /**
    * After the user gives up, and the solution is shown this method is called
    * For practice mode, we just need to "decrement_points"
@@ -215,11 +196,8 @@ class Practice extends GameMode {
   adjust_points() {
     //this is used after we escaped the solution
     this.decrement_points();
-    }
+  }
 }
-
-
-
 
 /**
  * This class represents the computer game board
@@ -227,9 +205,6 @@ class Practice extends GameMode {
  * Inherits the GameMode class
  */
 class Computer extends GameMode {
-
-
-
   /**
    * The computer constructor
    * It includes a difficulty rating and timers
@@ -253,13 +228,11 @@ class Computer extends GameMode {
     this.difficulty_rating = difficulty_rating;
   }
 
-
   /**
    * For computer mode, set respective titles of user
    * show the timer
    */
   set_up_board() {
-
     //set username and points
     this.user1.username.innerHTML = "Human";
     this.user2.username.innerHTML = "Computer";
@@ -268,7 +241,6 @@ class Computer extends GameMode {
     //show the timer
     this.timer_container.style.display = "flex";
   }
-
 
   /**
    * Set a single krypto button for the user to call
@@ -284,16 +256,15 @@ class Computer extends GameMode {
     this.disable_cards();
   }
 
-
   /**
    * When krypto is called, set the active user
    * if the person called krypto:
    * enable the cards for selection
    * start the html timer to show the user how much time they have
    * start a second timer accessible within this class that determines when the html timer finishes
-   * 
+   *
    * Finally, show the popup calling krypto
-   * @param {} user 
+   * @param {} user
    */
   krypto_called(user) {
     document.getElementById("computer_krypto").style.display = "none";
@@ -309,15 +280,13 @@ class Computer extends GameMode {
     }
   }
 
-
   /**
    * In computer mode, when we increment points, must clear the timers
-   * 
+   *
    */
   increment_points() {
     this.increment_points_parent();
   }
-
 
   /**
    * Call parent function
@@ -326,10 +295,9 @@ class Computer extends GameMode {
     this.decrement_points_parent();
   }
 
-
   /**
    * Used to determine if the person's timer has ran out
-   * @param {} time 
+   * @param {} time
    */
   start_person_timer(time) {
     //First two lines start the HTML timer
@@ -342,7 +310,6 @@ class Computer extends GameMode {
     }, time * 1000);
   }
 
-
   /**
    * end the person timer
    */
@@ -350,7 +317,6 @@ class Computer extends GameMode {
     clearInterval(this.person_timer);
     this.timer.clearTimer();
   }
-
 
   /**
    * if the comptuer calls krypto, show the solution
@@ -363,7 +329,6 @@ class Computer extends GameMode {
       this.show_solution();
     }, 1000);
   }
-
 
   /**
    * Start the computer timer once the cards are dealt
@@ -378,14 +343,12 @@ class Computer extends GameMode {
     }, this.difficulty_rating * 2 * 1000);
   }
 
-
   /**
    * Clears the computer timer
    */
   end_computer_timer() {
     clearInterval(this.computer_timer);
   }
-
 
   /**
    * clean up the timers
@@ -398,7 +361,6 @@ class Computer extends GameMode {
       this.end_person_timer();
     }
   }
-
 
   /**
    * if the solution is shown,
@@ -417,24 +379,18 @@ class Computer extends GameMode {
   }
 }
 
-
-
-
-
-
 /**
  * This class represents the verus game board
  * For when two users play eachother on same computer
  * Inherits the GameMode class
  */
 class Versus extends GameMode {
-
-   /**
+  /**
    * The versus constructor
    * It includes an html timer
    * it also binds the key handlers
    * includes instance for whether this is the first person to attempt puzzle
-   */ 
+   */
   constructor() {
     super();
     this.name = "versus";
@@ -444,13 +400,11 @@ class Versus extends GameMode {
     this.first_attempt = true;
   }
 
-
   /**
    * In versus mode, display the timer
    * set respective player titles
    */
   set_up_board() {
-
     //set username and points
     this.user1.username.innerHTML = "Player 1";
     this.user2.username.innerHTML = "Player 2";
@@ -459,7 +413,6 @@ class Versus extends GameMode {
     //show the timer
     this.timer_container.style.display = "flex";
   }
-
 
   /**
    * Set the two krypto buttons
@@ -474,27 +427,25 @@ class Versus extends GameMode {
     this.disable_cards();
   }
 
-
   /**
    * this sets up the keys A and L for calling krypto
    * We needed to bind this to the constructor, since in the call back function
    * this is lost unless we bind it
-   * @param {} e 
+   * @param {} e
    */
   key_handler(e) {
     if (e.code === "KeyA") {
-        this.krypto_called("user1");
+      this.krypto_called("user1");
     } else if (e.code === "KeyL") {
-        this.krypto_called("user2");
+      this.krypto_called("user2");
     }
   }
-
 
   /**
    * Sets the active user to the person who calls krypto
    * Begins HTML timer
    * It also displays the popup and enables the cards for selection
-   * @param {} user 
+   * @param {} user
    */
   krypto_called(user) {
     document.getElementById("versus_krypto").style.display = "none";
@@ -507,7 +458,6 @@ class Versus extends GameMode {
     this.start_person_timer(20);
   }
 
-
   /**
    * If the active user solves the problem correclty, increment their points
    * clean up the timers
@@ -517,7 +467,6 @@ class Versus extends GameMode {
     this.clean_up();
   }
 
-
   /**
    * If the person fails the puzzle, decrement their points
    */
@@ -525,11 +474,10 @@ class Versus extends GameMode {
     this.decrement_points_parent();
   }
 
-
   /**
    * Start the timer, both HTML and within this class
    * once person calls krypto
-   * @param {} time 
+   * @param {} time
    */
   start_person_timer(time) {
     this.timer = new Timer(time);
@@ -540,27 +488,25 @@ class Versus extends GameMode {
     }, time * 1000);
   }
 
-
   /**
    * This method handles situation where person fails puzzle
    * if they were first to attempt solving, it gives the other person a chance
    * otherwise, it shows the puzzle solution
    */
-  person_lost(){
+  person_lost() {
     this.clean_up();
-    if(this.first_attempt){
-        this.decrement_points();
-        this.popup();
-        reset();
-        this.krypto_called(this.inactive_user.name)
-        this.first_attempt = false;
-    } else{
-        this.first_attempt = true;
-        this.popup();
-        this.show_solution();
+    if (this.first_attempt) {
+      this.decrement_points();
+      this.popup();
+      reset();
+      this.krypto_called(this.inactive_user.name);
+      this.first_attempt = false;
+    } else {
+      this.first_attempt = true;
+      this.popup();
+      this.show_solution();
     }
   }
-
 
   /**
    * End the person timer
@@ -568,7 +514,6 @@ class Versus extends GameMode {
   end_person_timer() {
     clearInterval(this.person_timer);
   }
-
 
   /**
    * make sure all the timers are turned off
@@ -580,7 +525,6 @@ class Versus extends GameMode {
     }
   }
 
-
   /**
    * If the solution was shown, just be sure we show the points that have been adjusted
    */
@@ -590,7 +534,6 @@ class Versus extends GameMode {
     this.show_points();
   }
 }
-
 
 /**
  * Export is required within a module to make classes avialable to other modules

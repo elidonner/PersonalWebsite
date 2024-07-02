@@ -2,9 +2,9 @@
 
 <!-- Game Board -->
 <section id="gameboard" class="one-pager column" style="display:none">
-  
+
     <div class="row" style="height:25%;">
-  
+
       <div class = "box" >
         <div id = "scoreboard">
           <div id="user1" class="user left popup">
@@ -19,15 +19,15 @@
           </div>
         </div>
       </div>
-  
-  
+
+
       <div id="target-cell">
         <div id="target" class="card">
           Target
         </div>
       </div>
-  
-  
+
+
       <div class = "box" style="justify-content: center;">
         <div id = "timer" style="display:none">
           <div class="base-timer">
@@ -52,10 +52,10 @@
           </div>
         </div>
       </div>
-  
-  
+
+
     </div>
-  
+
     <div id = cardsContainer class="row" style="height:35%; padding:0px 50px">
       <div class = cardContainer>
         <div class="card"></div>
@@ -73,22 +73,22 @@
         <div class="card"></div>
       </div>
     </div>
-  
+
     <div class="row" style="height:20%; padding:20px 0px">
       <div id="plus" class="button operation">+</div>
       <div id="minus" class="button operation">-</div>
       <div id="multiply" class="button operation">×</div>
       <div id="divide" class="button operation">÷</div>
     </div>
-  
+
     <div class="row" style="height:20%; padding:20px 50px">
-  
+
       <button id = "deal_cards" class="button">Deal Cards</button>
-  
+
       <div id="computer_krypto" class="krypto_container">
         <button id = krypto_btn class="button krypto">KRYPTO</button>
       </div>
-  
+
       <div id="versus_krypto" class="krypto_container">
         <div class="action_container">
           <div id="user1_btn" class = "column krypto_key">
@@ -103,19 +103,19 @@
           </div>
         </div>
       </div>
-  
+
       <div id = actions style = "display: none;">
         <div class="action_container">
-          <button id="undo" class="button">undo</button>
+          <button id="undo" class="button action">undo</button>
         </div>
         <div class="action_container">
-          <button id="reset" class="button">reset</button>
+          <button id="reset" class="button action">reset</button>
         </div>
         <div id="give_up" class="action_container" style = "display:none">
-          <button class="button" >give up</button>
+          <button class="button action" >give up</button>
         </div>
       </div>
-      
+
     </div>
 
     {% endblock %}

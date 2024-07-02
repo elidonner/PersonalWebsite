@@ -1,3 +1,12 @@
+html,
+body,
+section,
+header,
+div {
+  font-family: "Noto Sans", sans-serif;
+}
+
+
 body {
   overflow: hidden;
 }
@@ -162,6 +171,34 @@ body {
   font-size: 2rem;
 }
 
+.button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--purple);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+  background-color: var(--light-purple);
+}
+
+.button:active {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button.krypto{
+  background-color: var(--red);
+}
+
 
 /*Create the target cell*/
 #target-cell {
@@ -177,20 +214,23 @@ body {
   align-items: center;
 }
 
-.actions {
+#deal_cards {
+  font-size: 3rem;
+}
+
+#actions {
   height: 100%;
   width: 100%;
-  border: 1px solid var(--gray);
   display: none;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  border-radius: 0.5rem;
-  background-color: var(--dark_blue);
 }
 
 .action_container{
   padding:10px;
+  width: 100%;
+}
+
+.action{
+  font-size: 3rem;
 }
 
 /*types of cards*/
@@ -223,6 +263,8 @@ body {
 
 .krypto_container{
   display: none;
+  width:100%;
+  font-size: 3rem;
 }
 
 .krypto_key{
@@ -267,11 +309,13 @@ body {
 }
 
 .mode_type{
+  padding: 10px;
   font-size: calc(48px - 48px * var(--text-adjust));
   font-weight: bold;
 }
 
 .mode_description{
+  padding: 10px;
   font-size: calc(24px - 24px * var(--text-adjust));
 }
 
@@ -288,6 +332,13 @@ body {
   background-color: var(--yellow);
 }
 
+#solution {
+  margin-top: var(--header-height);
+  max-height: calc(100vh - var(--header-height));
+  padding:50px 0px;
+  justify-content: center;
+}
+
 .solutionCard{
   height: 125px;
   width: 90px;
@@ -302,7 +353,7 @@ body {
 }
 
 .solutionTitle{
-  color: #f1f1f1; 
+  color: #f1f1f1;
   font-size: 3rem;
   justify-content: center;
   text-align: center;
@@ -311,7 +362,7 @@ body {
 
 .operation{
   margin: 0px 60px;
-  background-color:var(--blue)
+  font-size:5em;
 }
 
 .solutionOperation{
@@ -323,7 +374,6 @@ body {
   align-items: center;
   font-size: 3rem;
   border-radius: 0.5rem;
-  background-color: var(--blue);
 }
 
 .instructions {
@@ -346,34 +396,6 @@ body {
   display: flex;
   height: 100%;
   width: auto;
-}
-
-.button {
-  height: 100%;
-  width: 100%;
-  border: 1px solid var(--gray);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  background-color: var(--purple);
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  cursor: pointer;
-  background-color: var(--light-purple);
-}
-
-.button:active {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-.button.krypto{
-  background-color: var(--red);
 }
 
 .disabled{
@@ -417,14 +439,14 @@ body {
 
 .base-timer__label {
   position: absolute;
-  
+
   /* Size should match the parent container */
   width: 200px;
   height: 200px;
-  
+
   /* Keep the label aligned to the top */
   top: 0;
-  
+
   /* Create a flexible box that centers content vertically and horizontally */
   display: flex;
   align-items: center;
@@ -518,7 +540,7 @@ body {
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
+  from {opacity: 0;}
   to {opacity: 1;}
 }
 
