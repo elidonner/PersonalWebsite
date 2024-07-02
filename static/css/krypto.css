@@ -24,6 +24,8 @@ body {
 
 #menu{
   justify-content: space-between;
+  width: 100%;
+  padding:10%;
 }
 
 .welcome_msg{
@@ -180,13 +182,12 @@ body {
   align-items: center;
   border-radius: 0.5rem;
   background-color: var(--purple);
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 .button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
-  background-color: var(--light-purple);
 }
 
 .button:active {
