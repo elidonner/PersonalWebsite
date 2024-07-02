@@ -24,8 +24,13 @@ body {
 
 #menu{
   justify-content: space-between;
-  width: 100%;
-  padding:10%;
+  width: 90%;
+  padding: 5%;
+}
+
+#gameboard{
+  width: 90%;
+  padding: 5%;
 }
 
 .welcome_msg{
@@ -129,6 +134,7 @@ body {
   justify-content: center;
   align-content: center;
   align-items: center;
+  height:100%;
 }
 
 .box{
@@ -164,13 +170,16 @@ body {
   font-size: 2rem;
   padding: 10px;
   justify-content:center;
+  align-items: center;
   border-bottom: 1px solid var(--gray);
+  height:70%;
 }
 
 .points{
   justify-content:center;
   align-items: center;
   font-size: 2rem;
+  height:30%;
 }
 
 .button {
@@ -322,8 +331,9 @@ body {
 
 
 .card{
-  height: 200px;
-  width: 150px;
+  --height: calc(100vh/5);
+  height: var(--height);
+  width: calc( var(--height) * 0.75 );
   border: 1px solid var(--gray);
   display: flex;
   justify-content: center;
