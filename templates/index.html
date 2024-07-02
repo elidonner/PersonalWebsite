@@ -48,21 +48,21 @@
     </a>
   </div>
 
-  {% endmacro %} 
+  {% endmacro %}
   {{ project(
     'Dove',
     '/static/images/Dove/Arm-Sensor.jpg',
     'Arm-Sensor',
     'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
-    ['PCB-Design','C++','Rapid-Prototyping']) 
-  }} 
+    ['PCB-Design','C++','Rapid-Prototyping'])
+  }}
   {{ project(
     'Ollie',
     '/static/images/Ollie/Ollie.jpg',
     'ollie',
     'An animatronic puppet for the Fabric Museum and Workshop, featuring person-detection and much more.',
     ['Microcontrollers','Machine Learning','Mechanical-Design']
-    ) 
+    )
   }}
   {{ project(
     'DEKA',
@@ -78,10 +78,10 @@
 
 <section id="other-projects" class="column float-center">
   <h1 class="xxx-large section-title">Other Projects</h1>
-  
-  {% macro otherproject(title, img, img_title, description) %}
+
+  {% macro otherproject(handle, title, img, img_title, description) %}
   <div class="other-project-container" id="{{title}}">
-    <a href="{{ url_for(title) }}" class="column project zoomin round-xxlarge">
+    <a href="{{ url_for(handle) }}" class="column project zoomin round-xxlarge">
       <div class="overflow-container other-project-img-container round-xxlarge-top">
         <div class="other-project-img">
           <img src="{{ img }}" alt="{{ img_title }}" />
@@ -96,16 +96,17 @@
   {% endmacro %}
 
   <div class="other-project-container-row">
-    {{ otherproject('Krypto', '/static/images/Krypto/krypto.png', 'krypto_cards', 'Math... but fun :)') }} 
-    {{ otherproject('Circuits', '/static/images/Circuits/pulse_ox.jpg', 'pulse_ox', 'Continuous learning') }} 
+    {{ otherproject('Krypto', 'Krypto', '/static/images/Krypto/krypto.png', 'krypto_cards', 'Math... but fun :)') }}
+    {{ otherproject('Circuits', 'Circuits', '/static/images/Circuits/pulse_ox.jpg', 'pulse_ox', 'Continuous learning') }}
+    {{ otherproject('Toyota', 'Toyota Hacking', '/static/images/Toyota/toyota_can.jpg', 'toyota_can', 'Corolla forever <3') }}
   </div>
   <!-- If you want another row of projects -->
   <!-- <div class="other-project-container-row">
-    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }} 
-    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }} 
+    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
+    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
     {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
   </div>-->
-  
+
 </section>
 <!-- END OTHER PROJECTS -->
 <script src="/static/js/index.js"></script>

@@ -28,11 +28,6 @@
 }
 
 html,
-body {
-  background-color: var(--background-color);
-}
-
-html,
 body,
 section,
 header,
@@ -44,6 +39,20 @@ div {
   background-color: transparent;
   color: var(--default);
 }
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  justify-content: space-between;
+}
+
+html,
+body {
+  background-color: var(--background-color);
+}
+
 
 section,
 header {
@@ -145,7 +154,6 @@ img {
   width: 100%;
 }
 
-.wrapper-center,
 .wrapper-middle {
   justify-content: center;
 }
@@ -905,49 +913,49 @@ img {
 }
 
   /* PAGE LOADER */
-.page-loader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 999;
-  background-color: var(--background-color);
-  backdrop-filter: var(--gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.6s ease;
-}
-.page-loader.fade-out {
-  opacity: 0;
-}
-.page-loader div {
-  border: 2px solid transparent;
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  border-top-color: transparent !important;
-  border-bottom-color: transparent !important;
-  animation: spin 1s linear infinite;
-}
+  .page-loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--background-color);
+    backdrop-filter: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+  }
+  .page-loader.fade-out {
+    opacity: 0;
+  }
+  .page-loader div {
+    border: 2px solid transparent;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spin 1s linear infinite;
+  }
 
-.page-loader div:nth-child(1) {
-  height: 60px;
-  width: 60px;
-  border-color: var(--light-purple);
-}
-.page-loader div:nth-child(2) {
-  height: 45px;
-  width: 45px;
-  border-color: var(--purple);
-  animation-duration: 1.2s;
-}
-.page-loader div:nth-child(3) {
-  height: 30px;
-  width: 30px;
-  border-color: var(--dark-purple);
-}
+  .page-loader div:nth-child(1) {
+    height: 60px;
+    width: 60px;
+    border-color: var(--light-purple);
+  }
+  .page-loader div:nth-child(2) {
+    height: 45px;
+    width: 45px;
+    border-color: var(--purple);
+    animation-duration: 1.2s;
+  }
+  .page-loader div:nth-child(3) {
+    height: 30px;
+    width: 30px;
+    border-color: var(--dark-purple);
+  }
 
 /* RESPONSIVE LAYTOUT */
 @media (max-width: 1750px) {
@@ -961,8 +969,8 @@ img {
 @media (max-width: 1200px) {
   section,
   header {
-    width: 90%;
-    max-width: 90%;
+    width: 100%;
+    max-width: 100%;
   }
 }
 

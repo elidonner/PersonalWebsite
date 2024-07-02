@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en;">
   <head>
     <title>Ethan Donlon</title>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body class="column wrapper-center" style="width: 100%">
+  <body class="column wrapper-center">
     <!-- PAGE LOADER START -->
       <div class="page-loader">
         <div></div>
@@ -76,7 +76,7 @@
 
 
     <!-- HERE COMES REST OF CONTENT -->
-    {% block content %} 
+    {% block content %}
     {% endblock %}
 
     <!-- MACRO TO BE USED FOR CREATING SLIDES ON PROJECT PAGES -->
@@ -87,7 +87,7 @@
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <div class="slideshow-container round-xxlarge column">
           {% for img in imgs %}
-          
+
           <div class="img-slides row">
               {% if img|length > 2 %}
               <div class="img-container embedded-video" onclick="lightbox_open({{img[2]}})">
@@ -110,11 +110,11 @@
                     <div class="popup-img-container">
                       <img src="{{img[0]}}" />
                       <div class="close-btn" onclick="closeImage()">&times;</div>
-                    </div>            
+                    </div>
                   </div>
               </div>
               {% endif %}
-              <h3 class="text xlarge">{{img[1]}}</h3> 
+              <h3 class="text xlarge">{{img[1]}}</h3>
           </div>
           {% endfor %}
         </div>
@@ -126,7 +126,7 @@
         {% endfor %}
       </div>
     </div>
-  
+
     {% endmacro %}
 
     <!-- Contact form -->
