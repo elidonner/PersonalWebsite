@@ -36,10 +36,11 @@ var first_card; //ugly variable to remember the first card that was selected so 
  * When I open the webpage, attach the web handlers
  */
 window.onload = function () {
-  attachEventListeners();
   //set game mode
   get_game_mode();
   set_game_mode();
+  attachEventListeners();
+
   //show the difficulty menu
   get_difficulty();
 };
@@ -106,10 +107,15 @@ function attachGameListeners() {
   //deal the cards
   document.getElementById("deal_cards").addEventListener("click", do_ajax);
   //KRYPTO!
-  //when the button is clickable, this is for case of human vs. computer, so call with "user1"
-  document.getElementById("krypto_btn").addEventListener("click", function () {
-    krypto_called("user1");
-  });
+
+  if (mode.name == "computer") {
+    //when the button is clickable, this is for case of human vs. computer, so call with "user1"
+    document
+      .getElementById("krypto_btn")
+      .addEventListener("click", function () {
+        krypto_called("user1");
+      });
+  }
   //operations
   for (let i = 0; i < operations.length; i++) {
     operations[i].addEventListener("click", function () {
