@@ -1,5 +1,7 @@
-from . import Solver
-from . import Hand
+from dataclasses import asdict
+
+from . import Deck
+
 
 def run(difficulty):
     '''
@@ -10,14 +12,13 @@ def run(difficulty):
     solution
     difficulty_rating
     '''
-    hand = Hand(difficulty)
-    solver = Solver(hand.cards, hand.target)
+    deck = Deck(difficulty)
 
     info = {
-        "hand": hand.cards, 
-        "target": hand.target,
-        "solution": solver.solution,
-        "difficulty_rating": hand.difficulty_rating
+        "hand": deck.hand,
+        "target": deck.target,
+        "solution": deck.solution.to_tuple(),
+        "difficulty_rating": deck.difficulty_rating
         }
-    
+
     return info

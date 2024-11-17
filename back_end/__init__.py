@@ -1,5 +1,3 @@
-#initialize this folder as python directiory
-from .Deck import Deck
-from .Solver import Solver
-from .Hand import Hand
+from .deck import Deck
 from .Run import run
+from .Solver import *

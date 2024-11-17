@@ -361,10 +361,9 @@ function create_cards(hand) {
     while (cardContainers[i].firstElementChild) {
       cardContainers[i].removeChild(cardContainers[i].firstElementChild);
     }
-    //have to do hand i+1 because it is in dict, with card numbers as key values
     //only create the card if there is supposed to be one:
-    if (hand[i + 1] != null) {
-      create_card(hand[i + 1], i);
+    if (hand[i] != null) {
+      create_card(hand[i], i);
     }
   }
 
@@ -540,12 +539,12 @@ function invalid_operation(first_card, second_card) {
  * @returns the hand at any step
  */
 function get_hand() {
-  var hand = {};
+  var hand = [];
   for (let i = 0; i < cardContainers.length; i++) {
     if (cardContainers[i].firstElementChild) {
-      hand[i + 1] = cardContainers[i].firstElementChild.value;
+      hand.push(cardContainers[i].firstElementChild.value);
     } else {
-      hand[i + 1] = null;
+      hand.push(null);
     }
   }
   return hand;
@@ -576,7 +575,7 @@ function clear_selected(id) {
  * Then creates these cards
  */
 function undo() {
-  //make sure there is at least one step, if not, do nothing
+  //make sure there is more than one step, if not, do nothing
   if (steps.length > 1) {
     //go back to previous step and pop
     create_cards(steps[steps.length - 2]);
