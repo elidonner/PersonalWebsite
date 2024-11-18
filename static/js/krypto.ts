@@ -624,7 +624,7 @@ function is_game_over() {
  * @returns true if player has won
  */
 function check_win() {
-  return parseInt(cards[0].value!) == target;
+  return parseInt(cards[0].value) == target;
 }
 
 /**
