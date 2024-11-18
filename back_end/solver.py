@@ -14,14 +14,14 @@ operations = {
 
 @dataclass
 class Solution:
-    hand: list[int]
+    organized_cards: list[int]
     operations: list[str]
     max_interim_number: int
 
     def to_tuple(self):
-        return (self.hand, self.operations)
+        return (self.organized_cards, self.operations)
 
-def get_solution(hand: list[int], target: int) -> list[int] | None:
+def get_solution(hand: list[int], target: int) -> Solution | None:
     '''
     This function returns the simplest solution
     if there is one
@@ -71,7 +71,7 @@ def valid_solution(hand: list[int], operations: list[str], target: int, max_requ
         max_value = max(max_value, int(value))
 
     if value == target:
-        return Solution(hand=hand, operations=operations, max_interim_number=max_value)
+        return Solution(organized_cards=hand, operations=operations, max_interim_number=max_value)
 
 
 def get_simplest_solution(solutions: list[Solution]) -> Solution:

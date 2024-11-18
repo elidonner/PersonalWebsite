@@ -1,34 +1,35 @@
 import * as modes from "./modules/modes.js";
+
 /**
  * This script handles all interaction with the webpage
  * it also determines if the player has won based on the moves they've made
  */
 
-//GLOBAL VARIABLES
+// GLOBAL VARIABLES
 
 /**
  * These are elements that I store globally to be used throughout
  * includes the target and the cardContainer from the DOM
  */
-var initial_board;
-var targetContainer;
-var cardsContainer;
-var cardContainers;
-var cards;
-var operations;
-var menu_btns;
+let initial_board: any;
+let targetContainer: HTMLElement;
+let cardsContainer: HTMLElement;
+let cardContainers: HTMLCollectionOf<Element>;
+let cards: HTMLCollectionOf<Element>;
+let operations: HTMLCollectionOf<Element>;
+let menu_btns: HTMLCollectionOf<Element>;
 
 /**
  * I initialize the global variables that store my info from the server
  */
-var mode;
-var difficulty;
-var target;
-var first_hand;
-var solution;
-var difficulty_rating;
-let steps = [];
-var first_card; //ugly variable to remember the first card that was selected so operation is done correctly
+let mode: any;
+let difficulty: string;
+let target: number;
+let first_hand: number[];
+let solution: [number[], string[]];
+let difficulty_rating: number;
+let steps: number[][] = [];
+let first_card: HTMLElement | null = null; // variable to remember the first card that was selected so operation is done correctly
 
 //EVENT HANDLERS
 
@@ -57,10 +58,10 @@ function attachEventListeners() {
    * Header buttons
    */
   document
-    .getElementById("instructions")
+    .getElementById("instructions")!
     .addEventListener("click", show_instructions);
   document
-    .getElementById("closebtn")
+    .getElementById("closebtn")!
     .addEventListener("click", close_instructions);
 
   /**
@@ -69,17 +70,17 @@ function attachEventListeners() {
 
   // game mode
   //difficulty buttons
-  document.getElementById("easy").addEventListener("click", function () {
+  document.getElementById("easy")!.addEventListener("click", function () {
     set_difficulty("easy");
   });
-  document.getElementById("medium").addEventListener("click", function () {
+  document.getElementById("medium")!.addEventListener("click", function () {
     set_difficulty("medium");
   });
-  document.getElementById("hard").addEventListener("click", function () {
+  document.getElementById("hard")!.addEventListener("click", function () {
     set_difficulty("hard");
   });
   document
-    .getElementById("difficulty_menu")
+    .getElementById("difficulty_menu")!
     .addEventListener("click", escape_set_difficulty);
   var rest_of_screen = document.getElementsByClassName("difficulty");
   for (let i = 1; i < rest_of_screen.length; i++) {
@@ -87,7 +88,7 @@ function attachEventListeners() {
   }
 
   document
-    .getElementById("solution")
+    .getElementById("solution")!
     .addEventListener("click", escape_solution);
 
   attachGameListeners();
@@ -95,23 +96,23 @@ function attachEventListeners() {
 
 function attachGameListeners() {
   //set the dom elements
-  targetContainer = document.getElementById("target");
-  cardsContainer = document.getElementById("cardsContainer");
-  cardContainers = cardsContainer.getElementsByClassName("cardContainer");
-  cards = cardsContainer.getElementsByClassName("card");
-  operations = document.getElementsByClassName("operation");
+  targetContainer = document.getElementById("target")!;
+  cardsContainer = document.getElementById("cardsContainer")!;
+  cardContainers = cardsContainer.getElementsByClassName("cardContainer")!;
+  cards = cardsContainer.getElementsByClassName("card")!;
+  operations = document.getElementsByClassName("operation")!;
   /**
    * Game buttons
    */
 
   //deal the cards
-  document.getElementById("deal_cards").addEventListener("click", do_ajax);
+  document.getElementById("deal_cards")!.addEventListener("click", do_ajax);
   //KRYPTO!
   //hack to make computer element not conflict
   if (mode.name == "computer") {
     //when the button is clickable, this is for case of human vs. computer, so call with "user1"
     document
-      .getElementById("krypto_btn")
+      .getElementById("krypto_btn")!
       .addEventListener("click", function () {
         krypto_called("user1");
       });
@@ -123,9 +124,9 @@ function attachGameListeners() {
     });
   }
   //actions
-  document.getElementById("undo").addEventListener("click", undo);
-  document.getElementById("reset").addEventListener("click", reset);
-  document.getElementById("give_up").addEventListener("click", give_up);
+  document.getElementById("undo")!.addEventListener("click", undo);
+  document.getElementById("reset")!.addEventListener("click", reset);
+  document.getElementById("give_up")!.addEventListener("click", give_up);
 }
 
 //FUNCTIONS
@@ -156,7 +157,7 @@ function set_game_mode() {
  * Show difficulty menu and wait for user to respond
  */
 function get_difficulty() {
-  document.getElementById("difficulty_menu").style.display = "flex";
+  document.getElementById("difficulty_menu")!.style.display = "flex";
 }
 
 /**
@@ -164,7 +165,7 @@ function get_difficulty() {
  * Start the game from this function once difficulty selected!
  */
 function set_difficulty(selection) {
-  document.getElementById("difficulty_menu").style.display = "none";
+  document.getElementById("difficulty_menu")!.style.display = "none";
   difficulty = selection;
 
   start_game(difficulty);
@@ -223,8 +224,8 @@ function do_ajax() {
 function menu_btn() {
   restore_board();
   mode.clean_up();
-  document.getElementById("gameboard").style.display = "none";
-  document.getElementById("menu").style.display = "flex";
+  document.getElementById("gameboard")!.style.display = "none";
+  document.getElementById("menu")!.style.display = "flex";
   switch_menu_btn();
 }
 
@@ -232,14 +233,14 @@ function menu_btn() {
  * If the instructions button is pressed, show the instructions
  */
 function show_instructions() {
-  document.getElementById("instructions_menu").style.height = "100%";
+  document.getElementById("instructions_menu")!.style.height = "100%";
 }
 
 /**
  * Close instructions when close button pressed
  */
 function close_instructions() {
-  document.getElementById("instructions_menu").style.height = "0%";
+  document.getElementById("instructions_menu")!.style.height = "0%";
 }
 
 /**
@@ -247,7 +248,7 @@ function close_instructions() {
  */
 function escape_set_difficulty() {
   //set the difficulty
-  document.getElementById("difficulty_menu").style.display = "none";
+  document.getElementById("difficulty_menu")!.style.display = "none";
 }
 
 /**
@@ -256,7 +257,7 @@ function escape_set_difficulty() {
  */
 function escape_solution() {
   //set the difficulty
-  document.getElementById("solution").style.display = "none";
+  document.getElementById("solution")!.style.display = "none";
 
   restore_board();
 
@@ -267,7 +268,7 @@ function escape_solution() {
  * Save the board so it can be restored to this state
  */
 function save_board() {
-  initial_board = document.getElementById("gameboard").cloneNode(true);
+  initial_board = document.getElementById("gameboard")!.cloneNode(true);
 }
 
 /*
@@ -275,8 +276,8 @@ function save_board() {
  */
 function restore_board() {
   //first delete the board
-  var board = document.getElementById("gameboard");
-  var body = document.getElementById("body");
+  var board = document.getElementById("gameboard")!;
+  var body = document.getElementById("body")!;
 
   body.removeChild(board);
   body.appendChild(initial_board);
@@ -294,7 +295,7 @@ function restore_board() {
  */
 function deal_cards() {
   //set the innerHtml of the cards
-  targetContainer.innerHTML = target;
+  targetContainer.innerHTML = target.toString();
 
   //now we need to create all the new cards
   create_cards(first_hand);
@@ -304,7 +305,7 @@ function deal_cards() {
   steps[0] = first_hand;
 
   //switch the action button to call krypto
-  document.getElementById("deal_cards").style.display = "none";
+  document.getElementById("deal_cards")!.style.display = "none";
   mode.set_krypto_button();
 }
 
@@ -336,14 +337,14 @@ function create_solution() {
     if (i > 0) {
       ans = map_ops(ans, solution[0][i], solution[1][i - 1]);
     }
-    solutionCards[0].innerHTML = ans;
+    solutionCards[0].innerHTML = ans.toString();
 
     for (let q = 1; q < solutionCards.length; q++) {
-      solutionCards[q].innerHTML = solution[0][i + q];
+      solutionCards[q].innerHTML = solution[0][i + q].toString();
     }
 
     if (solutionOperation) {
-      solutionOperation.innerHTML = solution[1][i];
+      solutionOperation.innerHTML = solution[1][i].toString();
     }
   }
 }
@@ -358,8 +359,8 @@ function create_cards(hand) {
   //first we should delete any old elements in the card container div
 
   for (let i = 0; i < Object.keys(hand).length; i++) {
-    while (cardContainers[i].firstElementChild) {
-      cardContainers[i].removeChild(cardContainers[i].firstElementChild);
+    while (cardContainers[i].firstElementChild!) {
+      cardContainers[i].removeChild(cardContainers[i].firstElementChild!);
     }
     //only create the card if there is supposed to be one:
     if (hand[i] != null) {
@@ -539,10 +540,11 @@ function invalid_operation(first_card, second_card) {
  * @returns the hand at any step
  */
 function get_hand() {
-  var hand = [];
+  var hand: (number | null)[] = [];
   for (let i = 0; i < cardContainers.length; i++) {
-    if (cardContainers[i].firstElementChild) {
-      hand.push(cardContainers[i].firstElementChild.value);
+    const firstElementChild = cardContainers[i].firstElementChild;
+    if (firstElementChild && firstElementChild instanceof HTMLButtonElement) {
+      hand.push(parseInt(firstElementChild.value));
     } else {
       hand.push(null);
     }
@@ -622,7 +624,7 @@ function is_game_over() {
  * @returns true if player has won
  */
 function check_win() {
-  return parseInt(cards[0].value) == target;
+  return parseInt(cards[0].value!) == target;
 }
 
 /**
@@ -674,18 +676,24 @@ function wrong_answer(card) {
 
 /**
  * Given two numbers and an operation, as a string,
- * return the value of the operations
+ * return the value of the operation
  */
 function map_ops(num1, num2, op) {
-  var output;
-  if (op == "+") {
-    output = num1 + num2;
-  } else if (op == "-") {
-    output = num1 - num2;
-  } else if (op == "*" || op == "×") {
-    output = num1 * num2;
-  } else if (op == "÷" || op == "/") {
-    output = num1 / num2;
+  switch (op) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "*":
+    case "×":
+      return num1 * num2;
+    case "÷":
+    case "/":
+      if (num2 === 0) {
+        throw new Error("Division by zero");
+      }
+      return num1 / num2;
+    default:
+      throw new Error("Invalid operation");
   }
-  return output;
 }
