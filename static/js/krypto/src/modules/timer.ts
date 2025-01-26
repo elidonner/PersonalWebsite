@@ -16,6 +16,7 @@ export default class Timer {
   private WARNING_THRESHOLD: number;
   private ALERT_THRESHOLD: number;
   private COLOR_CODES: { [key: string]: { color: string; threshold?: number } };
+  private remainingPathColor: string;
 
   constructor(time: number) {
     this.TIME_LIMIT = time;
