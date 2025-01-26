@@ -1,4 +1,4 @@
-import { GameMode, Practice, Computer, Versus } from "./modules/modes.js";
+import { GameMode, Practice, Computer, Versus } from "./modes.js";
 import {
   EMPTY_HAND,
   GameModeDescription,

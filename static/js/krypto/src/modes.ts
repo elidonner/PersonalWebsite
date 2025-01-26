@@ -5,7 +5,7 @@
  */
 
 import Timer from "./timer.js";
-import { reset, show_solution } from "../krypto.js";
+import { reset, show_solution } from "./krypto.js";
 
 /**
  * Interface for user elements
