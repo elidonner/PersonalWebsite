@@ -48,15 +48,15 @@ def Krypto():
 
 @app.route('/krypto/practice')
 def Krypto_practice():
-    return render_template('projects/krypto/test.html')
+    return render_template('projects/krypto/game.html')
 
 @app.route('/krypto/computer')
 def Krypto_computer():
-    return render_template('projects/krypto/test.html')
+    return render_template('projects/krypto/game.html')
 
 @app.route('/krypto/versus')
 def Krypto_friend():
-    return render_template('projects/krypto/test.html')
+    return render_template('projects/krypto/game.html')
 
 @app.route('/dove')
 def Dove():

@@ -5,7 +5,13 @@
  */
 
 import Timer from "./timer.js";
-import { reset, show_solution } from "./krypto.js";
+import {
+  reset,
+  show_solution,
+  show_operations,
+  enable_cards,
+  set_up_board,
+} from "./krypto.js";
 
 /**
  * Interface for user elements
@@ -110,31 +116,12 @@ class GameMode {
     }
   }
 
-  disable_cards() {
-    const cards = document
-      .getElementById("cardsContainer")
-      ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
-    for (let i = 0; i < cards.length; i++) {
-      cards[i].disabled = true;
-    }
-  }
-
-  enable_cards() {
-    const cards = document
-      .getElementById("cardsContainer")
-      ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
-    for (let i = 0; i < cards.length; i++) {
-      cards[i].disabled = false;
-      cards[i].classList.add("button");
-    }
-  }
-
   throw_unimplemented_error(function_name: string) {
     throw new Error("child class must implement " + function_name + " method");
   }
 
   set_up_board() {
-    document.getElementById("gameboard")!.style.display = "flex";
+    this.throw_unimplemented_error("set_up_board()");
   }
 
   show_krypto_button() {
@@ -161,7 +148,7 @@ class Practice extends GameMode {
   }
 
   set_up_board() {
-    super.set_up_board();
+    set_up_board();
 
     this.user1.username!.innerHTML = "Total Puzzles";
     this.user2.username!.innerHTML = "Puzzles Solved";
@@ -185,7 +172,8 @@ class Practice extends GameMode {
     document.getElementById("actions")!.style.display = "flex";
     document.getElementById("give_up")!.style.display = "flex";
     this.set_active_user("user2");
-    this.enable_cards();
+    enable_cards();
+    show_operations();
   }
 
   adjust_shown_points() {
@@ -200,7 +188,6 @@ class Practice extends GameMode {
 }
 
 class Computer extends GameMode {
-  difficulty_rating: number | null;
   person_timer: number | null;
   computer_timer: number | null;
   timer: Timer | null;
@@ -208,18 +195,13 @@ class Computer extends GameMode {
   constructor() {
     super();
     this.name = "computer";
-    this.difficulty_rating = null;
     this.person_timer = null;
     this.computer_timer = null;
     this.timer = null;
   }
 
-  set_difficulty_rating(difficulty_rating: number) {
-    this.difficulty_rating = difficulty_rating;
-  }
-
   set_up_board() {
-    super.set_up_board();
+    set_up_board();
 
     this.user1.username!.innerHTML = "Human";
     this.user2.username!.innerHTML = "Computer";
@@ -230,8 +212,9 @@ class Computer extends GameMode {
 
   show_krypto_button() {
     document.getElementById("computer_krypto")!.style.display = "flex";
-    this.start_computer_timer();
-    this.disable_cards();
+    document.getElementById("krypto_btn")!.addEventListener("click", () => {
+      this.krypto_called("user1");
+    });
   }
 
   krypto_called(user: string) {
@@ -240,7 +223,8 @@ class Computer extends GameMode {
     this.set_active_user(user);
     this.popup();
     if (user == "user1") {
-      this.enable_cards();
+      enable_cards();
+      show_operations();
       this.end_computer_timer();
       this.start_person_timer(20);
     } else {
@@ -276,11 +260,14 @@ class Computer extends GameMode {
     }, 1000);
   }
 
-  start_computer_timer() {
+  start_computer_timer(difficulty: number) {
+    // difficulty score is documented in python backend
+    // difficulty is converted to a time the computer should "wait" to call krypto
+    // this was just empirically determined
     this.computer_timer = window.setTimeout(() => {
       console.log("Computer called krypto");
       this.krypto_called("user2");
-    }, this.difficulty_rating! * 2 * 1000);
+    }, difficulty * 2 * 1000);
   }
 
   end_computer_timer() {
@@ -318,7 +305,7 @@ class Versus extends GameMode {
   }
 
   set_up_board() {
-    super.set_up_board();
+    set_up_board();
 
     this.user1.username!.innerHTML = "Player 1";
     this.user2.username!.innerHTML = "Player 2";
@@ -330,7 +317,6 @@ class Versus extends GameMode {
   show_krypto_button() {
     document.getElementById("versus_krypto")!.style.display = "flex";
     document.addEventListener("keyup", this.key_handler);
-    this.disable_cards();
   }
 
   key_handler(e: KeyboardEvent) {
@@ -345,7 +331,8 @@ class Versus extends GameMode {
     document.getElementById("versus_krypto")!.style.display = "none";
     document.getElementById("actions")!.style.display = "flex";
     document.removeEventListener("keyup", this.key_handler);
-    this.enable_cards();
+    enable_cards();
+    show_operations();
     this.set_active_user(user);
     this.popup();
     this.start_person_timer(20);

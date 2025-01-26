@@ -120,17 +120,6 @@ function initialize_global_variables() {
 
   document.getElementById("deal_cards")!.addEventListener("click", do_ajax);
 
-  // KRYPTO! button
-  // hack to make computer element not conflict
-  if (mode instanceof Computer) {
-    // when the button is clickable, this is for case of human vs. computer, so call with "user1"
-    document
-      .getElementById("krypto_btn")!
-      .addEventListener("click", function () {
-        krypto_called("user1");
-      });
-  }
-
   // operations
   for (let i = 0; i < operation_buttons.length; i++) {
     operation_buttons[i].addEventListener("click", function () {
@@ -215,11 +204,7 @@ function do_ajax() {
     if (this.readyState == 4 && this.status == 200) {
       // the python and round_info are made to match via types.py/ts files
       round_info = JSON.parse(this.responseText) as RoundInfo;
-      if (mode instanceof Computer) {
-        mode.set_difficulty_rating(round_info.difficulty_rating);
-      }
       create_solution_dom();
-
       // Now that I have the round info, it's time to start the round!
       // I can load all the info to the given cards
       deal_cards();
@@ -300,7 +285,10 @@ function deal_cards(): void {
   target_container.innerHTML = round_info.target.toString();
 
   //now we need to create all the new cards
-  populate_card_numbers(round_info.starting_hand);
+  populate_card_containers(round_info.starting_hand);
+  // we want the disabled when we deal them
+  // unitl the user calls krypto
+  disable_cards();
 
   //initialize steps stack to this hand
   steps = [];
@@ -309,14 +297,9 @@ function deal_cards(): void {
   //switch the action button to call krypto
   document.getElementById("deal_cards")!.style.display = "none";
   mode.show_krypto_button();
-}
-
-/**
- * Handle user calling krypto, call the method based on the game mode
- * @param {} user that called krypto
- */
-function krypto_called(user: string) {
-  mode.krypto_called(user);
+  if (mode instanceof Computer) {
+    mode.start_computer_timer(round_info.difficulty_rating);
+  }
 }
 
 /**
@@ -362,7 +345,7 @@ function create_solution_dom() {
  * Works by looping through the DOM card containers and calling create_card
  * @param cards to be shown
  */
-function populate_card_numbers(cards: FiveOptionalCards) {
+function populate_card_containers(cards: FiveOptionalCards) {
   Array.from(card_containers).forEach((container, index) => {
     // First, we should delete any old elements in the card container div
     while (container.firstChild) {
@@ -392,7 +375,7 @@ function create_card(card_value: number, card_index: number) {
   new_card.appendChild(document.createTextNode(card_string));
   // Set the value of the card
   new_card.value = card_string;
-  new_card.className = "card";
+  new_card.className = "card button";
   // Add the event listener
   new_card.addEventListener("click", function () {
     card_selected(new_card);
@@ -592,7 +575,7 @@ function undo() {
   //make sure there is more than one step, if not, do nothing
   if (steps.length > 1) {
     //go back to previous step and pop
-    populate_card_numbers(steps[steps.length - 2]);
+    populate_card_containers(steps[steps.length - 2]);
     steps.pop();
   }
   clear_all_selected();
@@ -700,6 +683,39 @@ function map_ops(num1: number, num2: number, op: string): number {
  * Exports
  */
 
+function show_operations(): void {
+  document.getElementById("operations")!.style.display = "flex";
+}
+
+function hide_operations(): void {
+  document.getElementById("operations")!.style.display = "none";
+}
+
+function set_up_board() {
+  document.getElementById("gameboard")!.style.display = "flex";
+  hide_operations();
+}
+
+function disable_cards(): void {
+  const cards = document
+    .getElementById("cardsContainer")
+    ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].disabled = true;
+    cards[i].classList.remove("button");
+  }
+}
+
+function enable_cards(): void {
+  const cards = document
+    .getElementById("cardsContainer")
+    ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].disabled = false;
+    cards[i].classList.add("button");
+  }
+}
+
 function show_solution(): void {
   document.getElementById("solution")!.style.display = "flex";
 }
@@ -710,7 +726,7 @@ function show_solution(): void {
 function reset(): void {
   if (steps.length > 1) {
     // Go back to the first step and delete the history of steps
-    populate_card_numbers(steps[0]);
+    populate_card_containers(steps[0]);
     while (steps.length > 1) {
       steps.pop();
     }
@@ -718,4 +734,12 @@ function reset(): void {
   clear_all_selected();
 }
 
-export { reset, show_solution };
+export {
+  reset,
+  show_solution,
+  show_operations,
+  hide_operations,
+  disable_cards,
+  enable_cards,
+  set_up_board,
+};
