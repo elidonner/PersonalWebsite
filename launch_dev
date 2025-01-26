@@ -1,0 +1,7 @@
+#!/bin/bash
+readonly DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
+cd "${DIR}" || exit 1
+echo ${DIR}
+
+tsc
+python Website.py

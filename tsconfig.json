@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "outDir": "./static/js/krypto/",
+    "rootDir": "./static/js/krypto/",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": ["static/js/krypto/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -10,7 +10,7 @@ from json import dumps
 
 from flask import Flask, jsonify, render_template, request
 
-from back_end.deck import deal_hand
+from back_end.deck import create_round
 
 app = Flask(__name__)
 app.debug = True
@@ -29,9 +29,8 @@ def index():
         difficulty = request.form["difficulty"]
 
         #call the back end to create the hand with given difficulty
-        hand = asdict(deal_hand(difficulty))
+        hand = asdict(create_round(int(difficulty)))
         print(hand)
-
 
         #return the info for the game as a json file, which can be parsed in javascript
         return jsonify(hand)
@@ -45,19 +44,19 @@ def about():
 
 @app.route('/krypto')
 def Krypto():
-    return render_template('projects/krypto/krypto.html')
+    return render_template('projects/krypto/krypto-home-page.html')
 
 @app.route('/krypto/practice')
 def Krypto_practice():
-    return render_template('projects/krypto/practice.html')
+    return render_template('projects/krypto/test.html')
 
 @app.route('/krypto/computer')
 def Krypto_computer():
-    return render_template('projects/krypto/computer.html')
+    return render_template('projects/krypto/test.html')
 
 @app.route('/krypto/versus')
 def Krypto_friend():
-    return render_template('projects/krypto/friend.html')
+    return render_template('projects/krypto/test.html')
 
 @app.route('/dove')
 def Dove():

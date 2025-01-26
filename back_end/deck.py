@@ -1,8 +1,9 @@
 import random
 from dataclasses import dataclass
-from typing import Tuple
+from enum import IntEnum
 
 from .solver import Solution, get_solution
+from .types import FiveCards, FourOperations
 
 EASY_CARDS = [1, 2, 3, 4, 5, 6] * 3 + [7, 8, 9, 10] * 4
 MEDIUM_CARDS = EASY_CARDS + [11, 12, 13, 14, 15, 16, 17] * 2
@@ -10,37 +11,43 @@ HARD_CARDS = MEDIUM_CARDS + [18, 19, 20, 21, 22, 23, 24, 25]
 EASY_RANGE = (min(EASY_CARDS), max(EASY_CARDS) + 1)
 MEDIUM_RANGE = (min(MEDIUM_CARDS), max(MEDIUM_CARDS) + 1)
 HARD_RANGE = (min(HARD_CARDS), max(HARD_CARDS) + 1)
+class Difficulty(IntEnum):
+    """Mirrors difficulties defined in types.ts"""
+    EASY = 0
+    MEDIUM = 1
+    HARD = 2
+
 DIFFICULTY_MAP = {
-    'easy': EASY_CARDS,
-    'medium': MEDIUM_CARDS,
-    'hard': HARD_CARDS
+    Difficulty.EASY: EASY_CARDS,
+    Difficulty.MEDIUM: MEDIUM_CARDS,
+    Difficulty.HARD: HARD_CARDS
 }
 
 @dataclass
-class KryptoHand:
-    hand: list[int]
+class KryptoRound:
+    hand: FiveCards
     target: int
-    solution: tuple[list[int], list[str]]
+    solution: Solution
     difficulty_rating: int
 
-def deal_hand(difficulty) -> KryptoHand:
+def create_round(difficulty:int) -> KryptoRound:
     """
     Deals random cards from a deck and ensures the hand has a solution.
     Sets the target card.
     """
     for _ in range(15):
-        deck = deck_init(difficulty)
+        deck = intialize_deck(Difficulty(difficulty))
         target = get_random_card(deck)
         hand = get_random_hand(deck)
         solution = get_solution(hand, target)
         if solution is not None:
-            return KryptoHand(hand,
+            return KryptoRound(hand,
                               target,
-                              solution.to_tuple(),
+                              solution,
                               get_difficulty_rating(hand, target))
     raise ValueError("Unable to find a valid hand after 15 attempts.")
 
-def deck_init(difficulty) -> list[int]:
+def intialize_deck(difficulty: Difficulty) -> list[int]:
     '''
     Initializes the deck of cards based on the difficulty.
     '''
@@ -49,11 +56,11 @@ def deck_init(difficulty) -> list[int]:
     except KeyError:
         raise ValueError('Invalid difficulty choice.')
 
-def get_random_hand(deck: list[int]) -> list[int]:
+def get_random_hand(deck: list[int]) -> FiveCards:
     """
     Returns a hand of five random cards from the deck.
     """
-    return [get_random_card(deck) for _ in range(5)]
+    return tuple([get_random_card(deck) for _ in range(5)])
 
 def get_random_card(deck: list[int]) -> int:
     """
