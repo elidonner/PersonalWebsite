@@ -77,6 +77,14 @@ function attach_event_listeners() {
     document
         .getElementById("solution")
         .addEventListener("click", escape_solution);
+}
+function initialize_global_variables() {
+    //set the dom elements
+    target_container = document.getElementById("target");
+    cards_container = document.getElementById("cardsContainer");
+    card_containers = cards_container.getElementsByClassName("cardContainer");
+    card_buttons = cards_container.getElementsByClassName("card");
+    operation_buttons = document.getElementsByClassName("operation");
     /**
      * Game buttons
      */
@@ -101,14 +109,6 @@ function attach_event_listeners() {
     document.getElementById("undo").addEventListener("click", undo);
     document.getElementById("reset").addEventListener("click", reset);
     document.getElementById("give_up").addEventListener("click", give_up);
-}
-function initialize_global_variables() {
-    //set the dom elements
-    target_container = document.getElementById("target");
-    cards_container = document.getElementById("cardsContainer");
-    card_containers = cards_container.getElementsByClassName("cardContainer");
-    card_buttons = cards_container.getElementsByClassName("card");
-    operation_buttons = document.getElementsByClassName("operation");
 }
 //FUNCTIONS
 /**
@@ -154,7 +154,6 @@ function start_game() {
     save_board();
 }
 function set_difficulty_and_start_game(difficulty) {
-    console.log(difficulty);
     set_difficulty(difficulty);
     hide_difficulty_menu();
     start_game();
@@ -171,18 +170,11 @@ function do_ajax() {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let raw_info = JSON.parse(this.responseText);
-            round_info = {
-                starting_hand: raw_info.hand,
-                target: raw_info.target,
-                solution: raw_info.solution,
-                difficulty_rating: raw_info.difficulty_rating,
-            };
+            // the python and round_info are made to match via types.py/ts files
+            round_info = JSON.parse(this.responseText);
             if (mode instanceof Computer) {
                 mode.set_difficulty_rating(round_info.difficulty_rating);
             }
-            console.log("got something");
-            console.log(round_info);
             create_solution_dom();
             // Now that I have the round info, it's time to start the round!
             // I can load all the info to the given cards
@@ -268,7 +260,6 @@ function krypto_called(user) {
 function create_solution_dom() {
     // First, we should delete any old elements in the solutions container div
     var solution_steps = document.getElementsByClassName("solutionCardsContainer");
-    console.log(round_info);
     var ans = round_info.solution.organized_cards[0];
     for (let i = 0; i < solution_steps.length; i++) {
         var solutionCards = solution_steps[i].getElementsByClassName("solutionCard");
@@ -295,17 +286,15 @@ function create_solution_dom() {
  * @param cards to be shown
  */
 function populate_card_numbers(cards) {
-    // First, we should delete any old elements in the card container div
-    for (let i = 0; i < Object.keys(cards).length; i++) {
-        while (card_containers[i].firstElementChild) {
-            card_containers[i].removeChild(card_containers[i].firstElementChild);
+    Array.from(card_containers).forEach((container, index) => {
+        // First, we should delete any old elements in the card container div
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
         }
-        // Only create the card if there is supposed to be one
-        if (cards[i] != null) {
-            create_card(cards[i], i);
+        if (cards[index] != null) {
+            create_card(cards[index], index);
         }
-    }
-    // Set the card_buttons variable to these new active cards
+    });
     card_buttons = cards_container.getElementsByClassName("card");
 }
 /**
@@ -317,13 +306,12 @@ function populate_card_numbers(cards) {
 function create_card(card_value, card_index) {
     // Create the element
     let card_string = card_value.toString();
-    const new_card = document.createElement("button");
+    let new_card = document.createElement("button");
     // Append its innerHTML
     new_card.appendChild(document.createTextNode(card_string));
     // Set the value of the card
     new_card.value = card_string;
-    // Set the class (for display purposes)
-    new_card.className = "button card";
+    new_card.className = "card";
     // Add the event listener
     new_card.addEventListener("click", function () {
         card_selected(new_card);
@@ -339,29 +327,23 @@ function create_card(card_value, card_index) {
  * @param {} card in DOM of selected card
  */
 function card_selected(card) {
-    // two cards can be selected at a time
-    // if the person clicks an already selected card, deactivate it
-    // if we have two selected cards, check if there is a selected operation
-    // if so, complete the operation
     if (card.classList.contains("selected")) {
         clear_all_selected();
+        return;
+    }
+    const selected_cards = document.getElementsByClassName("card selected");
+    const selected_ops = document.getElementsByClassName("operation selected");
+    if (selected_cards.length === 0) {
+        card.classList.add("selected");
+        first_card = card;
+    }
+    else if (selected_ops.length === 1) {
+        operate(first_card, card, selected_ops[0].innerHTML);
     }
     else {
-        var selected_cards = document.getElementsByClassName("card selected");
-        var selected_ops = document.getElementsByClassName("operation selected");
-        if (selected_cards.length == 0) {
-            card.classList.add("selected");
-            first_card = card;
-        }
-        else if (selected_ops.length == 1) {
-            var second_card = card;
-            operate(first_card, second_card, selected_ops[0].innerHTML);
-        }
-        else {
-            clear_selected_cards();
-            card.classList.add("selected");
-            first_card = card;
-        }
+        clear_selected_cards();
+        card.classList.add("selected");
+        first_card = card;
     }
 }
 /**
@@ -459,14 +441,11 @@ function invalid_operation(first_card, second_card) {
  * @returns the hand at any step
  */
 function get_displayed_cards() {
-    var displayed_cards = EMPTY_HAND;
+    let displayed_cards = [...EMPTY_HAND];
     for (let i = 0; i < card_containers.length; i++) {
-        const firstElementChild = card_containers[i].firstElementChild;
-        if (firstElementChild && firstElementChild instanceof HTMLButtonElement) {
-            displayed_cards.push(parseInt(firstElementChild.value));
-        }
-        else {
-            displayed_cards.push(null);
+        let card_container_child = card_containers[i].firstElementChild;
+        if (card_container_child) {
+            displayed_cards[i] = parseInt(card_container_child.value);
         }
     }
     return displayed_cards;

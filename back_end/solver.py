@@ -1,8 +1,6 @@
-from dataclasses import dataclass
 from itertools import permutations, product
-from typing import Tuple
 
-from .types import FiveCards, FourOperations
+from .types import FiveCards, FourOperations, Solution
 
 # a list of the cartesian product of all operations
 # this will be a list of possible combos of operations
@@ -16,12 +14,6 @@ operations = {
     "/": lambda a, b: a / b if b != 0 else float('inf')
 }
 
-@dataclass
-class Solution:
-    organized_cards: FiveCards
-    operations: FourOperations
-    max_intermediate_result: int
-
 def get_solution(hand: FiveCards, target: int) -> Solution | None:
     '''
     This function returns the simplest solution
@@ -30,14 +22,14 @@ def get_solution(hand: FiveCards, target: int) -> Solution | None:
     #get all the solutions
     solutions = get_solutions(hand, target)
 
-    if solutions is None:
+    if len(solutions) == 0:
         return None
 
     simplest_solution = get_simplest_solution(solutions)
     return(simplest_solution)
 
 
-def get_solutions(hand: FiveCards, target: int) -> list[Solution] | None:
+def get_solutions(hand: FiveCards, target: int) -> list[Solution]:
     '''
     this function finds all the solutions
     '''

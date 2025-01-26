@@ -1,9 +1,8 @@
 import random
-from dataclasses import dataclass
 from enum import IntEnum
 
-from .solver import Solution, get_solution
-from .types import FiveCards, FourOperations
+from .solver import get_solution
+from .types import FiveCards, KryptoRound
 
 EASY_CARDS = [1, 2, 3, 4, 5, 6] * 3 + [7, 8, 9, 10] * 4
 MEDIUM_CARDS = EASY_CARDS + [11, 12, 13, 14, 15, 16, 17] * 2
@@ -22,13 +21,6 @@ DIFFICULTY_MAP = {
     Difficulty.MEDIUM: MEDIUM_CARDS,
     Difficulty.HARD: HARD_CARDS
 }
-
-@dataclass
-class KryptoRound:
-    hand: FiveCards
-    target: int
-    solution: Solution
-    difficulty_rating: int
 
 def create_round(difficulty:int) -> KryptoRound:
     """

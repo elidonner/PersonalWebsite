@@ -39,4 +39,11 @@ type RoundInfo = {
 
 export { EMPTY_HAND, GameModeDescription, Difficulty };
 
-export type { FiveCards, OptionalCard, GameInfo, Solution, RoundInfo };
+export type {
+  FiveCards,
+  FiveOptionalCards,
+  OptionalCard,
+  GameInfo,
+  Solution,
+  RoundInfo,
+};
