@@ -22,12 +22,12 @@
     <!-- NAVBAR -->
   <div class="nav-parent">
     <div class="navbar row">
-      <div class="menu-left" style="display: none">
-        <button id="menu_btn" class="button medium">Menu</button>
-      </div>
       <div class="menu-left" style="display: flex">
-        <a href="{{ url_for('index') }}">
-          <button id="website_btn" class="button xlarge">Main Site</button>
+        <a id="menu_btn" href="{{ url_for('Krypto') }}" style="display: none">
+          <button class = "button xlarge" >Menu</button>
+        </a>
+        <a id="website_btn" href="{{ url_for('index') }}" style="display: none">
+          <button class="button xlarge">Main Site</button>
         </a>
       </div>
 
@@ -47,20 +47,6 @@
       </div>
     </div>
   </div>
-
-  <div id="dropdown-navbar">
-    <div id="dropdown-navbar-content">
-      <div class="menu-btn">
-        <a href="{{ url_for('index') }}#portfolio" class="button-underline-animation" onclick="navBar_pressed()">Portfolio</a>
-      </div>
-      <div class="menu-btn">
-        <a href="{{ url_for('about') }}" class="button-underline-animation" onclick="navBar_pressed()">About</a>
-      </div>
-      <div class="menu-btn">
-        <a href="#contact" class="button-underline-animation" onclick="navBar_pressed()">Contact</a>
-      </div>
-    </div>
-  </div>
   <!-- NAVBAR END-->
 
     <!-- PAGE LOADER START -->
@@ -74,9 +60,13 @@
     <!-- INSTRUCTIONS MENU-->
     <div id="instructions_menu" class = "overlaytop">
       <div class="overlaytop-content">
-        <p class="xxlarge text-white">Add subtract or multiply the five cards shown to get the target card!
-        <br></br>
-        No fractions or negative numbers!</p>
+        <p class="xxlarge text-white">
+          Krypto is an old math card game that I've not found anywhere online.
+          <br></br>
+          Add subtract or multiply the five cards shown to get the target card!
+          <br></br>
+          No fractions or negative numbers!
+        </p>
       </div>
       <a id="closebtn" href="javascript:void(0)">&times;</a>
     </div>
@@ -87,5 +77,5 @@
 
   </body>
   <script src="/static/js/script.js"></script>
-  <script  type="module" src="/static/js/krypto/krypto.js"></script>
+  <script type="module" src="/static/js/krypto/bin/krypto-base.js"></script>
 </html>

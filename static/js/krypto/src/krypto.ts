@@ -45,6 +45,7 @@ let first_card: HTMLElement | null = null; // variable to remember the first car
  * When I open the webpage, attach the web handlers
  */
 window.onload = function () {
+  set_menu_btn();
   get_and_set_game_mode();
   initialize_global_variables();
   attach_event_listeners();
@@ -60,16 +61,6 @@ window.onload = function () {
  * (each time board is reset, handlers need to be reattached to the dom elements)
  */
 function attach_event_listeners() {
-  /**
-   * Header buttons
-   */
-  document
-    .getElementById("instructions")!
-    .addEventListener("click", show_instructions);
-  document
-    .getElementById("closebtn")!
-    .addEventListener("click", close_instructions);
-
   /**
    * Menu buttons
    */
@@ -127,6 +118,11 @@ function initialize_global_variables() {
 }
 
 //FUNCTIONS
+
+function set_menu_btn(): void {
+  document.getElementById("menu_btn")!.style.display = "flex";
+  document.getElementById("website_btn")!.style.display = "none";
+}
 
 /**
  * Get the game mode based on the url
@@ -211,17 +207,6 @@ function do_ajax() {
     "application/x-www-form-urlencoded;charset=UTF-8"
   );
   req.send("difficulty=" + game_info.difficulty);
-}
-
-function show_instructions() {
-  document.getElementById("instructions_menu")!.style.height = "100%";
-}
-
-/**
- * Close instructions when close button pressed
- */
-function close_instructions() {
-  document.getElementById("instructions_menu")!.style.height = "0%";
 }
 
 /**
