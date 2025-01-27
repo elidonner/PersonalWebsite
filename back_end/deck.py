@@ -2,7 +2,7 @@ import random
 from enum import IntEnum
 
 from .solver import get_solution
-from .types import FiveCards, KryptoRound
+from .types import FiveCards, KryptoHand
 
 EASY_CARDS = [1, 2, 3, 4, 5, 6] * 3 + [7, 8, 9, 10] * 4
 MEDIUM_CARDS = EASY_CARDS + [11, 12, 13, 14, 15, 16, 17] * 2
@@ -22,7 +22,7 @@ DIFFICULTY_MAP = {
     Difficulty.HARD: HARD_CARDS
 }
 
-def create_round(difficulty:int) -> KryptoRound:
+def create_round(difficulty:int) -> KryptoHand:
     """
     Deals random cards from a deck and ensures the hand has a solution.
     Sets the target card.
@@ -33,7 +33,7 @@ def create_round(difficulty:int) -> KryptoRound:
         hand = get_random_hand(deck)
         solution = get_solution(hand, target)
         if solution is not None:
-            return KryptoRound(hand,
+            return KryptoHand(hand,
                               target,
                               solution,
                               get_difficulty_rating(hand, target))

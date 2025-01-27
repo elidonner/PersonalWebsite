@@ -5,6 +5,7 @@ import {
   Difficulty,
   FiveOptionalCards,
   GameInfo,
+  KryptoHand,
   RoundInfo,
 } from "./types.js";
 
@@ -33,6 +34,7 @@ let game_info: GameInfo = {
   difficulty: Difficulty.EASY,
 };
 let mode: GameMode;
+let krypto_hand: KryptoHand;
 let round_info: RoundInfo;
 let steps: FiveOptionalCards[] = [];
 let first_card: HTMLElement | null = null; // variable to remember the first card that was selected so operation is done in correct order
@@ -83,15 +85,6 @@ function attach_event_listeners() {
   document.getElementById("hard")!.addEventListener("click", function () {
     set_difficulty_and_start_game(Difficulty.HARD);
   });
-  document
-    .getElementById("difficulty_menu")!
-    .addEventListener("click", escape_set_difficulty);
-
-  // FIX: should this be here?
-  var rest_of_screen = document.getElementsByClassName("difficulty");
-  for (let i = 1; i < rest_of_screen.length; i++) {
-    rest_of_screen[i].addEventListener("click", escape_set_difficulty);
-  }
 
   document
     .getElementById("solution")!
@@ -203,7 +196,8 @@ function do_ajax() {
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // the python and round_info are made to match via types.py/ts files
-      round_info = JSON.parse(this.responseText) as RoundInfo;
+      krypto_hand = JSON.parse(this.responseText) as KryptoHand;
+      round_info = new RoundInfo(krypto_hand);
       create_solution_dom();
       // Now that I have the round info, it's time to start the round!
       // I can load all the info to the given cards
@@ -228,14 +222,6 @@ function show_instructions() {
  */
 function close_instructions() {
   document.getElementById("instructions_menu")!.style.height = "0%";
-}
-
-/**
- * If the person clicks outside of the set difficulty options, it escapes
- */
-function escape_set_difficulty() {
-  //set the difficulty
-  document.getElementById("difficulty_menu")!.style.display = "none";
 }
 
 /**
@@ -282,23 +268,19 @@ function restore_board() {
  */
 function deal_cards(): void {
   //set the innerHtml of the cards
-  target_container.innerHTML = round_info.target.toString();
+  target_container.innerHTML = krypto_hand.target.toString();
 
   //now we need to create all the new cards
-  populate_card_containers(round_info.starting_hand);
-  // we want the disabled when we deal them
+  populate_card_containers(krypto_hand.starting_hand);
+  // we want the cards disabled when we deal them
   // unitl the user calls krypto
   disable_cards();
-
-  //initialize steps stack to this hand
-  steps = [];
-  steps[0] = round_info.starting_hand;
 
   //switch the action button to call krypto
   document.getElementById("deal_cards")!.style.display = "none";
   mode.show_krypto_button();
   if (mode instanceof Computer) {
-    mode.start_computer_timer(round_info.difficulty_rating);
+    mode.start_computer_timer(krypto_hand.difficulty_rating);
   }
 }
 
@@ -310,7 +292,7 @@ function create_solution_dom() {
   var solution_steps = document.getElementsByClassName(
     "solutionCardsContainer"
   );
-  var ans = round_info.solution.organized_cards[0];
+  var ans = krypto_hand.solution.organized_cards[0];
   for (let i = 0; i < solution_steps.length; i++) {
     var solutionCards =
       solution_steps[i].getElementsByClassName("solutionCard");
@@ -321,20 +303,20 @@ function create_solution_dom() {
     if (i > 0) {
       ans = map_ops(
         ans,
-        round_info.solution.organized_cards[i],
-        round_info.solution.operations[i - 1]
+        krypto_hand.solution.organized_cards[i],
+        krypto_hand.solution.operations[i - 1]
       );
     }
     solutionCards[0].innerHTML = ans.toString();
 
     for (let q = 1; q < solutionCards.length; q++) {
       solutionCards[q].innerHTML =
-        round_info.solution.organized_cards[i + q].toString();
+        krypto_hand.solution.organized_cards[i + q].toString();
     }
 
     if (solutionOperation) {
       solutionOperation.innerHTML =
-        round_info.solution.operations[i].toString();
+        krypto_hand.solution.operations[i].toString();
     }
   }
 }
@@ -429,9 +411,9 @@ function operation_selected(operation: HTMLDivElement) {
     if (operation.classList.contains("selected")) {
       operation.classList.remove("selected");
     } else {
-      // make sure all the operations are deactivated
+      // make sure all the operations are first not shwon as selected
       clear_selected_operations();
-      // add the selected to the element we have
+      // add selected class to the desired operation
       operation.classList.add("selected");
     }
   }
@@ -455,6 +437,7 @@ function operate(
   var output = map_ops(first_num, second_num, op);
 
   // check if the output is valid
+  // protect against negative numbers and fractions
   if (output >= 0 && output % 1 == 0) {
     combine_cards(first_card, second_card, output);
   } else {
@@ -602,7 +585,7 @@ function is_game_over(): boolean {
  * @returns true if the player has won
  */
 function check_win(): boolean {
-  return parseInt(card_buttons[0].value!) === round_info.target;
+  return parseInt(card_buttons[0].value!) === krypto_hand.target;
 }
 
 /**
@@ -702,7 +685,6 @@ function disable_cards(): void {
     ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
   for (let i = 0; i < cards.length; i++) {
     cards[i].disabled = true;
-    cards[i].classList.remove("button");
   }
 }
 
@@ -712,7 +694,6 @@ function enable_cards(): void {
     ?.getElementsByClassName("card") as HTMLCollectionOf<HTMLButtonElement>;
   for (let i = 0; i < cards.length; i++) {
     cards[i].disabled = false;
-    cards[i].classList.add("button");
   }
 }
 

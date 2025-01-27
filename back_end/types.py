@@ -18,7 +18,7 @@ class Solution:
     max_intermediate_result: int
 
 @dataclass
-class KryptoRound:
+class KryptoHand:
     starting_hand: FiveCards
     target: int
     solution: Solution

@@ -71,6 +71,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: 4;
+  /* TODO: Probably fix this so it's not always a pointer */
   cursor: pointer;
   justify-content: center;
   background-color: var(--gray);
@@ -194,20 +195,13 @@ body {
   transition: all 0.1s ease;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
 }
 
-.button:active {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-.button:disabled{
-  color: inherit;
-  box-shadow: 0;
+.button:disabled {
+  color: inherit !important;
 }
 
 .button.krypto{

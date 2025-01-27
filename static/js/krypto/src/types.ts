@@ -30,14 +30,24 @@ type Solution = {
   operations: FourOperations;
   max_intermediate_result: number;
 };
-type RoundInfo = {
+type KryptoHand = {
   starting_hand: FiveCards;
   target: number;
   solution: Solution;
   difficulty_rating: number;
 };
 
-export { EMPTY_HAND, GameModeDescription, Difficulty };
+class RoundInfo {
+  krypto_hand: KryptoHand;
+  steps: FiveOptionalCards[];
+
+  constructor(krypto_hand: KryptoHand) {
+    this.krypto_hand = krypto_hand;
+    this.steps = [this.krypto_hand.starting_hand];
+  }
+}
+
+export { EMPTY_HAND, GameModeDescription, Difficulty, RoundInfo };
 
 export type {
   FiveCards,
@@ -45,5 +55,5 @@ export type {
   OptionalCard,
   GameInfo,
   Solution,
-  RoundInfo,
+  KryptoHand,
 };
