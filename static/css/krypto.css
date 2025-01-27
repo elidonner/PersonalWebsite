@@ -25,12 +25,13 @@ body {
 #menu{
   justify-content: space-between;
   width: 90%;
-  padding: 5%;
+  padding: 0% 5% 5% 5%;
 }
 
 #gameboard{
-  width: 90%;
-  padding: 5%;
+  width: 100%;
+  padding: 1% 5% 1% 5%;
+  justify-content: center;
 }
 
 .welcome_msg{
@@ -54,7 +55,7 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
-  z-index: 3;
+  z-index: 4;
   cursor: pointer;
 }
 
@@ -70,7 +71,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 4;
+  z-index: 5;
   /* TODO: Probably fix this so it's not always a pointer */
   cursor: pointer;
   justify-content: center;
@@ -82,7 +83,7 @@ body {
   height: 0%;
   width: 100%;
   position: fixed;
-  z-index: 4;
+  z-index: 5;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0, 0.9);
@@ -122,32 +123,34 @@ body {
   font-size: 60px;
 }
 
-.scoreboardTitle{
-  padding:10px;
-  height:10%;
-  font-weight: 700;
-  font-size: 37px;
-  justify-content: center;
-}
-
 /*Create the scoreboard*/
 #scoreboard {
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
   align-items: center;
   height:100%;
+  width: 100%;
 }
 
 .box{
-  width: 40%;
+  width: calc(200%/5);
   height:100%;
   align-items: center;
   justify-content: center;
 }
 
+#row3{
+  --width: calc(100%/5);
+  --height: calc(100vh/5);
+  --one_card_width: calc( var(--height) * 0.75 );
+  padding: 1% calc((var(--width) - var(--one_card_width))/2);
+}
+
 .user{
-  height: 80%;
-  width: 50%;
+  --height: calc(100vh/5);
+  height: var(--height);
+  width: calc( var(--height) * 0.75 );
+  justify-content: space-evenly;
   flex-direction: column;
   border: 1px solid var(--gray);
   display: flex;
@@ -157,14 +160,6 @@ body {
   font-size: 2rem;
   border-radius: 0.5rem;
   background-color: var(--red);
-}
-
-.user.left{
-  margin:30px 10px 0px 50px;
-}
-
-.user.right{
-  margin:30px 50px 0px 10px;
 }
 
 .userName{
@@ -211,7 +206,7 @@ body {
 
 /*Create the target cell*/
 #target-cell {
-  width: 20%;
+  width: calc(100%/5);
   justify-content: center;
   align-items: center;
 }
@@ -225,17 +220,16 @@ body {
 
 #deal_cards {
   font-size: 3rem;
+
 }
 
 #actions {
-  height: 100%;
   width: 100%;
-  display: none;
+  justify-content: space-between;
 }
 
 .action_container{
-  padding:10px;
-  width: 100%;
+  width: 48%;
 }
 
 .action{
@@ -253,6 +247,7 @@ body {
 {
   height: 100%;
   width: 100%;
+  justify-content: space-between;
 }
 
 .solutionCardsContainer{
@@ -274,6 +269,7 @@ body {
   display: none;
   width:100%;
   font-size: 3rem;
+  justify-content: space-between;
 }
 
 .krypto_key{
@@ -315,17 +311,20 @@ body {
   padding:10px 0px;
   justify-content: center;
   align-items:center;
+  height: 100%;
 }
 
 .mode_type{
   padding: 10px;
   font-size: calc(48px - 48px * var(--text-adjust));
   font-weight: bold;
+  text-align: center;
 }
 
 .mode_description{
   padding: 10px;
   font-size: calc(24px - 24px * var(--text-adjust));
+  text-align: center;
 }
 
 
@@ -370,9 +369,14 @@ body {
   width:auto;
 }
 
+#operations{
+  justify-content: space-between;
+  padding: 1% 0px;
+}
+
 .operation{
-  margin: 0px 60px;
   font-size:5em;
+  width:24%;
 }
 
 .solutionOperation{
@@ -523,7 +527,7 @@ body {
   border-radius: 6px;
   padding: 8px 0;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   bottom: 110%;
   left: 50%;
   margin-left: -80px;
