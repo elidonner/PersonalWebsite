@@ -49,6 +49,7 @@ window.onload = function () {
   get_and_set_game_mode();
   initialize_global_variables();
   attach_event_listeners();
+  attach_keyboard_listeners();
 
   //show the difficulty menu and wait for user input
   show_difficulty_menu();
@@ -82,6 +83,63 @@ function attach_event_listeners() {
     .addEventListener("click", escape_solution);
 }
 
+/**
+ * Attach keyboard event listeners for card selection and operations
+ */
+function attach_keyboard_listeners() {
+  document.addEventListener("keydown", function (event) {
+    // Only handle keyboard events when the game board is visible and cards are enabled
+    const gameboard = document.getElementById("gameboard");
+    if (!gameboard || gameboard.style.display === "none") {
+      return;
+    }
+
+    // Check if any cards are disabled (which means krypto hasn't been called yet)
+    if (card_buttons.length > 0 && card_buttons[0].disabled) {
+      return;
+    }
+
+    const key = event.key;
+
+    // Handle number keys 1-5 for card selection based on card containers
+    if (key >= "1" && key <= "5") {
+      const containerIndex = parseInt(key) - 1;
+      if (containerIndex < card_containers.length) {
+        const cardButton = card_containers[containerIndex].querySelector('.card') as HTMLButtonElement;
+        if (cardButton && !cardButton.disabled) {
+          event.preventDefault();
+          card_selected(cardButton);
+        }
+      }
+    }
+    // Handle operation keys
+    else if (key === "+" || key === "-" || key === "*" || key === "/") {
+      event.preventDefault();
+      let operationElement: HTMLDivElement | null = null;
+      console.log("Operation key pressed: ", key);
+
+      switch (key) {
+        case "+":
+          operationElement = document.getElementById("plus") as HTMLDivElement;
+          break;
+        case "-":
+          operationElement = document.getElementById("minus") as HTMLDivElement;
+          break;
+        case "*":
+          operationElement = document.getElementById("multiply") as HTMLDivElement;
+          break;
+        case "/":
+          operationElement = document.getElementById("divide") as HTMLDivElement;
+          break;
+      }
+
+      if (operationElement) {
+        operation_selected(operationElement);
+      }
+    }
+  });
+}
+
 function initialize_global_variables() {
   //set the dom elements
   target_container = document.getElementById("target")! as HTMLDivElement;
@@ -111,13 +169,13 @@ function initialize_global_variables() {
     });
   }
 
-  //actions
+  // actions
   document.getElementById("undo")!.addEventListener("click", undo);
   document.getElementById("reset")!.addEventListener("click", reset);
   document.getElementById("give_up")!.addEventListener("click", give_up);
 }
 
-//FUNCTIONS
+// FUNCTIONS
 
 function set_menu_btn(): void {
   document.getElementById("menu_btn")!.style.display = "flex";
@@ -243,6 +301,7 @@ function restore_board() {
   // reset variables and elements
   mode.set_elements();
   initialize_global_variables();
+  attach_keyboard_listeners();
 
   //resave the board
   save_board();
@@ -257,6 +316,9 @@ function deal_cards(): void {
 
   //now we need to create all the new cards
   populate_card_containers(krypto_hand.starting_hand);
+  //save the initial step
+  steps = [];
+  steps.push(get_displayed_cards());
   // we want the cards disabled when we deal them
   // unitl the user calls krypto
   disable_cards();

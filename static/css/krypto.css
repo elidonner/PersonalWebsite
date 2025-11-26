@@ -132,18 +132,35 @@ body {
   width: 100%;
 }
 
-.box{
-  width: calc(200%/5);
-  height:100%;
+#row1{
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 10px;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
+}
+
+/* row2 */
+#cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
 }
 
 #row3{
   --width: calc(100%/5);
   --height: calc(100vh/5);
   --one_card_width: calc( var(--height) * 0.75 );
-  padding: 1% calc((var(--width) - var(--one_card_width))/2);
+  padding: 10px 0px;
+}
+
+.box{
+  height:100%;
+  width:100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .user{
@@ -160,6 +177,7 @@ body {
   font-size: 2rem;
   border-radius: 0.5rem;
   background-color: var(--red);
+  overflow:clip;
 }
 
 .userName{
@@ -205,11 +223,6 @@ body {
 
 
 /*Create the target cell*/
-#target-cell {
-  width: calc(100%/5);
-  justify-content: center;
-  align-items: center;
-}
 
 /*Create the timer cell*/
 #timer {
@@ -225,11 +238,12 @@ body {
 
 #actions {
   width: 100%;
-  justify-content: space-between;
+  gap: 40px;
+  padding-top: 10px;
 }
 
 .action_container{
-  width: 48%;
+  flex: 1;
 }
 
 .action{
@@ -237,18 +251,6 @@ body {
 }
 
 /*types of cards*/
-#target {
-  background-color: e4d440;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardsContainer
-{
-  height: 100%;
-  width: 100%;
-  justify-content: space-between;
-}
 
 .solutionCardsContainer{
   height:20%;
@@ -257,12 +259,14 @@ body {
   align-items: center;
 }
 
-.cardContainer
-{
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+#cardsContainer > .cardContainer {
+  aspect-ratio: 3/5;
+  height: 90%;
+}
+
+#target-cell > #target {
+  aspect-ratio: 3/5;
+  height: 90%;
 }
 
 .krypto_container{
@@ -328,18 +332,16 @@ body {
 }
 
 
-.card{
-  --height: calc(100vh/5);
-  height: var(--height);
-  width: calc( var(--height) * 0.75 );
+.card {
   border: 1px solid var(--gray);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  /* font-size: 3rem; */
   border-radius: 0.5rem;
   background-color: var(--yellow);
 }
+
 
 #solution {
   margin-top: var(--header-height);
@@ -371,12 +373,13 @@ body {
 
 #operations{
   justify-content: space-between;
-  padding: 1% 0px;
+  gap: 40px;
+  padding-bottom: 10px;
 }
 
 .operation{
   font-size:5em;
-  width:24%;
+  flex: 1;
 }
 
 .solutionOperation{
@@ -571,5 +574,111 @@ body {
   font-size: 40px;
   top: 15px;
   right: 35px;
+  }
+}
+
+/* Improve touch interactions on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .button {
+    /* Increase touch target size */
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .button:hover {
+    /* Remove hover effects on touch devices */
+    box-shadow: none;
+  }
+
+  .button:active {
+    /* Add active state for touch feedback */
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Extra small devices - iPhone SE portrait */
+@media screen and (max-width: 1020px) {
+  /* Even smaller cards for very small screens */
+
+  #cardsContainer {
+    grid-template-columns: repeat(5, minmax(50px, 1fr));
+  }
+
+  .card {
+    font-size: 1rem;
+  }
+
+  .user {
+    font-size: 1rem;
+  }
+
+  #target {
+    font-size: 1rem;
+  }
+
+  .userName {
+    font-size: 1rem;
+  }
+
+  .points {
+    font-size: 1.2rem;
+  }
+
+  /* Further reduce font sizes */
+  .action {
+    font-size: 1.5rem;
+  }
+
+  #deal_cards {
+    font-size: 1.5rem;
+  }
+
+  .operation {
+    font-size: 2.5em;
+  }
+
+  .krypto_key {
+    font-size: 1.5rem;
+  }
+
+  /* Smaller timer */
+  .base-timer {
+    height: 120px;
+    width: 120px;
+  }
+
+  .base-timer__label {
+    width: 120px;
+    height: 120px;
+    font-size: 28px;
+  }
+
+  /* Adjust solution elements */
+  .solutionCard {
+    height: 60px;
+    width: 45px;
+    margin: 0px 5px;
+    font-size: 1.5rem;
+  }
+
+  .solutionOperation {
+    height: 45px;
+    width: 45px;
+    font-size: 1.5rem;
+  }
+
+  /* Reduce action gaps even more */
+  #actions {
+    gap: 15px;
+  }
+
+  /* Adjust overlay padding */
+  .overlay2 {
+    padding: 15px;
+  }
+
+  #difficulty_container {
+    padding: 15px;
   }
 }
