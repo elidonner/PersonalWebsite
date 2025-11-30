@@ -70,10 +70,6 @@ def Ollie():
 def DEKA():
     return render_template('projects/deka.html')
 
-@app.route('/circuits')
-def Circuits():
-    return render_template('projects/circuits.html')
-
 @app.route('/corolla')
 def Toyota ():
     return render_template('projects/corolla.html')

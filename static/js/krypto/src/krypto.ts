@@ -714,7 +714,7 @@ function map_ops(num1: number, num2: number, op: string): number {
  */
 
 function show_operations(): void {
-  document.getElementById("operations")!.style.display = "flex";
+  document.getElementById("operations")!.style.display = "grid";
 }
 
 function hide_operations(): void {
@@ -722,7 +722,7 @@ function hide_operations(): void {
 }
 
 function set_up_board() {
-  document.getElementById("gameboard")!.style.display = "flex";
+  document.getElementById("gameboard")!.style.display = "grid";
   hide_operations();
 }
 

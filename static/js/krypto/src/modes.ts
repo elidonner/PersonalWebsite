@@ -169,7 +169,7 @@ class Practice extends GameMode {
   }
 
   show_krypto_button() {
-    document.getElementById("actions")!.style.display = "flex";
+    document.getElementById("actions")!.style.display = "grid";
     document.getElementById("give_up")!.style.display = "flex";
     this.set_active_user("user2");
     enable_cards();
@@ -219,7 +219,7 @@ class Computer extends GameMode {
 
   krypto_called(user: string) {
     document.getElementById("computer_krypto")!.style.display = "none";
-    document.getElementById("actions")!.style.display = "flex";
+    document.getElementById("actions")!.style.display = "grid";
     this.set_active_user(user);
     this.popup();
     if (user == "user1") {
@@ -329,7 +329,7 @@ class Versus extends GameMode {
 
   krypto_called(user: string) {
     document.getElementById("versus_krypto")!.style.display = "none";
-    document.getElementById("actions")!.style.display = "flex";
+    document.getElementById("actions")!.style.display = "grid";
     document.removeEventListener("keyup", this.key_handler);
     enable_cards();
     show_operations();

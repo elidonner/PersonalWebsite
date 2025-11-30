@@ -1,7 +1,7 @@
 {% extends '/projects/krypto/krypto-base.html' %} {% block content %}
 <!-- SOLUTION MENU-->
 <div id="solution" class="overlay column">
-  <div class="overlay2 column">
+  <div class="overlay2">
     <h1 class="solutionTitle">Solution</h1>
     <div id="step1" class="solutionCardsContainer row">
       <div class="solutionCard selected"></div>
@@ -62,8 +62,8 @@
 <!-- DIFFICULTY MENU END-->
 
 <!-- Game Board -->
-<div id="gameboard" class="one-pager column" style="display: none">
-  <div id="row1" class="row" style="height: 33.3%">
+<div id="gameboard" class="one-pager" style="display: none">
+  <div id="row1">
     <!-- Score cards -->
     <div class="box">
       <div id="scoreboard">
@@ -81,8 +81,13 @@
     </div>
 
     <!-- Target Card -->
-    <div id="target-cell" class="box">
-      <div id="target" class="card">Target</div>
+    <div class="box">
+      <div id="target-cell">
+        <div class="card column">
+          <div>Target</div>
+          <div id="target"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Timer -->
@@ -92,7 +97,6 @@
           <svg
             class="base-timer__svg"
             viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <g class="base-timer__circle">
               <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
@@ -115,7 +119,7 @@
     </div>
   </div>
 
-  <div id="cardsContainer" class="row" style="height: 33.3%">
+  <div id="cardsContainer">
     <div class="cardContainer">
       <button class="card button" disabled></button>
     </div>
@@ -134,7 +138,7 @@
   </div>
 
   <!-- Only one of the following is active at a time -->
-  <div id="row3" class="column wrapper" style="height: 33.3%">
+  <div id="row3" class="column wrapper">
     <button id="deal_cards" class="button" style="height: 100%">
       Deal Cards
     </button>
@@ -158,7 +162,7 @@
       </div>
     </div>
 
-    <div id="operations" class="row" style="height: 50%; display: none">
+    <div id="operations" style="height: 50%; display: none">
       <div id="plus" class="button operation" disabled>+</div>
       <div id="minus" class="button operation" disabled>-</div>
       <div id="multiply" class="button operation" disabled>×</div>
