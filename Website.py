@@ -43,7 +43,7 @@ def about():
     return render_template('about.html')
 
 @app.route('/krypto')
-def Krypto():
+def krypto():
     return render_template('projects/krypto/krypto-home-page.html')
 
 @app.route('/krypto/practice')
@@ -59,19 +59,23 @@ def Krypto_friend():
     return render_template('projects/krypto/game.html')
 
 @app.route('/dove')
-def Dove():
+def dove():
     return render_template('projects/dove.html')
 
 @app.route('/ollie')
-def Ollie():
+def ollie():
     return render_template('projects/ollie.html')
 
 @app.route('/deka')
-def DEKA():
+def deka():
     return render_template('projects/deka.html')
 
+@app.route('/pickle')
+def pickle():
+    return render_template('projects/pickle.html')
+
 @app.route('/corolla')
-def Toyota ():
+def toyota():
     return render_template('projects/corolla.html')
 
 if __name__ == "__main__":

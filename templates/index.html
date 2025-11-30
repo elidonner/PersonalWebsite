@@ -28,9 +28,9 @@
 <!-- CARDS -->
 <section id="portfolio" class="column float-center scroll-to">
   <h1 class="xxx-large section-title">Featured Work</h1>
-  {% macro project(title, img, img_title, description, skills=[]) -%}
-  <div class="project-container" id="{{title}}">
-    <a href="{{ url_for(title) }}" class="row project zoomin round-xxlarge">
+  {% macro project(title, handle, img, img_title, description, skills=[]) -%}
+  <div class="project-container" id="{{handle}}">
+    <a href="{{ url_for(handle) }}" class="row project zoomin round-xxlarge">
       <div class="overflow-container round-xxlarge">
         <div class="project-img">
           <img src="{{ img }}" alt="{{ img_title }}" />
@@ -50,7 +50,15 @@
 
   {% endmacro %}
   {{ project(
+    'Pickle Robot Company',
+    'pickle',
+    '/static/images/Pickle/pickle_robot.jpg',
+    'pickle-robot',
+    'Unpacking trucks with robots.',['Software Engineering','Electrical Engineering', 'Mechanical Engineering'])
+  }}
+  {{ project(
     'Dove',
+    'dove',
     '/static/images/Dove/Arm-Sensor.jpg',
     'Arm-Sensor',
     'Creating the first wearable autoinjector capable of sensing an opioid overdose and delivering life-saving naloxone.',
@@ -58,17 +66,11 @@
   }}
   {{ project(
     'Ollie',
+    'ollie',
     '/static/images/Ollie/Ollie.jpg',
     'ollie',
     'An animatronic puppet for the Fabric Museum and Workshop, featuring person-detection and much more.',
     ['Microcontrollers','Machine Learning','Mechanical-Design']
-    )
-  }}
-  {{ project(
-    'DEKA',
-    '/static/images/Deka/Luke-Arm.jpg',
-    'deka',
-    'Developing a class III medical device for FDA clearance.',['Solidworks','Tolerance Analysis','Part-Design','GD&T']
     )
   }}
 </section>
@@ -96,14 +98,15 @@
   {% endmacro %}
 
   <div class="other-project-container-row">
-    {{ otherproject('Krypto', 'Krypto', '/static/images/Krypto/krypto.png', 'krypto_cards', 'Math... but fun :)') }}
-    {{ otherproject('Toyota', 'Toyota Hacking', '/static/images/Toyota/toyota_can.jpg', 'toyota_can', 'Corolla forever <3') }}
+    {{ otherproject('krypto', 'Krypto', '/static/images/Krypto/krypto.png', 'krypto_cards', 'Math... but fun :)') }}
+    {{ otherproject('deka', 'Deka', '/static/images/Deka/Luke-Arm.jpg', 'deka', 'Developing a class III medical device for FDA clearance.') }}
+    {{ otherproject('toyota', 'Toyota Hacking', '/static/images/Toyota/toyota_can.jpg', 'toyota_can', 'Corolla forever <3') }}
   </div>
   <!-- If you want another row of projects -->
   <!-- <div class="other-project-container-row">
-    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
-    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
-    {{ otherproject('Dove', '/static/images/Microscope.jpg', 'microscope') }}
+    {{ otherproject('dove', '/static/images/Microscope.jpg', 'microscope') }}
+    {{ otherproject('dove', '/static/images/Microscope.jpg', 'microscope') }}
+    {{ otherproject('dove', '/static/images/Microscope.jpg', 'microscope') }}
   </div>-->
 
 </section>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+{% import "slides.jinja" as slides%}
+<link rel="stylesheet" href="/static/css/projects.css" />
+<header id="home" class="home column">
+  <div class="project-description padding-top-64">
+    <div class="project-column column padding-right-64">
+      <h1 class="jumbo">Pickle Robot Company</h1>
+      <p class="project-header large" style="display: inline; padding-top: 0px">
+        <b><b>Role:</b></b
+        >&emsp;Mechatronics Engineer
+      </p>
+      <p class="project-header large" style="display: inline">
+        <b><b>Type:</b></b
+        >&ensp;Full-Time Job
+      </p>
+      <p class="project-header large" style="display: inline">
+        <b><b>Time:</b></b
+        >&ensp;June 2020 - Present
+      </p>
+    </div>
+    <div class="project-column" style="align-items: flex-end">
+      <p class="project-description-text" style="display: inline-block">
+        At
+        <a
+          href="{{ url_for('pickle') }}"
+          class="purple-button-underline-animation"
+          style="display: inline-flex; padding: 0; height: auto"
+        >
+          <b class="text-purple large">Pickle Robot Company,</b>
+        </a>
+        I am building autonomous robots to unload trucks.
+        As a Mechatronics Engineer, I work on many aspects of the robot, including
+        any devices that have firmware, and designing the electrical system.
+        <br>
+        I joined Pickle as one of the last series A hires, and have helped the company scale.
+      </p>
+    </div>
+  </div>
+
+{{ slides.slides([
+    ('/static/images/Deka/Cetol.png','I learned CETOL 6σ to do complex 3-Dimensional tolerance stackups on over 1000 part assemblies'),
+    ('/static/images/Deka/torsion_spring.png','As part of my spring design, I created a tool that uses Newton\'s Method, coded in VBA as an Excel plug-in, to design springs by the desired force applied')
+  ]) }}
+</header>
+<script src="/static/js/projects.js"></script>
+{% endblock %}
