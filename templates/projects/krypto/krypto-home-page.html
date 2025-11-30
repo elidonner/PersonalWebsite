@@ -1,0 +1,38 @@
+{% extends '/projects/krypto/krypto-base.html' %} {% block content %}
+
+<!-- Menu Page -->
+<div id="menu" class="one-pager column">
+  <div class="welcome_msg mode_container">
+    Welcome to krypto! Please select a game mode from the options below!
+  </div>
+
+  <div class="mode_container">
+    <a
+      id="practice"
+      class="column button"
+      href="{{ url_for('Krypto_practice') }}"
+    >
+      <div class="mode_type">Practice</div>
+      <div class="mode_description">No time limit. Play at your own pace!</div>
+    </a>
+  </div>
+  <div class="mode_container">
+    <a
+      id="computer"
+      class="column button"
+      href="{{ url_for('Krypto_computer') }}"
+    >
+      <div class="mode_type">Play the Computer</div>
+      <div class="mode_description">See if you can beat the computer!</div>
+    </a>
+  </div>
+  <div class="mode_container">
+    <a id="versus" class="column button" href="{{ url_for('Krypto_friend') }}">
+      <div class="mode_type">Play a Friend</div>
+      <div class="mode_description">
+        Challenge your friend to see who can get the most points!
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

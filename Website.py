@@ -5,18 +5,18 @@ Running this file (calling app.run()), should set up a local server for developm
 '''
 
 import sys
+from dataclasses import asdict
 from json import dumps
 
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 
-import back_end
+from back_end.deck import create_round
 
 app = Flask(__name__)
 app.debug = True
 
 #this sets up the connection to the client side using the current url "/"
 @app.route("/", methods=['GET', 'POST'])
-
 def index():
     '''
     when a request is received from the client (in the do_ajax() function)
@@ -29,11 +29,11 @@ def index():
         difficulty = request.form["difficulty"]
 
         #call the back end to create the hand with given difficulty
-        info = back_end.Run.run(difficulty)
-
+        hand = asdict(create_round(int(difficulty)))
+        print(hand)
 
         #return the info for the game as a json file, which can be parsed in javascript
-        return dumps(info)
+        return jsonify(hand)
 
     #this renders the html file from within the templates folder
     return render_template("index.html")
@@ -44,7 +44,19 @@ def about():
 
 @app.route('/krypto')
 def Krypto():
-    return render_template('projects/krypto.html')
+    return render_template('projects/krypto/krypto-home-page.html')
+
+@app.route('/krypto/practice')
+def Krypto_practice():
+    return render_template('projects/krypto/game.html')
+
+@app.route('/krypto/computer')
+def Krypto_computer():
+    return render_template('projects/krypto/game.html')
+
+@app.route('/krypto/versus')
+def Krypto_friend():
+    return render_template('projects/krypto/game.html')
 
 @app.route('/dove')
 def Dove():
@@ -57,10 +69,6 @@ def Ollie():
 @app.route('/deka')
 def DEKA():
     return render_template('projects/deka.html')
-
-@app.route('/circuits')
-def Circuits():
-    return render_template('projects/circuits.html')
 
 @app.route('/corolla')
 def Toyota ():

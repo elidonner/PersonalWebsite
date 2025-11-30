@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Krypto</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="static/images/icon" href="favicon.ico" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="/static/css/krypto.css" />
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+  </head>
+
+
+  <body id="body" class="column wrapper-center">
+
+    <!-- NAVBAR -->
+  <div class="nav-parent">
+    <div class="navbar row">
+      <div class="menu-left" style="display: flex">
+        <a id="menu_btn" href="{{ url_for('Krypto') }}" style="display: none">
+          <button class = "button xlarge" >Menu</button>
+        </a>
+        <a id="website_btn" href="{{ url_for('index') }}" style="display: none">
+          <button class="button xlarge">Main Site</button>
+        </a>
+      </div>
+
+      <div class="page-title">
+        Krypto!
+      </div>
+
+      <div class="instructions">
+        <div id="instructions" class="button">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+            <g>
+              <rect x="10.75" y="15.75" width="2.5" height="2.5" fill="#000000"></rect>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8C10.8048 8 10 9.08576 10 10H8C8 8.19752 9.49569 6 12 6C14.4955 6 16 8.14203 16 10C16 11.5781 14.8917 12.3782 14.2062 12.8732C14.1659 12.9023 14.1271 12.9303 14.09 12.9574C13.3354 13.5088 13 13.8231 13 14.5H11C11 12.7382 12.1612 11.8897 12.9067 11.345L12.91 11.3426C13.7425 10.7343 14 10.5038 14 10C14 9.0498 13.2039 8 12 8Z" fill="#000000"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- NAVBAR END-->
+
+    <!-- PAGE LOADER START -->
+    <div class="page-loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!-- PAGE LOADER END -->
+
+    <!-- INSTRUCTIONS MENU-->
+    <div id="instructions_menu" class = "overlaytop">
+      <div class="overlaytop-content">
+        <p class="xxlarge text-white">
+          Krypto is an old math card game that I've not found anywhere online.
+          <br></br>
+          Add subtract or multiply the five cards shown to get the target card!
+          <br></br>
+          No fractions or negative numbers!
+        </p>
+      </div>
+      <a id="closebtn" href="javascript:void(0)">&times;</a>
+    </div>
+    <!-- INSTRUCTIONS MENU END-->
+
+  {% block content %}
+  {% endblock %}
+
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="/static/js/script.js"></script>
+  <script type="module" src="/static/js/krypto/bin/krypto-base.js"></script>
+</html>
