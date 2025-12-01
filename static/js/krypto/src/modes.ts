@@ -291,6 +291,7 @@ class Computer extends GameMode {
 }
 
 class Versus extends GameMode {
+  // TODO: refactor this.first_attempt. Very confusing way to do this.
   person_timer: number | null;
   timer: Timer | null;
   first_attempt: boolean;
@@ -340,6 +341,7 @@ class Versus extends GameMode {
 
   increment_points() {
     super.increment_points();
+    this.first_attempt = true;
     this.reset_timer();
   }
 
@@ -365,7 +367,6 @@ class Versus extends GameMode {
       this.first_attempt = false;
     } else {
       this.first_attempt = true;
-      this.popup();
       show_solution();
     }
   }

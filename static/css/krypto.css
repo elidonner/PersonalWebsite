@@ -175,7 +175,6 @@ body {
   font-size: clamp(1rem, 3vw, 2rem);
   border-radius: 0.5rem;
   background-color: var(--red);
-  overflow:clip;
   min-height: 80px;
 }
 
@@ -187,6 +186,7 @@ body {
   border-bottom: 1px solid var(--gray);
   height:70%;
   display: flex;
+  overflow:clip;
 }
 
 .points{
