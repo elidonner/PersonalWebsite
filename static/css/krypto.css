@@ -273,7 +273,7 @@ body {
   justify-content: center;
 }
 
-#target-cell > .card {
+.targetContainer > .card {
   aspect-ratio: 3/5;
   width: 90%;
   height: auto;
@@ -292,7 +292,7 @@ body {
   justify-content: center;
 }
 
-#target-cell {
+.targetContainer {
   height:100%;
   width:100%;
   justify-content: center;

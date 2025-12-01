@@ -1,15 +1,14 @@
 <!-- MACRO TO BE USED FOR CREATING SLIDES ON PROJECT PAGES -->
-{% macro slides(imgs) -%}
+{% macro slides(slide_items) -%}
 
 <div class="project-slideshow column padding-top-64">
     <div class="wrapper-center row" style="justify-content: space-evenly">
     <a class="prev" onclick="plusSlides(-1)">❮</a>
     <div class="slideshow-container round-xxlarge column">
-        {% for img in imgs %}
-        
+        {% for item in slide_items %}
         <div class="img-slides row">
-            {% if img|length > 2 %}
-            <div class="img-container embedded-video" onclick="lightbox_open({{img[2]}})">
+            {% if item.get('video_id') %}
+            <div class="img-container embedded-video" onclick="lightbox_open({{item.video_id}})">
                 <div class="play-button">
                     <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100px" width="100px" xml:space="preserve">
                     <path class="stroke-solid" fill="none" stroke="white"  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
@@ -19,27 +18,32 @@
                     <path class="icon" fill="white" d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"/>
                     </svg>
                 </div>
-                <img src="{{img[0]}}" />
+                <img src="{{item.image_path}}" />
             </div>
             {% else %}
             <div class="img-container">
-                <img src="{{img[0]}}" onclick="enlargeImage(this)" />
+                <img src="{{item.image_path}}" onclick="enlargeImage(this)" />
                 <div class="video-popup">
                 <div class="popup-img-container">
-                    <img src="{{img[0]}}" />
+                    <img src="{{item.image_path}}" />
                     <div class="close-btn" onclick="closeImage()">&times;</div>
-                </div>            
+                </div>
                 </div>
             </div>
             {% endif %}
-            <h3 class="text xlarge">{{img[1]}}</h3> 
+            <div class="slide-text">
+                <h3 class="text xlarge">{{item.title}}</h3>
+                {% if item.get('description') %}
+                <p class="text medium">{{item.description}}</p>
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>
     <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
     <div class="dot-container padding-top-32">
-    {% for i in range(1, imgs|length +1) %}
+    {% for i in range(1, slide_items|length +1) %}
     <span class="dot" onclick="currentSlide({{i}})"></span>
     {% endfor %}
     </div>

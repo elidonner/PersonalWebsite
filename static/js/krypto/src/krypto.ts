@@ -21,6 +21,7 @@ import {
  */
 let initial_board: any;
 let target_container: HTMLDivElement;
+let target: HTMLDivElement;
 let cards_container: HTMLDivElement;
 let card_containers: HTMLCollectionOf<HTMLDivElement>;
 let card_buttons: HTMLCollectionOf<HTMLButtonElement>;
@@ -142,7 +143,8 @@ function attach_keyboard_listeners() {
 
 function initialize_global_variables() {
   //set the dom elements
-  target_container = document.getElementById("target")! as HTMLDivElement;
+  target_container = document.getElementById("targetContainer")! as HTMLDivElement;
+  target = document.getElementById("target")! as HTMLDivElement;
   cards_container = document.getElementById(
     "cardsContainer"
   )! as HTMLDivElement;
@@ -312,7 +314,7 @@ function restore_board() {
  */
 function deal_cards(): void {
   //set the innerHtml of the cards
-  target_container.innerHTML = krypto_hand.target.toString();
+  target.innerHTML = krypto_hand.target.toString();
 
   //now we need to create all the new cards
   populate_card_containers(krypto_hand.starting_hand);

@@ -428,7 +428,7 @@ img {
   top: 0%;
   left: 5px;
   background-color: var(--purple);
-  z-index: 1;
+  z-index: 0;
 }
 .tab-content {
   padding: 40px 0;
@@ -466,6 +466,52 @@ img {
   font-size: 18px;
   text-transform: capitalize;
   margin: 0 0 10px;
+}
+
+/* Company grouping styles */
+.company-header {
+  margin-bottom: 20px;
+  position: relative;
+  padding: 10px 0 0 40px;
+}
+.company-header::before {
+  content: "";
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  background-color: var(--dark-purple);
+  left: -1px;
+  top: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--background-color);
+}
+.company-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark-purple);
+  margin: 0;
+}
+.position-item {
+  margin-bottom: 20px;
+  position: relative;
+  padding: 10px 0 0 60px;
+  color: var(--default);
+}
+.position-item:last-child {
+  margin-bottom: 0;
+}
+.position-item .date {
+  display: block;
+  color: var(--light-gray);
+  font-weight: 400;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+.position-item h4 {
+  font-size: 16px;
+  text-transform: capitalize;
+  margin: 0;
+  color: var(--default);
 }
 .about-txt .timeline-item h4 span {
   font-weight: 400;
@@ -1067,6 +1113,32 @@ img {
   .contact-info-item {
     align-items: center;
     justify-content: center;
+  }
+
+  /* Company grouping responsive styles */
+  .company-header {
+    padding: 8px 0 0 30px;
+  }
+  .company-header::before {
+    left: -1px;
+    height: 11px;
+    width: 11px;
+  }
+  .company-name {
+    font-size: 18px;
+  }
+  .position-item {
+    padding: 8px 0 0 50px;
+  }
+  .position-item::before {
+    left: 15px;
+    height: 8px;
+    width: 8px;
+  }
+  .company-group::after {
+    left: 20px;
+    top: 50px;
+    height: calc(100% - 50px);
   }
 }
 

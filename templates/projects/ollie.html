@@ -23,7 +23,7 @@
       </p>
       <p class="project-header large" style="display: inline">
         <b><b>Time:</b></b
-        >&ensp;March 2022 - Present
+        >&ensp;March 2022 - September 2022
       </p>
     </div>
     <div class="project-column" style="align-items: flex-end">
@@ -54,14 +54,47 @@
   </div>
 
   {{ slides.slides([
-    ('/static/images/Ollie/Ollie_and_me.jpg','Ollie and me, on opening night'),
-    ('/static/images/Ollie/Brain.jpg','Ollie\'s \"Brain\"'),
-    ('/static/images/Ollie/Face_Tracking.png','Testing Ollie\'s face tracking, 90 FPS on a bare Raspberry Pi!', 'Face_Tracking'),
-    ('/static/images/Ollie/Inside_Ollie.png','Under Ollie\'s fur', 'Inisde_Ollie'),
-    ('/static/images/Ollie/Ollie_Tracking.png','Ollie tracking in his \"living room\"', 'Ollie_Tracking'),
-    ('/static/images/Ollie/Opening_Night.png','Ollie on opening night', 'Opening_Night'),
-    ('/static/images/Ollie/PS4.png','Using a PlayStation controller to record Ollie\'s movements to an SD Card', 'PS4')
-    ]) }}
+    {
+      'title': 'Opening Night',
+      'description': 'Ollie and me on opening night.',
+      'image_path': '/static/images/Ollie/Ollie_and_me.jpg'
+    },
+    {
+      'title': 'Ollie\'s "Brain"',
+      'description': 'Ollie\'s brain consisted of a Raspberry Pi 4, 2 esp32s, an Arduino Mega, and an audio playback device.<br>
+      The Raspbbery Pi ran TensorFlow Lite for people detection. It sent the number of people detected to the Arduino Mega via serial and moved a servo which controlled Ollie\'s body so he\'d follow guests in realtime.<br>
+      A kalman filter was used to keep track of people in the frame to provide smooth movement and funny quips depending on when people entered or left the frame.<br>
+      One ESP32 extracted the audio wave envelope from the raw output of an analog butterworth op amp filter. I used i2s to get a high speed DMA analog input on the ESP32. This ESP32 then drove a servo which controlled the mouth for in-time lip syncing.<br>
+      The other esp32 controlled Ollie\'s head servos, and read recorded motion animations from an SD card.<br>
+      Finally, the Arduino Mega coordinated all the devices, triggering audio playback and sending commands to the other microcontrollers based on the number of people detected by the Raspberry Pi.',
+      'image_path': '/static/images/Ollie/Brain.jpg'
+    },
+    {
+      'title': 'Testing Ollie\'s face tracking, 90 FPS on a bare Raspberry Pi!',
+      'image_path': '/static/images/Ollie/Face_Tracking.png',
+      'video_id': 'Face_Tracking'
+    },
+    {
+      'title': 'Under Ollie\'s fur',
+      'image_path': '/static/images/Ollie/Inside_Ollie.png',
+      'video_id': 'Inisde_Ollie'
+    },
+    {
+      'title': 'Ollie tracking in his "living room"',
+      'image_path': '/static/images/Ollie/Ollie_Tracking.png',
+      'video_id': 'Ollie_Tracking'
+    },
+    {
+      'title': 'Ollie on opening night',
+      'image_path': '/static/images/Ollie/Opening_Night.png',
+      'video_id': 'Opening_Night'
+    },
+    {
+      'title': 'Using a PlayStation controller to record Ollie\'s movements to an SD Card',
+      'image_path': '/static/images/Ollie/PS4.png',
+      'video_id': 'PS4'
+    }
+  ]) }}
 </header>
 
 <!-- EMBEDDED VIDEOS START -->

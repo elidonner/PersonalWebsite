@@ -26,11 +26,11 @@ function attachEventListeners() {
 function plusSlides(n) {
     showSlides((slideIndex += n));
   }
-  
+
   function currentSlide(n) {
     showSlides((slideIndex = n));
   }
-  
+
   function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("img-slides");
@@ -51,17 +51,17 @@ function plusSlides(n) {
     dots[slideIndex - 1].className += " active";
     setImageHeight(slideIndex - 1);
   }
-  
+
   function setImageHeight(n) {
-    var slide_text = document.getElementsByClassName("text")[n];
+    var slide_text = document.getElementsByClassName("slide-text")[n];
     //fix the image height if needed
     if(screen.width > 767)
     {
       var img_containers = document.getElementsByClassName("img-container");
       var slide = document.getElementsByClassName("img-slides")[n];
       var image = slide.getElementsByTagName("img")[0];
-  
-  
+
+
       img_containers[n].style.width = image.offsetWidth+"px";
       if ( image.offsetWidth < slide.offsetWidth / 2) {
         slide_text.style.width = (slide.offsetWidth - image.offsetWidth) + "px";
