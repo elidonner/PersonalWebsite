@@ -36,9 +36,14 @@
       </p>
     </div>
   </div>
-
 {{ slides.slides([
-    ('/static/images/Pickle/pickle_robot.jpg','Autonomous Robot'),
+    {
+      'title': 'Autonomous Robot',
+      'image_path': '/static/images/Pickle/pickle_robot.jpg',
+    },
+    {
+      'title': 'Coming soon...'
+    }
   ]) }}
 </header>
 <script src="/static/js/projects.js"></script>

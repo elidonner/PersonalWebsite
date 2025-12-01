@@ -33,16 +33,40 @@
     </div>
   </div>
 
- {{ slides.slides([
-  ('/static/images/Dove/Injector.gif', 'Subcutaneous injector'),
-  ('/static/images/Dove/InjectorCad.jpg', 'Solidworks renders of injector'),
-  ('/static/images/Dove/Finger-Sensor.jpg', 'Finger-based sensor'),
-  ('/static/images/Dove/Arm-Sensor-Small.jpg', 'Adhesive-based shoulder sensor'),
-  ('/static/images/Dove/PCBs.jpg', 'Sensor PCBs for Clinical Study'),
-  ('/static/images/Dove/PCB-Prototypes.jpg', 'PCB Iteration'),
-  ('/static/images/Dove/PCB-Closeup.jpg', 'PCB Closeup'),
-  ('/static/images/Dove/LaserCut-Adhesives.jpg', 'Custom laser cut adhesives &
-  3D printed housings') ]) }}
+{{ slides.slides([
+    {
+      'title': 'Subcutaneous injector',
+      'image_path': '/static/images/Dove/Injector.gif',
+    },
+    {
+      'title': 'Solidworks renders of injector',
+      'image_path': '/static/images/Dove/InjectorCad.jpg'
+    },
+    {
+      'title': 'Finger-based sensor',
+      'image_path': '/static/images/Dove/Finger-Sensor.jpg'
+    },
+    {
+      'title': 'Adhesive-based shoulder sensor',
+      'image_path': '/static/images/Dove/Arm-Sensor-Small.jpg'
+    },
+    {
+      'title': 'Sensor PCBs for Clinical Study',
+      'image_path': '/static/images/Dove/PCBs.jpg'
+    },
+    {
+      'title': 'PCB Iteration',
+      'image_path': '/static/images/Dove/PCB-Prototypes.jpg'
+    },
+    {
+      'title': 'PCB Closeup',
+      'image_path': '/static/images/Dove/PCB-Closeup.jpg'
+    },
+    {
+      'title': 'Custom laser cut adhesives & 3D printed housings',
+      'image_path': '/static/images/Dove/LaserCut-Adhesives.jpg'
+    },
+ ]) }}
 </header>
 <script src="/static/js/projects.js"></script>
 {% endblock %}

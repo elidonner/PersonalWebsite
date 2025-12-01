@@ -17,8 +17,9 @@ body {
 }
 
 .one-pager {
-  /* margin-top: var(--header-height); */
-  height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+  height: calc(100dvh - var(--header-height));
+  max-height: calc(100dvh - var(--header-height));
   background-color: transparent;
 }
 
@@ -30,12 +31,11 @@ body {
 
 #gameboard {
   width: 90%;  /* Explicit content width */
-  margin: 1% 5%;  /* Centers with 5% margins */
-  padding: 1% 0;  /* Only vertical padding */
+  padding-top: 1%;
+  padding-bottom: 5%;
   justify-content: center;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  height: 100%;
 }
 
 .welcome_msg{
@@ -265,9 +265,9 @@ body {
 
 #cardsContainer > .cardContainer {
   aspect-ratio: 3/5;
-  width: 90%;
-  height: auto;
+  width: min(90%, 150px);
   max-width: 90%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,7 +275,7 @@ body {
 
 .targetContainer > .card {
   aspect-ratio: 3/5;
-  width: 90%;
+  width: min(90%, 150px);
   height: auto;
   max-width: 90%;
   display: flex;
@@ -380,8 +380,8 @@ body {
 
 
 #solution {
-  /* margin-top: var(--header-height); */
-  max-height: 100vh;
+  margin-top: var(--header-height);
+  max-height: 100dvh;
   padding:5px;
   justify-content: center;
   align-items: center;
@@ -615,7 +615,7 @@ body {
 }
 
 /* Timer Responsiveness */
-@media (max-width: 1200px) {
+@media (max-width: 1200px), (max-height: 1200px) {
   .base-timer {
     height: 160px;
     width: 160px;
@@ -633,7 +633,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-height: 767px) {
   .base-timer {
     height: 120px;
     width: 120px;
@@ -656,7 +656,12 @@ body {
     max-width: 120px;
   }
 
-/* User cards mobile adjustments */
+  #difficulty_container{
+    width: 90%;
+    height: 90%;
+  }
+
+  /* User cards mobile adjustments */
   #scoreboard {
     gap: 5px;
   }
@@ -702,7 +707,7 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-height: 480px) {
   .base-timer {
     height: 100px;
     width: 100px;

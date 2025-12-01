@@ -175,6 +175,9 @@ img {
 }
 
 .nav-parent {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: var(--header-height);
   z-index: 3;
@@ -433,9 +436,11 @@ img {
 .tab-content {
   padding: 40px 0;
   display: none;
+  width:fit-content;
+  max-width: 60%;
 }
 .tab-content.active {
-  display: block;
+  display: flex;
 }
 .timeline-item {
   margin-bottom: 30px;
@@ -469,12 +474,12 @@ img {
 }
 
 /* Company grouping styles */
-.company-header {
-  margin-bottom: 20px;
+.timeline-header {
+  margin-bottom: 0px;
   position: relative;
   padding: 10px 0 0 40px;
 }
-.company-header::before {
+.timeline-header::before {
   content: "";
   position: absolute;
   height: 13px;
@@ -485,7 +490,7 @@ img {
   border-radius: 50%;
   border: 2px solid var(--background-color);
 }
-.company-name {
+.timeline-title {
   font-size: 20px;
   font-weight: 600;
   color: var(--dark-purple);
@@ -504,7 +509,6 @@ img {
   display: block;
   color: var(--light-gray);
   font-weight: 400;
-  margin: 0 0 8px;
   font-size: 14px;
 }
 .position-item h4 {
@@ -513,6 +517,32 @@ img {
   margin: 0;
   color: var(--default);
 }
+
+.timeline-group {
+  padding-bottom:32px;
+}
+
+/* Job description styles */
+.job-description {
+  flex-direction: column;
+}
+
+.job-description ul {
+  display:flex;
+  flex-direction: column;
+  margin-top:8px;
+  margin-block-end: 0px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.job-description li {
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--light-gray);
+}
+
 .about-txt .timeline-item h4 span {
   font-weight: 400;
 }
@@ -525,6 +555,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width:90%;
 }
 
 .project {
@@ -1017,6 +1048,10 @@ img {
     width: 100%;
     max-width: 100%;
   }
+
+  .tab-content{
+    max-width: 100%;
+  }
 }
 
 /* Mobile Responsiveness */
@@ -1116,15 +1151,15 @@ img {
   }
 
   /* Company grouping responsive styles */
-  .company-header {
+  .timeline-header {
     padding: 8px 0 0 30px;
   }
-  .company-header::before {
+  .timeline-header::before {
     left: -1px;
     height: 11px;
     width: 11px;
   }
-  .company-name {
+  .timeline-title {
     font-size: 18px;
   }
   .position-item {
@@ -1135,7 +1170,7 @@ img {
     height: 8px;
     width: 8px;
   }
-  .company-group::after {
+  .timeline-group::after {
     left: 20px;
     top: 50px;
     height: calc(100% - 50px);

@@ -47,5 +47,4 @@ function attachEventListeners(){
       aboutSection.querySelector(target).classList.add("active");
   }
   })
-
 }
